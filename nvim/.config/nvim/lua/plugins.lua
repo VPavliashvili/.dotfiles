@@ -20,4 +20,11 @@ return require('packer').startup(function(use)
         'nvim-telescope/telescope.nvim',
         requires = { { 'nvim-lua/plenary.nvim' } }
     }
+
+    --treesitter
+    use {
+        'nvim-treesitter/nvim-treesitter',
+        --same as TSUpdate but avoding post installation first run error
+        run = function() require('nvim-treesitter.install').update({ with_sync = true }) end,
+    }
 end)

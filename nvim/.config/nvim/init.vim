@@ -5,9 +5,13 @@ lua require('sets')
 lua require('maps')
 lua require('telescope_conf')
 
-"language configurations
+"lsp and language configurations
 lua require('lsp_lua')
 lua require('lsp_godot')
+
+"treesitter
+lua require('treesitter')
+
 
 let g:airline_theme='jellybeans'
 set encoding=utf-8
