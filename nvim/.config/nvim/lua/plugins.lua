@@ -4,8 +4,6 @@ return require('packer').startup(function(use)
     use 'flazz/vim-colorschemes'
     use 'vim-airline/vim-airline'
     use 'vim-airline/vim-airline-themes'
-    use 'junegunn/fzf'
-    use 'junegunn/fzf.vim'
     use 'lukas-reineke/indent-blankline.nvim'
 
     --lsp
@@ -17,4 +15,9 @@ return require('packer').startup(function(use)
     use 'L3MON4D3/LuaSnip'
 
     use 'habamax/vim-godot'
+
+    use {
+        'nvim-telescope/telescope.nvim',
+        requires = { { 'nvim-lua/plenary.nvim' } }
+    }
 end)

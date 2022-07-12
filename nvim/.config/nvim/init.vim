@@ -3,6 +3,7 @@
 lua require('plugins')
 lua require('sets')
 lua require('maps')
+lua require('telescope_conf')
 
 "language configurations
 lua require('lsp_lua')

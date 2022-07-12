@@ -89,16 +89,6 @@ _G.packer_plugins = {
     path = "/home/stranger/.local/share/nvim/site/pack/packer/start/cmp_luasnip",
     url = "https://github.com/saadparwaiz1/cmp_luasnip"
   },
-  fzf = {
-    loaded = true,
-    path = "/home/stranger/.local/share/nvim/site/pack/packer/start/fzf",
-    url = "https://github.com/junegunn/fzf"
-  },
-  ["fzf.vim"] = {
-    loaded = true,
-    path = "/home/stranger/.local/share/nvim/site/pack/packer/start/fzf.vim",
-    url = "https://github.com/junegunn/fzf.vim"
-  },
   ["indent-blankline.nvim"] = {
     loaded = true,
     path = "/home/stranger/.local/share/nvim/site/pack/packer/start/indent-blankline.nvim",
@@ -123,6 +113,16 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/stranger/.local/share/nvim/site/pack/packer/start/packer.nvim",
     url = "https://github.com/wbthomason/packer.nvim"
+  },
+  ["plenary.nvim"] = {
+    loaded = true,
+    path = "/home/stranger/.local/share/nvim/site/pack/packer/start/plenary.nvim",
+    url = "https://github.com/nvim-lua/plenary.nvim"
+  },
+  ["telescope.nvim"] = {
+    loaded = true,
+    path = "/home/stranger/.local/share/nvim/site/pack/packer/start/telescope.nvim",
+    url = "https://github.com/nvim-telescope/telescope.nvim"
   },
   ["vim-airline"] = {
     loaded = true,

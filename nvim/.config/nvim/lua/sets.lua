@@ -7,7 +7,7 @@ set shiftwidth=4
 set expandtab
 set nobackup
 set incsearch
-set scrolloff=8
+set scrolloff=4
 set signcolumn=yes  
 set nowritebackup
 set noswapfile
