@@ -9,6 +9,9 @@ lua require('telescope_conf')
 lua require('lsp_lua')
 lua require('lsp_godot')
 
+"debuggers
+lua require('debuggers')
+
 "treesitter
 lua require('treesitter')
 

@@ -27,4 +27,10 @@ return require('packer').startup(function(use)
         --same as TSUpdate but avoding post installation first run error
         run = function() require('nvim-treesitter.install').update({ with_sync = true }) end,
     }
+
+    --debugging
+    use 'mfussenegger/nvim-dap'
+    use 'rcarriga/nvim-dap-ui'
+    use 'theHamsta/nvim-dap-virtual-text'
+    use 'jbyuki/one-small-step-for-vimkind'
 end)
