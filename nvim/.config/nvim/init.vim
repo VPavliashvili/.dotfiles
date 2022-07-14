@@ -8,13 +8,13 @@ lua require('telescope_conf')
 "lsp and language configurations
 lua require('lsp_lua')
 lua require('lsp_godot')
-
-"debuggers
-lua require('debuggers')
+lua require('lsp_go')
 
 "treesitter
 lua require('treesitter')
 
+"debuggers
+lua require('debuggers')
 
 let g:airline_theme='jellybeans'
 set encoding=utf-8
