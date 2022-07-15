@@ -1,10 +1,10 @@
 return require('packer').startup(function(use)
     use 'wbthomason/packer.nvim'
     use 'preservim/nerdcommenter'
-    use 'flazz/vim-colorschemes'
     use 'vim-airline/vim-airline'
     use 'vim-airline/vim-airline-themes'
     use 'lukas-reineke/indent-blankline.nvim'
+    use 'navarasu/onedark.nvim'
 
     --lsp
     use 'neovim/nvim-lspconfig'

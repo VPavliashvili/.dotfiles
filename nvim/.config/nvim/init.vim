@@ -16,6 +16,11 @@ lua require('treesitter')
 "debuggers
 lua require('debuggers')
 
+let g:onedark_config = {
+    \ 'style': 'cool',
+\}
+colorscheme onedark
 let g:airline_theme='jellybeans'
+hi CursorLine cterm=NONE ctermbg=242
 set encoding=utf-8
 scriptencoding utf-8
