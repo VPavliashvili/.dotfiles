@@ -1,5 +1,6 @@
 vim.cmd [[
 filetype plugin indent on
+hi CursorLine cterm=NONE ctermbg=242
 set number
 set cursorline
 set tabstop=4 softtabstop=4

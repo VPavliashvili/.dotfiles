@@ -8,6 +8,9 @@ vim.keymap.set("n", "<leader>B", ":lua require'dap'.set_breakpoint(vim.fn.input(
 vim.keymap.set("n", "<leader>lp", ":lua require'dap'.set_breakpoint(nil, nil, vim.fn.input('Log point message: '))<CR>")
 vim.keymap.set("n", "<leader>dr", ":lua require'dap'.repl.open()<CR>")
 vim.keymap.set("n", "<leader>dt", ":lua require'dap-go'.debug_test()<CR>")
+--F17 is equivalent to Shift-F5
+vim.keymap.set("n", "<F17>", ":lua require'dap'.terminate()<CR>")
+
 
 --debugger vizualizers initializations
 require("nvim-dap-virtual-text").setup()

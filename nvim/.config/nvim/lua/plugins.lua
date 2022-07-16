@@ -6,6 +6,15 @@ return require('packer').startup(function(use)
     use 'lukas-reineke/indent-blankline.nvim'
     use 'navarasu/onedark.nvim'
 
+    --file explorer
+    use {
+        'kyazdani42/nvim-tree.lua',
+        requires = {
+            'kyazdani42/nvim-web-devicons', -- optional, for file icons
+        },
+        tag = 'nightly' -- optional, updated every week. (see issue #1193)
+    }
+
     --lsp
     use 'neovim/nvim-lspconfig'
     use 'hrsh7th/cmp-nvim-lsp'
@@ -16,10 +25,14 @@ return require('packer').startup(function(use)
 
     use 'habamax/vim-godot'
 
+    --telescope
     use {
         'nvim-telescope/telescope.nvim',
         requires = { { 'nvim-lua/plenary.nvim' } }
     }
+    use 'nvim-lua/popup.nvim'
+    use 'nvim-telescope/telescope-media-files.nvim'
+    use 'nvim-telescope/telescope-file-browser.nvim'
 
     --treesitter
     use {
