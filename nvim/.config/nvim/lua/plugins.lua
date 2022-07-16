@@ -1,8 +1,10 @@
 return require('packer').startup(function(use)
     use 'wbthomason/packer.nvim'
     use 'preservim/nerdcommenter'
-    use 'vim-airline/vim-airline'
-    use 'vim-airline/vim-airline-themes'
+    use {
+        'nvim-lualine/lualine.nvim',
+        requires = { 'kyazdani42/nvim-web-devicons', opt = true }
+    }
     use 'lukas-reineke/indent-blankline.nvim'
     use 'navarasu/onedark.nvim'
 

@@ -19,7 +19,6 @@ lua require('debuggers')
 "misc
 lua require('misc')
 
-let g:airline_theme='jellybeans'
 set encoding=utf-8
 scriptencoding utf-8
 
