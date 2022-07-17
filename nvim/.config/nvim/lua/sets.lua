@@ -1,8 +1,7 @@
 vim.cmd [[
 filetype plugin indent on
-hi CursorLine cterm=NONE ctermbg=242
-set number
 set cursorline
+set number
 set tabstop=4 softtabstop=4
 set shiftwidth=4
 set expandtab
