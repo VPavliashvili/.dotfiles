@@ -37,7 +37,7 @@
         {
           "foreground": "#7eb8da",
           "properties": {
-            "time_format": "Monday at 3:04:05 PM"
+            "time_format": "Jan-02, 15:04"
           },
           "style": "diamond",
           "template": "[<#ffffff>\uf5ef</> {{ .CurrentDate | date .Format }}]",
