@@ -15,7 +15,7 @@ nnoremap <C-j> <C-e>
 nnoremap <leader>nh :noh<CR>
 
 "Nvim Tree external maps
-nnoremap ft :NvimTreeFocus<CR>
-nnoremap rt :NvimTreeRefresh<CR>
-nnoremap tt :NvimTreeToggle<CR>
+nnoremap <leader>ft :NvimTreeFocus<CR>
+nnoremap <leader>rt :NvimTreeRefresh<CR>
+nnoremap <leadeR>tt :NvimTreeToggle<CR>
 ]]
