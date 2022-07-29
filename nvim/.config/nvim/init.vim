@@ -18,6 +18,7 @@ lua require('debuggers')
 
 "misc
 lua require('misc')
+lua require('statusline')
 
 set encoding=utf-8
 scriptencoding utf-8
