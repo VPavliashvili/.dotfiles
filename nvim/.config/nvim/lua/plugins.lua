@@ -9,6 +9,7 @@ return require('packer').startup(function(use)
         "windwp/nvim-autopairs",
         config = function() require("nvim-autopairs").setup {} end
     }
+    use 'yamatsum/nvim-cursorline'
     use 'lukas-reineke/indent-blankline.nvim'
     use 'navarasu/onedark.nvim'
 

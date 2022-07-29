@@ -1,6 +1,7 @@
 vim.cmd [[
 filetype plugin indent on
-set cursorline
+" don't need set cursorline anymore
+" because of cursorline plugin setup in misc.lua
 set number
 set tabstop=4 softtabstop=4
 set shiftwidth=4
