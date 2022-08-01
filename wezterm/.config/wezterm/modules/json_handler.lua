@@ -5,7 +5,7 @@ local json = require("JSON")
 local M = {}
 
 local home = os.getenv("HOME")
-local json_conf = home .. "/.config/wezterm/conf.json"
+local json_conf = home .. "/.config/wezterm/data.json"
 
 local function get_json_as_text_from_file()
     local file = io.open(json_conf, "r")

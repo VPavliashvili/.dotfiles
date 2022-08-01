@@ -52,9 +52,9 @@ local function get_image_name()
         local diff = current_timestamp - last_timestamp
         needUpdate = (diff / 60) >= update_wallpaper_interval_in_minutes
 
-        print(current_timestamp)
-        print(last_timestamp)
-        print(diff)
+        print("current timestamp: " .. current_timestamp)
+        print("last_timestamp: " .. last_timestamp)
+        print("diff: " .. diff)
     end
 
     local result
