@@ -4,7 +4,7 @@ local json_handler = require("modules.json_handler")
 local io_handler = require("modules.io_handler")
 
 local home = os.getenv("HOME")
-local next_wallpaper_counter_in_minutes = 60
+local next_wallpaper_timer_in_minutes = 10
 
 local function get_wallpapers_path()
     local relative = "/Pictures/wallpapers/terminal/"
@@ -57,11 +57,15 @@ local function need_saved_data_update(old_data)
     local current_timestamp = get_timestamp()
 
     local diff = current_timestamp - last_timestamp
-    local result = (diff / 60) >= next_wallpaper_counter_in_minutes
+    local result = (diff / 60) >= next_wallpaper_timer_in_minutes
 
     print("current timestamp: " .. current_timestamp)
     print("last_timestamp: " .. last_timestamp)
     print("diff: " .. diff)
+
+    if result == true then
+		print("wallpaper change required!")
+    end
 
     return result
 end
@@ -69,7 +73,7 @@ end
 local function handle_need_data_update(images, saved_data)
     local filtered = {}
     for _, v in pairs(images) do
-        print("image: " .. v .. "  data: " .. saved_data.image)
+        --print("image: " .. v .. "  data: " .. saved_data.image)
         --print(tostring(v) ~= tostring(saved_data.image))
         local val_str = tostring(v)
         local data_str = tostring(saved_data.image)
@@ -82,7 +86,8 @@ local function handle_need_data_update(images, saved_data)
     print("update data function run")
     print(filtered)
     print("random index: " .. index)
-    local result = images[index]
+    local result = filtered[index]
+    print("new wallpaper set: " .. result)
 
     json_handler.write_to_json_file(result, get_timestamp())
 
