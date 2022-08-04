@@ -2,9 +2,11 @@ local M = {}
 
 local json_handler = require("modules.json_handler")
 local io_handler = require("modules.io_handler")
+local printer = require("modules.printer")
 
 local home = os.getenv("HOME")
 local next_wallpaper_timer_in_minutes = 10
+printer.disable()
 
 local function get_wallpapers_path()
     local relative = "/Pictures/wallpapers/terminal/"
@@ -34,7 +36,7 @@ end
 local function handle_only_one_image(images)
     local res = images[1]
     json_handler.write_to_json_file(res, get_timestamp())
-    print("image returned " .. res)
+    printer.print("image returned " .. res)
     return res
 end
 
@@ -42,12 +44,12 @@ local function handle_saved_data_absence(images)
     math.randomseed(os.time())
 
     local index = math.random(#images)
-    print(images)
-    print("random index: " .. index)
+    printer.print(images)
+    printer.print("random index: " .. index)
     local result = images[index]
 
     json_handler.write_to_json_file(result, get_timestamp())
-    print("persistent data was absent")
+    printer.print("persistent data was absent")
 end
 
 local function need_saved_data_update(old_data)
@@ -59,12 +61,12 @@ local function need_saved_data_update(old_data)
     local diff = current_timestamp - last_timestamp
     local result = (diff / 60) >= next_wallpaper_timer_in_minutes
 
-    print("current timestamp: " .. current_timestamp)
-    print("last_timestamp: " .. last_timestamp)
-    print("diff: " .. diff)
+    printer.print("current timestamp: " .. current_timestamp)
+    printer.print("last_timestamp: " .. last_timestamp)
+    printer.print("diff: " .. diff)
 
     if result == true then
-		print("wallpaper change required!")
+        printer.print("wallpaper change required!")
     end
 
     return result
@@ -83,11 +85,11 @@ local function handle_need_data_update(images, saved_data)
     end
 
     local index = math.random(#filtered)
-    print("update data function run")
-    print(filtered)
-    print("random index: " .. index)
+    printer.print("update data function run")
+    printer.print(filtered)
+    printer.print("random index: " .. index)
     local result = filtered[index]
-    print("new wallpaper set: " .. result)
+    printer.print("new wallpaper set: " .. result)
 
     json_handler.write_to_json_file(result, get_timestamp())
 
@@ -112,7 +114,7 @@ local function get_image()
 
     local need_update = false
     if saved_data == nil then
-        print("last saved data is null")
+        printer.print("last saved data is null")
         return handle_saved_data_absence(images)
     else
         need_update = need_saved_data_update(saved_data)
