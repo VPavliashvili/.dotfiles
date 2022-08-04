@@ -1,21 +1,31 @@
-local M = {}
+local Printer = {}
 
-local is_enabled = false
+Printer.new = function()
+    local self = {}
 
-function M.enable()
-    is_enabled = true
-end
+    local is_enabled = true
 
-function M.disable()
-    is_enabled = false
-end
-
-function M.print(message)
-    if is_enabled == false then
-        return
+    function self.get_status()
+        return is_enabled
     end
 
-    print(message)
+    function self.enable()
+        is_enabled = true
+    end
+
+    function self.disable()
+        is_enabled = false
+    end
+
+    function self.print(message)
+        if is_enabled == false then
+            return
+        end
+
+        print(message)
+    end
+
+    return self
 end
 
-return M
+return Printer

@@ -1,23 +1,41 @@
 local M = {}
 
-local json_handler = require("modules.json_handler")
-local io_handler = require("modules.io_handler")
-local printer = require("modules.printer")
+--local json_handler = require("modules.json_handler")
+local config_manager_class = require("modules.cfg_resources_retriver")
+local images_retriver_class = require("modules.image_retriver")
+local printer_class = require("modules.printer")
 
 local home = os.getenv("HOME")
-local next_wallpaper_timer_in_minutes = 10
-printer.disable()
+local next_wallpaper_timer_in_minutes = 0.3
+local json_data_file_name = "data.json"
+
+local function get_json_data_content(img, tmst)
+    return {
+        image = img,
+        timestamp = tmst,
+    }
+end
 
 local function get_wallpapers_path()
     local relative = "/Pictures/wallpapers/terminal/"
-
     return home .. relative
 end
+
+local function get_saved_data_path()
+    local relative = "/.config/wezterm/"
+    return home .. relative
+end
+
+local saved_data_interactor = config_manager_class.new(get_saved_data_path())
+local images_retriver = images_retriver_class.new(get_wallpapers_path())
+local printer = printer_class.new()
+--printer.disable()
+printer.enable()
 
 local function get_all_images_with_full_path()
     local path_to_wallpapers = get_wallpapers_path()
 
-    local image_names = io_handler.get_image_files(path_to_wallpapers)
+    local image_names = images_retriver.get_image_files()
 
     local result = {}
     for _, value in pairs(image_names) do
@@ -33,9 +51,15 @@ local function get_timestamp()
     return seconds_since_epoch
 end
 
+local function save_data(img)
+    local content = get_json_data_content(img, get_timestamp())
+    saved_data_interactor.update_config_data(json_data_file_name, content)
+end
+
 local function handle_only_one_image(images)
     local res = images[1]
-    json_handler.write_to_json_file(res, get_timestamp())
+    save_data(res)
+    --json_handler.write_to_json_file(res, get_timestamp())
     printer.print("image returned " .. res)
     return res
 end
@@ -48,8 +72,11 @@ local function handle_saved_data_absence(images)
     printer.print("random index: " .. index)
     local result = images[index]
 
-    json_handler.write_to_json_file(result, get_timestamp())
+    save_data(result)
+    --json_handler.write_to_json_file(result, get_timestamp())
     printer.print("persistent data was absent")
+
+    return result
 end
 
 local function need_saved_data_update(old_data)
@@ -91,7 +118,8 @@ local function handle_need_data_update(images, saved_data)
     local result = filtered[index]
     printer.print("new wallpaper set: " .. result)
 
-    json_handler.write_to_json_file(result, get_timestamp())
+    save_data(result)
+    --json_handler.write_to_json_file(result, get_timestamp())
 
     return result
 end
@@ -103,6 +131,10 @@ local function handle_when_walpaper_update_is_not_needed(saved_data)
     return res
 end
 
+local function get_saved_data_content()
+    return saved_data_interactor.get_config_data(json_data_file_name)
+end
+
 local function get_image()
     local images = get_all_images_with_full_path()
 
@@ -110,7 +142,8 @@ local function get_image()
         return handle_only_one_image(images)
     end
 
-    local saved_data = json_handler.read_from_json_file()
+    local saved_data = get_saved_data_content()
+    --local saved_data = json_handler.read_from_json_file()
 
     local need_update = false
     if saved_data == nil then
