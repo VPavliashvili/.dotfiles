@@ -17,7 +17,7 @@ return {
     hide_tab_bar_if_only_one_tab = true,
     window_background_image = slideshow.get_wallpapaer(),
     keys = {
-        { key = "k", mods = "CTRL|SHIFT", action = act.ScrollByLine(-1) },
-        { key = "j", mods = "CTRL|SHIFT", action = act.ScrollByLine(1) },
+        { key = "k", mods = "CTRL|SHIFT", action = act.ScrollByLine(-5) },
+        { key = "j", mods = "CTRL|SHIFT", action = act.ScrollByLine(5) },
     }
 }
