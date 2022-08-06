@@ -1,3 +1,5 @@
+local printer = require("modules.printer")
+
 local Directory_Interactor = {}
 
 Directory_Interactor.new = function(directory_path)
@@ -48,7 +50,7 @@ Directory_Interactor.new = function(directory_path)
             end
         end
 
-        print(exact_file)
+        printer.print(exact_file)
     end
 
     local function has_missing_slash(path, file)
@@ -90,7 +92,7 @@ Directory_Interactor.new = function(directory_path)
             end
         end
         if exact_file == "" then
-        	print("file " .. name .. " does not exist in dir --> " .. path)
+        	printer.print("file " .. name .. " does not exist in dir --> " .. path)
             return nil
         end
 		local full_path = path .. exact_file
@@ -102,9 +104,9 @@ Directory_Interactor.new = function(directory_path)
         local path = get_fixed_folder_path_if_invalid_slashes(file_name)
         local full_file_path = path .. file_name
 
-        print("filename --> " .. file_name)
-        print("folder --> " .. path)
-        print("full path --> " .. full_file_path)
+        printer.print("filename --> " .. file_name)
+        printer.print("folder --> " .. path)
+        printer.print("full path --> " .. full_file_path)
 
         local file = io.open(full_file_path, "w+")
         io.output(file)

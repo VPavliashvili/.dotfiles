@@ -1,12 +1,12 @@
 local M = {}
 
---local json_handler = require("modules.json_handler")
-local config_manager_class = require("modules.cfg_resources_retriver")
+local config_manager_class = require("modules.json_config_file_interactor")
 local images_retriver_class = require("modules.image_retriver")
-local printer_class = require("modules.printer")
+local printer = require("modules.printer")
+printer.disable()
 
 local home = os.getenv("HOME")
-local next_wallpaper_timer_in_minutes = 0.3
+local next_wallpaper_timer_in_minutes = 60
 local json_data_file_name = "data.json"
 
 local function get_json_data_content(img, tmst)
@@ -21,16 +21,13 @@ local function get_wallpapers_path()
     return home .. relative
 end
 
-local function get_saved_data_path()
-    local relative = "/.config/wezterm/"
+local function get_data_json_path()
+    local relative = "/.config/wezterm/data.json"
     return home .. relative
 end
 
-local saved_data_interactor = config_manager_class.new(get_saved_data_path())
+local data_json_interactor = config_manager_class.new(get_data_json_path())
 local images_retriver = images_retriver_class.new(get_wallpapers_path())
-local printer = printer_class.new()
---printer.disable()
-printer.enable()
 
 local function get_all_images_with_full_path()
     local path_to_wallpapers = get_wallpapers_path()
@@ -53,13 +50,12 @@ end
 
 local function save_data(img)
     local content = get_json_data_content(img, get_timestamp())
-    saved_data_interactor.update_config_data(json_data_file_name, content)
+    data_json_interactor.update_config_data(content)
 end
 
 local function handle_only_one_image(images)
     local res = images[1]
     save_data(res)
-    --json_handler.write_to_json_file(res, get_timestamp())
     printer.print("image returned " .. res)
     return res
 end
@@ -73,7 +69,6 @@ local function handle_saved_data_absence(images)
     local result = images[index]
 
     save_data(result)
-    --json_handler.write_to_json_file(result, get_timestamp())
     printer.print("persistent data was absent")
 
     return result
@@ -102,8 +97,6 @@ end
 local function handle_need_data_update(images, saved_data)
     local filtered = {}
     for _, v in pairs(images) do
-        --print("image: " .. v .. "  data: " .. saved_data.image)
-        --print(tostring(v) ~= tostring(saved_data.image))
         local val_str = tostring(v)
         local data_str = tostring(saved_data.image)
         if val_str ~= data_str then
@@ -119,7 +112,6 @@ local function handle_need_data_update(images, saved_data)
     printer.print("new wallpaper set: " .. result)
 
     save_data(result)
-    --json_handler.write_to_json_file(result, get_timestamp())
 
     return result
 end
@@ -132,7 +124,7 @@ local function handle_when_walpaper_update_is_not_needed(saved_data)
 end
 
 local function get_saved_data_content()
-    return saved_data_interactor.get_config_data(json_data_file_name)
+    return data_json_interactor.get_config_data()
 end
 
 local function get_image()
@@ -143,7 +135,6 @@ local function get_image()
     end
 
     local saved_data = get_saved_data_content()
-    --local saved_data = json_handler.read_from_json_file()
 
     local need_update = false
     if saved_data == nil then
