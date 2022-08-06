@@ -6,8 +6,14 @@ local printer = require("modules.printer")
 printer.disable()
 
 local home = os.getenv("HOME")
-local next_wallpaper_timer_in_minutes = 60
-local json_data_file_name = "data.json"
+
+local function get_json_conf_content(timer, folder_path, logging)
+    return {
+        timer_in_minutes = timer,
+        wallpapers_folder_path = folder_path,
+        console_logging = logging,
+    }
+end
 
 local function get_json_data_content(img, tmst)
     return {
@@ -16,31 +22,52 @@ local function get_json_data_content(img, tmst)
     }
 end
 
-local function get_wallpapers_path()
-    local relative = "/Pictures/wallpapers/terminal/"
+local function get_json_conf_path()
+    local relative = "/.config/wezterm/config.json"
     return home .. relative
 end
 
-local function get_data_json_path()
+local json_conf_interactor = config_manager_class.new(get_json_conf_path())
+
+local function get_config()
+    local conf = json_conf_interactor.get_config_data()
+
+    --defaults
+    local timer = 60
+    local wallpapers = home .. "/Pictures/"
+    local logging = false
+
+    if conf ~= nil then
+        timer = conf.timer_in_minutes
+        wallpapers = conf.wallpapers_folder_path
+        logging = conf.console_logging
+    else
+        local default_conf = get_json_conf_content(timer, wallpapers, logging)
+        json_conf_interactor.update_config_data(default_conf)
+    end
+
+    return get_json_conf_content(timer, wallpapers, logging)
+end
+
+local function get_json_data_path()
     local relative = "/.config/wezterm/data.json"
     return home .. relative
 end
 
-local data_json_interactor = config_manager_class.new(get_data_json_path())
-local images_retriver = images_retriver_class.new(get_wallpapers_path())
+local config = get_config()
 
+if config.console_logging == true then
+    printer.enable()
+else
+    printer.disable()
+end
+
+local data_json_interactor = config_manager_class.new(get_json_data_path())
+local images_retriver = images_retriver_class.new(config.wallpapers_folder_path)
 local function get_all_images_with_full_path()
-    local path_to_wallpapers = get_wallpapers_path()
-
     local image_names = images_retriver.get_image_files()
 
-    local result = {}
-    for _, value in pairs(image_names) do
-        local next = path_to_wallpapers .. value
-        table.insert(result, next)
-    end
-
-    return result
+    return image_names
 end
 
 local function get_timestamp()
@@ -81,7 +108,8 @@ local function need_saved_data_update(old_data)
     local current_timestamp = get_timestamp()
 
     local diff = current_timestamp - last_timestamp
-    local result = (diff / 60) >= next_wallpaper_timer_in_minutes
+    --local result = (diff / 60) >= next_wallpaper_timer_in_minutes
+    local result = (diff / 60) >= config.timer_in_minutes
 
     printer.print("current timestamp: " .. current_timestamp)
     printer.print("last_timestamp: " .. last_timestamp)

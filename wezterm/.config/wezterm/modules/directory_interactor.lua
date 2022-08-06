@@ -25,33 +25,6 @@ Directory_Interactor.new = function(directory_path)
         return t
     end
 
-    function self.list_files_by_extension(file_extension)
-        local all_files = self.list_all_files()
-        local filtered = {}
-
-        for _, value in ipairs(all_files) do
-            if ends_with(value, file_extension) then
-                table.insert(filtered, value)
-            end
-        end
-
-        return filtered
-    end
-
-    function self.get_file_by_exact_name(name)
-        local all_files = self.list_all_files()
-        local exact_file = ""
-
-        for _, value in pairs(all_files) do
-            local v = tostring(value)
-            if v == name then
-                exact_file = value
-                return exact_file
-            end
-        end
-
-        printer.print(exact_file)
-    end
 
     local function has_missing_slash(path, file)
         if ends_with(path, "/") == false and ends_with(file, "/") == false then
@@ -77,6 +50,21 @@ Directory_Interactor.new = function(directory_path)
         end
 
         return path
+    end
+
+    function self.get_files_by_extension(file_extension)
+        local all_files = self.list_all_files()
+        local filtered = {}
+
+        for _, value in ipairs(all_files) do
+            if ends_with(value, file_extension) then
+                local path = get_fixed_folder_path_if_invalid_slashes(value)
+                local res = path .. value
+                table.insert(filtered, res)
+            end
+        end
+
+        return filtered
     end
 
     function self.get_file_by_name_with_full_path(name)

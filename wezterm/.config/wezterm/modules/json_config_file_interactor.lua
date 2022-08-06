@@ -64,7 +64,7 @@ Config_Interactor.new = function(file_name_with_full_path)
     end
 
     function self.get_config_data()
-        local json_text = get_config_as_string(file_name)
+        local json_text = get_config_as_string()
         if json_text == nil then
             return nil
         end

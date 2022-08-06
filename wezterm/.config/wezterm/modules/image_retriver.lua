@@ -18,8 +18,8 @@ Images_Retriver.new = function(dir_path)
     end
 
     function self.get_image_files()
-        local pngs = interactor.list_files_by_extension(".png")
-        local jpgs = interactor.list_files_by_extension(".jpg")
+        local pngs = interactor.get_files_by_extension(".png")
+        local jpgs = interactor.get_files_by_extension(".jpg")
         local images = merge_tables(pngs, jpgs)
 
         return images

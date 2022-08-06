@@ -18,4 +18,7 @@ nnoremap <leader>nh :noh<CR>
 nnoremap <leader>ft :NvimTreeFocus<CR>
 nnoremap <leader>rt :NvimTreeRefresh<CR>
 nnoremap <leadeR>tt :NvimTreeToggle<CR>
+
+"json formatter
+autocmd FileType json nnoremap <leader>jq :%!jq<CR>==
 ]]
