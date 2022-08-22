@@ -1,0 +1,50 @@
+
+# i3blocks config file
+#
+# Please see man i3blocks for a complete reference!
+# The man page is also hosted at http://vivien.github.io/i3blocks
+#
+# List of valid properties:
+#
+# align
+# color
+# command
+# full_text
+# instance
+# interval
+# label
+# min_width
+# name
+# separator
+# separator_block_width
+# short_text
+# signal
+# urgent
+
+# Global properties
+separator_block_width=15
+
+[memory2]
+label= 
+interval=persist
+markup=pango
+bar_chars=_▏▎▍▌▋▊▉██
+bar_size=15
+critical=80
+warning=50
+command=~/.config/i3blocks/memory2/memory2
+
+# Volume indicator
+# The first parameter sets the step (and units to display)
+# The second parameter overrides the mixer selection
+# See the script for details.
+[volume]
+interval=persist
+signal=10
+command=~/.config/i3blocks/volume-pulseaudio/volume-pulseaudio -S -d
+
+# Date Time
+[date]
+command=date '+%b%d %H:%M'
+interval=1
+label= 
