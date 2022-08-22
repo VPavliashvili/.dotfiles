@@ -12,6 +12,7 @@ return require('packer').startup(function(use)
     use 'yamatsum/nvim-cursorline'
     use 'lukas-reineke/indent-blankline.nvim'
     use 'navarasu/onedark.nvim'
+    use 'NvChad/nvim-colorizer.lua'
 
     --file explorer
     use {

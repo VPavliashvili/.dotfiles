@@ -183,7 +183,7 @@ local function get_image()
     return result
 end
 
-function M.get_wallpapaer()
+function M.get_wallpaper()
     return get_image()
 end
 
