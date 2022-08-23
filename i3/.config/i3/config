@@ -214,3 +214,4 @@ bindsym XF86AudioMute exec amixer -q -D pulse sset Master toggle && pkill -RTMIN
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 bindsym $mod+shift+x exec i3lock --color "$bg-color"
 bindsym Print exec flameshot gui
+exec setxkbmap -option grp:alt_shift_toggle "us,ge" -option grp_led:caps
