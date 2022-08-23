@@ -34,6 +34,17 @@ critical=80
 warning=50
 command=~/.config/i3blocks/memory2/memory2
 
+[cpu_usage2]
+command=~/.config/i3blocks/cpu_usage2/cpu_usage2
+markup=pango
+interval=persist
+min_width=100.00%
+REFRESH_TIME=1
+LABEL=
+WARN_PERCENT=50
+CRIT_PERCENT=80
+DECIMALS=2
+
 # Volume indicator
 # The first parameter sets the step (and units to display)
 # The second parameter overrides the mixer selection
