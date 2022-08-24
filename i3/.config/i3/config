@@ -216,7 +216,8 @@ bindsym Print exec flameshot gui
 
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec setxkbmap -option grp:alt_shift_toggle "us,ge"
-exec_always --no-startup-id ~/bin/slideshow.sh
+exec_always --no-startup-id "feh --bg-scale --randomize ~/Pictures/wallpapers/i3/*"
 exec_always --no-startup-id "picom --config ~/.config/picom/picom.conf"
 
 for_window [class="Yad"] floating enable
+for_window [class="feh"] floating enable
