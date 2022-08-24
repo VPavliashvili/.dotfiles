@@ -149,7 +149,6 @@ int main(int argc, char *argv[])
 
     memset(buffer, 0, buffer_size);
     
-    //printf("%ld/%ld   %f  ", usage, total, percent);
     char* write_point = buffer;
 
     float section_size = 100.0 / bar_size; 
@@ -177,7 +176,9 @@ int main(int argc, char *argv[])
     float usage_gb = usage / byte_to_gb;
     float total_gb = total / byte_to_gb;
     
-    printf("%s %4.1fG/%4.1fG (%i%%)</span>\n", buffer, usage_gb, total_gb, (int)percent);
+    /*printf("%s %4.1fG/%4.1fG (%i%%)</span>\n", buffer, usage_gb, total_gb, (int)percent);*/
+    // removed bars from output, because this way feels cleaner. uncomment line above to return them
+    printf("%4.1fG/%4.1fG (%i%%)</span>\n", usage_gb, total_gb, (int)percent);
     fflush(stdout);
 
     sleep(t);
