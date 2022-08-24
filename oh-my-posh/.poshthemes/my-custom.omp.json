@@ -7,75 +7,27 @@
         {
           "foreground": "#7eb8da",
           "style": "plain",
-          "template": "\u250f[<#ffffff>\uf508</> {{ .UserName }} from <#ffffff>\ufcbe</> {{ .HostName }}]",
+          "template": "┏[<#ffffff></> {{ .UserName }} from <#ffffff>ﲾ</> {{ .HostName }}]",
           "type": "session"
         },
         {
-          "foreground": "#be9ddf",
           "properties": {
-            "style": "dallas",
-            "threshold": 0
+            "root_icon": ""
           },
           "style": "diamond",
-          "template": "[<#ffffff>\uf252</> {{ .FormattedMs }}s]",
-          "type": "executiontime"
-        },
-        {
-          "properties": {
-            "root_icon": "\uf292"
-          },
-          "style": "diamond",
-          "template": "\uf0e7",
+          "template": "",
           "type": "root"
         },
         {
-          "foreground": "#be9ddf",
-          "style": "diamond",
-          "template": "[<#ffffff>\uf85a</> RAM: {{ substr 0 3 ((mulf (divf .PhysicalPercentUsed 100) .PhysicalTotalMemory)|toString)}}/{{ (div .PhysicalTotalMemory 1000000000.0) }}GB]",
-          "type": "sysinfo"
-        },
-        {
-          "foreground": "#7eb8da",
-          "properties": {
-            "time_format": "Jan-02, 15:04"
-          },
-          "style": "diamond",
-          "template": "[<#ffffff>\uf5ef</> {{ .CurrentDate | date .Format }}]",
-          "type": "time"
-        },
-        {
-          "foreground": "#ffa5d8",
-          "properties": {
-            "fetch_stash_count": true,
-            "fetch_status": true,
-            "fetch_upstream_icon": true
-          },
-          "style": "plain",
-          "template": "[<#ffffff>{{ .UpstreamIcon }}</>{{ .HEAD }}{{ .BranchStatus }}{{ if .Working.Changed }} <#ffffff>\uf044</> {{ .Working.String }}{{ end }}{{ if and (.Working.Changed) (.Staging.Changed) }} |{{ end }}{{ if .Staging.Changed }} <#ffffff>\uf046</> {{ .Staging.String }}{{ end }}{{ if gt .StashCount 0 }} <#ffffff>\uf692</> {{ .StashCount }}{{ end }}]",
-          "type": "git"
-        },
-        {
           "foreground": "#ffa5d8",
           "style": "plain",
-          "template": "[{{ .Profile }}{{if .Region}}@{{ .Region }}{{ end }}]",
-          "type": "aws"
-        },
-        {
-          "foreground": "#ffa5d8",
-          "style": "plain",
-          "template": "[{{.Context}}{{if .Namespace}} :: {{.Namespace}}{{end}}]",
-          "type": "kubectl"
-        },
-        {
-          "foreground": "#ffa5d8",
-          "style": "plain",
-          "template": "[\uf0e7]",
+          "template": "[]",
           "type": "root"
         },
         {
           "foreground": "#ffa5d8",
           "style": "powerline",
-          "template": "[<#ffffff>\ufc8d</> Error, check your command]",
+          "template": "[<#ffffff>ﲍ</> Error, check your command]",
           "type": "exit"
         }
       ],
@@ -91,7 +43,7 @@
             "style": "full"
           },
           "style": "plain",
-          "template": "\u2516[<#98bfad>{{ .Path }}</>]",
+          "template": "┖[<#98bfad>{{ .Path }}</>]",
           "type": "path"
         }
       ],
@@ -104,7 +56,7 @@
         {
           "foreground": "#7eb8da",
           "style": "plain",
-          "template": "\u2514\u2500Δ",
+          "template": "└─Δ",
           "type": "text"
         }
       ],
