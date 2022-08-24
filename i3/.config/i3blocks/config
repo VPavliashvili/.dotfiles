@@ -60,6 +60,10 @@ interval=1
 signal=10
 command=~/.config/i3blocks/volume-pulseaudio/volume-pulseaudio -f
 
+[kbdd_layout]
+command=~/.config/i3blocks/kbdd_layout/kbdd_layout
+interval=persist
+
 [calendar]
 command=~/.config/i3blocks/calendar/calendar
 interval=1
