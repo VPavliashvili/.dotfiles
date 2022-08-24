@@ -42,7 +42,7 @@ void display(const char *label, double used,
     printf("%s<span>", label);
   }
 
-  printf(" %*.*lf%%</span>\n", decimals + 3 + 1, decimals, used);
+  printf(" %*.*lf%%</span>\n", decimals, decimals, used);
 }
 
 ulli get_usage(ulli *used_jiffies)

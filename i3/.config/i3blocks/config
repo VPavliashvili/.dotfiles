@@ -24,6 +24,12 @@
 # Global properties
 separator_block_width=15
 
+[disk_root]
+label= 
+instance=/
+interval=30
+command=~/.config/i3blocks/disk_usage/disk_usage format="{used:.1f}G/{total:.1f}" warn_color=#d6af4e
+
 [memory2]
 label= 
 interval=persist
@@ -38,7 +44,7 @@ command=~/.config/i3blocks/memory2/memory2
 command=~/.config/i3blocks/cpu_usage2/cpu_usage2
 markup=pango
 interval=persist
-min_width=100.00%
+min_width=1.00%
 REFRESH_TIME=1
 LABEL=
 WARN_PERCENT=50
@@ -53,12 +59,6 @@ DECIMALS=2
 interval=1
 signal=10
 command=~/.config/i3blocks/volume-pulseaudio/volume-pulseaudio -f
-
-# Date Time
-#[date]
-#command=date '+%b%d %H:%M'
-#interval=1
-#label= 
 
 [calendar]
 command=~/.config/i3blocks/calendar/calendar
