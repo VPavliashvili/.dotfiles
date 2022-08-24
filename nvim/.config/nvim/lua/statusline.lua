@@ -8,7 +8,7 @@ require('lualine').setup {
         lualine_b = { 'branch', 'diff', 'diagnostics' },
         lualine_c = { 'filename' },
         --lualine_x = { 'encoding', 'fileformat', 'filetype', 'os.date("%I:%M:%S", os.time())'},
-        lualine_x = { 'encoding', 'fileformat', 'filetype', 'os.date("%I:%M", os.time())'},
+        lualine_x = { 'encoding', 'fileformat', 'filetype', 'os.date("%H:%M", os.time())'},
         lualine_y = { 'progress' },
         lualine_z = { 'location' }
     }

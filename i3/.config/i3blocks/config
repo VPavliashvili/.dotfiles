@@ -50,12 +50,19 @@ DECIMALS=2
 # The second parameter overrides the mixer selection
 # See the script for details.
 [volume]
-interval=persist
+interval=1
 signal=10
-command=~/.config/i3blocks/volume-pulseaudio/volume-pulseaudio -S -d
+command=~/.config/i3blocks/volume-pulseaudio/volume-pulseaudio -f
 
 # Date Time
-[date]
-command=date '+%b%d %H:%M'
+#[date]
+#command=date '+%b%d %H:%M'
+#interval=1
+#label= 
+
+[calendar]
+command=~/.config/i3blocks/calendar/calendar
 interval=1
-label= 
+LABEL=
+HEIGHT=180
+WIDTH=220
