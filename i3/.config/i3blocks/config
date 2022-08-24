@@ -28,7 +28,7 @@ separator_block_width=15
 label= 
 instance=/
 interval=30
-command=~/.config/i3blocks/disk_usage/disk_usage format="{used:.1f}G/{total:.1f}" warn_color=#d6af4e
+command=~/.config/i3blocks/disk_usage/disk_usage 
 
 [memory2]
 label= 

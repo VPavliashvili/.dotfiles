@@ -66,7 +66,7 @@ def parse_args():
 		'crit_threshold': 90,
 		'warn_color': '#d6af4e',
 		'crit_color': '#d64e4e',
-		'format': '{used:.1f}G/{total:.1f}G ({perc_used:.1f}%) -  {avail:.1f}G'
+		'format': '{used:.1f}G/{total:.1f}G ({perc_used:.1f}%) -  {avail:.1f}G',
 	}
 
 	try:
@@ -90,7 +90,8 @@ def get_instance():
 
 def main():
 
-	output_color = ''
+    #normal color by default
+	output_color = '#ffffff'
 	args = parse_args()
 	m_point = get_instance()
 	stats = get_disk_stats(m_point)
