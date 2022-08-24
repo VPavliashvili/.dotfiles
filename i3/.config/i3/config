@@ -211,8 +211,12 @@ bindsym XF86AudioRaiseVolume exec amixer -q -D pulse sset Master 5%+ && pkill -R
 bindsym XF86AudioLowerVolume exec amixer -q -D pulse sset Master 5%- && pkill -RTMIN+1 i3blocks
 bindsym XF86AudioMute exec amixer -q -D pulse sset Master toggle && pkill -RTMIN+1 i3blocks
 
-exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 bindsym $mod+shift+x exec i3lock --color "$bg-color"
 bindsym Print exec flameshot gui
-exec setxkbmap -option grp:alt_shift_toggle "us,ge" 
+
+exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+exec setxkbmap -option grp:alt_shift_toggle "us,ge"
+exec_always --no-startup-id ~/bin/slideshow.sh
+exec_always --no-startup-id "picom --config ~/.config/picom/picom.conf"
+
 for_window [class="Yad"] floating enable
