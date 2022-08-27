@@ -4,7 +4,8 @@ local act = wezterm.action
 local fonts = {
     caskaydia_cove = 'Caskaydia Cove Nerd Font Mono',
     fira_code = 'Fira Code Nerd Font',
-    jetbrains_mono = 'JetBrains Mono Nerd Font',
+    --jetbrains_mono = 'JetBrains Mono Nerd Font',
+    jetbrains_mono = 'JetBrainsMono Nerd Font Mono'
 }
 
 return {

@@ -211,6 +211,12 @@ bindsym XF86AudioRaiseVolume exec amixer -q -D pulse sset Master 5%+ && pkill -R
 bindsym XF86AudioLowerVolume exec amixer -q -D pulse sset Master 5%- && pkill -RTMIN+1 i3blocks
 bindsym XF86AudioMute exec amixer -q -D pulse sset Master toggle && pkill -RTMIN+1 i3blocks
 
+# Media player controls, needs playerctl package
+bindsym XF86AudioPlay exec playerctl play-pause
+bindsym XF86AudioPause exec playerctl play-pause
+bindsym XF86AudioNext exec playerctl next
+bindsym XF86AudioPrev exec playerctl previous
+
 bindsym $mod+shift+x exec i3lock --color "$bg-color"
 bindsym Print exec flameshot gui
 
@@ -221,14 +227,29 @@ exec_always --no-startup-id "picom --config ~/.config/picom/picom.conf"
 
 for_window [class="Yad"] floating enable
 for_window [class="feh"] floating enable
+for_window [class="Thunar"] floating enable
+for_window [class="Blueman-manager"] floating enable
+for_window [class="Pamac-manager"] floating enable
 
+#change nvidia card fan speeds
+mode "nvidia-fans: [d]isable, [n]ormal, [p]erformace, [m]ax" {
+    bindsym d exec nvidia-settings -a GPUFanControlState=0
+    bindsym n exec nvidia-settings -a GPUFanControlState=1 -a GPUTargetFanSpeed=50
+    bindsym p exec nvidia-settings -a GPUFanControlState=1 -a GPUTargetFanSpeed=80
+    bindsym m exec nvidia-settings -a GPUFanControlState=1 -a GPUTargetFanSpeed=100
+
+    bindsym Escape mode "default"
+}
+bindsym $mod+shift+n mode "nvidia-fans: [d]isable, [n]ormal, [p]erformace, [m]ax"
+
+# nice little logout menu
 mode "exit: [l]ogout, [r]eboot, [p]oweroff" {
 
   bindsym l exec i3-msg exit
 
   bindsym r exec systemctl reboot
 
-  bindsym s exec systemctl poweroff
+  bindsym p exec systemctl poweroff
 
   bindsym Escape mode "default"
 
