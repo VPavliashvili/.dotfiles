@@ -103,16 +103,16 @@ bindsym $mod+a focus parent
 
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
-set $ws1 "1 Terminal"
-set $ws2 "2 Browser"
-set $ws3 "3 Editor"
-set $ws4 "4 Gaming"
-set $ws5 "5"
+set $ws1 "1 "
+set $ws2 "2 "
+set $ws3 "3 "
+set $ws4 "4 "
+set $ws5 "5 "
 set $ws6 "6"
 set $ws7 "7"
 set $ws8 "8"
 set $ws9 "9"
-set $ws10 "10: Music"
+set $ws10 "10 "
 
 # switch to workspace
 bindsym $mod+1 workspace number $ws1
@@ -141,6 +141,7 @@ bindsym $mod+Shift+0 move container to workspace number $ws10
 # generally right approach is to use 'assign' keyword but spotify needs workaround
 for_window [class="Spotify"] move to workspace $ws10
 assign [class="Brave-browser"] $ws2
+assign [class="Steam"] $ws4
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
@@ -203,7 +204,7 @@ bar {
             inactive_workspace $inactive-bg-color $inactive-bg-color #9fa5b2
             urgent_workspace   $urgent-bg-color   $urgent-bg-color   $text-color
         }
-        font xft:Hack Nerd Font 10
+        font pango:Noto Sans, Font Awesome 6 Free Solid 10
 }
 
 #change volume or toggle mute

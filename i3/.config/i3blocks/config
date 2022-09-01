@@ -31,7 +31,7 @@ interval=30
 command=~/.config/i3blocks/disk_usage/disk_usage 
 
 [memory2]
-label= 
+label=
 interval=persist
 markup=pango
 bar_chars=_▏▎▍▌▋▊▉██
