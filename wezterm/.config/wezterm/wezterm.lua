@@ -3,15 +3,13 @@ local act = wezterm.action
 
 local fonts = {
     caskaydia_cove = 'Caskaydia Cove Nerd Font Mono',
-    fira_code = 'Fira Code Nerd Font',
-    --jetbrains_mono = 'JetBrains Mono Nerd Font',
-    jetbrains_mono = 'JetBrainsMono Nerd Font Mono'
+    fira_code = 'FiraCode Nerd Font Mono',
+    jetbrains_mono = 'JetBrainsMono Nerd Font Mono',
 }
 
 return {
     font = wezterm.font(fonts.jetbrains_mono),
     font_size = 11,
-    warn_about_missing_glyphs = false,
     enable_tab_bar = true,
     use_fancy_tab_bar = false,
     window_background_opacity = 0.8,

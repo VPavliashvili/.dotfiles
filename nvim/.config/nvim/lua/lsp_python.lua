@@ -6,7 +6,7 @@ local sources = {
 }
 lsp_base.setup_cmp(sources)
 
-lspconfig = require('lspconfig')
+local lspconfig = require('lspconfig')
 
 lspconfig.pyright.setup {
     cmd = { "pyright-langserver", "--stdio" },

@@ -10,6 +10,7 @@ lua require('lsp_lua')
 lua require('lsp_godot')
 lua require('lsp_go')
 lua require('lsp_python')
+lua require('lsp_tsserver')
 
 "treesitter
 lua require('treesitter')
