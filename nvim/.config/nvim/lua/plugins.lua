@@ -14,6 +14,9 @@ return require('packer').startup(function(use)
     use 'navarasu/onedark.nvim'
     use 'NvChad/nvim-colorizer.lua'
 
+    --terminal
+    use "numToStr/FTerm.nvim"
+
     --file explorer
     use {
         'kyazdani42/nvim-tree.lua',
