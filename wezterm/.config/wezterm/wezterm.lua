@@ -1,17 +1,8 @@
 local wezterm = require 'wezterm';
 local act = wezterm.action
 
-local fonts = {
-    caskaydia_cove = 'Caskaydia Cove Nerd Font Mono',
-    fira_code = 'FiraCode Nerd Font Mono',
-    jetbrains_mono = 'JetBrainsMono Nerd Font Mono',
-    awesome = 'Font Awesome 6 Free Solid',
-    hack_nerd = 'Hack 1337',
-    hack_mono = 'Hack Nerd Font Mono'
-}
 -- == != --> <-- => ==> <== <= >= ~=
 return {
-    font = wezterm.font(fonts.jetbrains_mono),
     font_size = 11,
     enable_tab_bar = true,
     use_fancy_tab_bar = false,
