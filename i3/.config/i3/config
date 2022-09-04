@@ -228,12 +228,11 @@ exec ~/bin/slideshow.py -t 30 ~/Pictures/wallpapers
 exec_always --no-startup-id "picom --config ~/.config/picom/picom.conf"
 
 for_window [class="Yad"] floating enable
-#for_window [class="feh"] floating enable
-for_window [class="feh"] fullscreen enable
-for_window [class="Pqiv"] fullscreen enable
 for_window [class="Thunar"] floating enable
 for_window [class="Blueman-manager"] floating enable
 for_window [class="Pamac-manager"] floating enable
+for_window [class="feh"] fullscreen enable
+for_window [class="Pqiv"] fullscreen enable
 
 #change nvidia card fan speeds
 mode "nvidia-fans: [d]isable, [n]ormal, [p]erformace, [m]ax" {
