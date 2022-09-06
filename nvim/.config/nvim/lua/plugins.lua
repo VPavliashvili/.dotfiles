@@ -11,8 +11,11 @@ return require('packer').startup(function(use)
     }
     use 'yamatsum/nvim-cursorline'
     use 'lukas-reineke/indent-blankline.nvim'
-    use 'navarasu/onedark.nvim'
     use 'NvChad/nvim-colorizer.lua'
+
+    --color schemes
+    use 'navarasu/onedark.nvim'
+    use "olimorris/onedarkpro.nvim"
 
     --terminal
     use "numToStr/FTerm.nvim"

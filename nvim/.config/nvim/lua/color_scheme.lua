@@ -1,14 +1,8 @@
-require('onedark').setup {
-    style = 'cool',
-    transparent = true,
+require("onedarkpro").setup({
+    dark_theme = "onedark",
+    options = {
+        transparency = true,
+    }
+})
 
-    colors = {
-        local_variable = "#ef5f6b",
-    },
-
-    highlights = {
-        TSVariable = { fg = '$local_variable' },
-    },
-}
-
-require('onedark').load()
+vim.cmd("colorscheme onedarkpro")
