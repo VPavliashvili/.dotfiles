@@ -109,7 +109,7 @@ set $ws3 "3 "
 set $ws4 "4 "
 set $ws5 "5 "
 set $ws6 "6"
-set $ws7 "7"
+set $ws7 "7 "
 set $ws8 "8 "
 set $ws9 "9 "
 set $ws10 "10 "
@@ -144,6 +144,7 @@ assign [class="Brave-browser"] $ws2
 assign [class="Steam"] $ws8
 assign [class="obs"] $ws5
 assign [class="Pinta"] $ws5
+assign [class="discord"] $ws7
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
