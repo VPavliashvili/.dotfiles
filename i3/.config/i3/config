@@ -237,6 +237,8 @@ for_window [class="Blueman-manager"] floating enable
 for_window [class="Pamac-manager"] floating enable
 for_window [class="feh"] fullscreen enable
 for_window [class="Pqiv"] fullscreen enable
+# hide title bar
+for_window [class="^.*"] border pixel 1
 
 #change nvidia card fan speeds
 mode "nvidia-fans: [d]isable, [n]ormal, [p]erformace, [m]ax" {
