@@ -242,10 +242,10 @@ for_window [class="^.*"] border pixel 1
 
 #change nvidia card fan speeds
 mode "nvidia-fans: [d]isable, [n]ormal, [p]erformace, [m]ax" {
-    bindsym d exec nvidia-settings -a GPUFanControlState=0
-    bindsym n exec nvidia-settings -a GPUFanControlState=1 -a GPUTargetFanSpeed=50
-    bindsym p exec nvidia-settings -a GPUFanControlState=1 -a GPUTargetFanSpeed=80
-    bindsym m exec nvidia-settings -a GPUFanControlState=1 -a GPUTargetFanSpeed=100
+    bindsym d exec nvidia-settings -a GPUFanControlState=0, exec notify-send "GPU Fans disabled", mode "default"
+    bindsym n exec nvidia-settings -a GPUFanControlState=1 -a GPUTargetFanSpeed=50, exec notify-send "GPU Fans speed set to 50", mode "default"
+    bindsym p exec nvidia-settings -a GPUFanControlState=1 -a GPUTargetFanSpeed=80, exec notify-send "GPU Fans speed set to 80", mode "default"
+    bindsym m exec nvidia-settings -a GPUFanControlState=1 -a GPUTargetFanSpeed=100, exec notify-send "GPU Fans speed set to 100", mode "default"
 
     bindsym Escape mode "default"
 }
@@ -253,17 +253,11 @@ bindsym $mod+shift+n mode "nvidia-fans: [d]isable, [n]ormal, [p]erformace, [m]ax
 
 # nice little logout menu
 mode "exit: [l]ogout, [r]eboot, [p]oweroff" {
-
   bindsym l exec i3-msg exit
-
   bindsym r exec systemctl reboot
-
   bindsym p exec systemctl poweroff
-
   bindsym Escape mode "default"
-
   bindsym Return mode "default"
 
 }
-
 bindsym $mod+x mode "exit: [l]ogout, [r]eboot, [p]oweroff"
