@@ -63,7 +63,8 @@ command=~/.config/i3blocks/volume-pulseaudio/volume-pulseaudio -f
 [script]
 label=
 #label=
-command=~/.config/i3blocks/brightness/brightness.sh
+#command=~/.config/i3blocks/brightness/brightness.sh
+command=~/.config/i3blocks/brightness/brightness
 #color=#c13156
 interval=60
 signal=13
