@@ -51,6 +51,11 @@ WARN_PERCENT=50
 CRIT_PERCENT=80
 DECIMALS=2
 
+[battery2]
+command=~/.config/i3blocks/battery2/battery2
+markup=pango
+interval=30
+
 # Volume indicator
 # The first parameter sets the step (and units to display)
 # The second parameter overrides the mixer selection
