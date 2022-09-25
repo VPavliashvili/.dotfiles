@@ -1,7 +1,7 @@
 #!/usr/bin/env sh
 
-WIDTH=${WIDTH:-200}
-HEIGHT=${HEIGHT:-200}
+WIDTH=${WIDTH}
+HEIGHT=${HEIGHT}
 DATEFMT=${DATEFMT:-"+%a %d.%m.%Y %H:%M:%S"}
 SHORTFMT=${SHORTFMT:-"+%b%d %H:%M"}
 
@@ -25,16 +25,32 @@ done
 case "$BLOCK_BUTTON" in
   1|2|3) 
 
+    resolution=`xrandr | grep \* | cut -d' ' -f4`
+    arr=(${resolution//x/ })
+    resX=arr[0]
+    resY=arr[1]
+
+    posX=$(($BLOCK_X - 10))
+    offsetX=0
+    distanceBetweenPointAndScreenEndX=$(($resX - $BLOCK_X))
+
+    if (($distanceBetweenPointAndScreenEndX - $WIDTH < 0)); then
+        offsetX=$(($WIDTH - $distanceBetweenPointAndScreenEndX))
+        posX=$(($BLOCK_X - offsetX - 10))
+    fi
+
+
 	# the position of the upper left corner of the popup
-	posX=$(($BLOCK_X - $WIDTH / 2))
-	posY=$(($BLOCK_Y - $HEIGHT))
+	posY=$(($BLOCK_Y - $HEIGHT - 30))
 
 	i3-msg -q "exec yad --calendar \
         --width=$WIDTH --height=$HEIGHT \
-	    --undecorated --fixed \
+	    --undecorated \
 	    --close-on-unfocus --no-buttons \
 	    --posx=$posX --posy=$posY \
 	    > /dev/null"
 esac
+
+
 # echo "$LABEL $(date "$DATEFMT")"
 echo "$LABEL $(date "$SHORTFMT")"

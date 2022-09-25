@@ -79,7 +79,7 @@ interval=persist
 
 [calendar]
 command=~/.config/i3blocks/calendar/calendar
-interval=1
+interval=60
 LABEL=
-HEIGHT=180
-WIDTH=220
+HEIGHT=400
+WIDTH=500
