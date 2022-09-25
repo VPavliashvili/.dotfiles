@@ -22,7 +22,7 @@
 # urgent
 
 # Global properties
-separator_block_width=15
+separator_block_width=25
 
 [disk_root]
 label= 
@@ -51,19 +51,27 @@ WARN_PERCENT=50
 CRIT_PERCENT=80
 DECIMALS=2
 
-[battery2]
-command=~/.config/i3blocks/battery2/battery2
-markup=pango
-interval=30
-
 # Volume indicator
 # The first parameter sets the step (and units to display)
 # The second parameter overrides the mixer selection
 # See the script for details.
 [volume]
-interval=1
+interval=60
 signal=10
 command=~/.config/i3blocks/volume-pulseaudio/volume-pulseaudio -f
+
+[script]
+label=
+#label=
+command=~/.config/i3blocks/brightness/brightness.sh
+#color=#c13156
+interval=60
+signal=13
+
+[battery2]
+command=~/.config/i3blocks/battery2/battery2
+markup=pango
+interval=30
 
 [kbdd_layout]
 command=~/.config/i3blocks/kbdd_layout/kbdd_layout
