@@ -9,3 +9,5 @@
     lgraph = log --pretty='%C(yellow)%h %Cblue%>(12)%ad %Cgreen%<(7)%aN%Cred%d %Creset%s' --all --decorate --graph
 [init]
 	defaultBranch = master
+[credential]
+	credentialStore = gpg

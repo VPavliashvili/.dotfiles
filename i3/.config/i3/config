@@ -242,6 +242,7 @@ for_window [class="Yad"] floating enable
 for_window [class="Thunar"] floating enable
 for_window [class="Blueman-manager"] floating enable
 for_window [class="Pamac-manager"] floating enable
+for_window [class="Blueberry.py"] floating enable
 for_window [class="feh"] fullscreen enable
 for_window [class="Pqiv"] fullscreen enable
 # hide title bar
