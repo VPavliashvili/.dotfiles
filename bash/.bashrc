@@ -160,3 +160,4 @@ eval "$(oh-my-posh init bash --config ~/.poshthemes/my-custom.omp.json)"
 alias luamake="$HOME/lua-language-server/3rd/luamake/luamake"
 export LUA_CPATH="/usr/share/lua/5.4/?.so;"
 export PATH="$HOME/bin:$PATH"
+export GPG_TTY=$(tty)
