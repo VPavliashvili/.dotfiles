@@ -21,6 +21,7 @@ lua require('debuggers')
 "misc
 lua require('misc')
 lua require('statusline')
+lua require('web_icons')
 
 set encoding=utf-8
 scriptencoding utf-8

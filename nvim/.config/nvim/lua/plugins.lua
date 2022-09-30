@@ -13,6 +13,9 @@ return require('packer').startup(function(use)
     use 'lukas-reineke/indent-blankline.nvim'
     use 'NvChad/nvim-colorizer.lua'
 
+    --web icons
+    use 'kyazdani42/nvim-web-devicons'
+
     --color schemes
     use 'navarasu/onedark.nvim'
     use "olimorris/onedarkpro.nvim"
