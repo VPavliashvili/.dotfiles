@@ -3,6 +3,9 @@ require('color_scheme')
 
 -- nvim-tree
 require("nvim-tree").setup()
+vim.cmd [[
+:NvimTreeFocus
+]]
 
 -- nvim-cursorline
 require('nvim-cursorline').setup {
