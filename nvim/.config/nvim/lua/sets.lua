@@ -13,3 +13,5 @@ set signcolumn=yes
 set nowritebackup
 set noswapfile
 ]]
+
+vim.opt.termguicolors = true

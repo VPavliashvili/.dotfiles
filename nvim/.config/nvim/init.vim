@@ -22,6 +22,7 @@ lua require('debuggers')
 lua require('misc')
 lua require('statusline')
 lua require('web_icons')
+lua require('bufline')
 
 set encoding=utf-8
 scriptencoding utf-8

@@ -12,6 +12,10 @@ return require('packer').startup(function(use)
     use 'yamatsum/nvim-cursorline'
     use 'lukas-reineke/indent-blankline.nvim'
     use 'NvChad/nvim-colorizer.lua'
+    
+    --buffer line
+    use {'akinsho/bufferline.nvim', tag = "v2.*", requires = 'kyazdani42/nvim-web-devicons'}
+    use 'kazhala/close-buffers.nvim'
 
     --web icons
     use 'kyazdani42/nvim-web-devicons'
