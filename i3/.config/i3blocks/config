@@ -56,7 +56,7 @@ DECIMALS=2
 # The second parameter overrides the mixer selection
 # See the script for details.
 [volume]
-interval=60
+interval=1
 signal=10
 command=~/.config/i3blocks/volume-pulseaudio/volume-pulseaudio -f
 
