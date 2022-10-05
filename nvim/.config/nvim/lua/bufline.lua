@@ -26,6 +26,7 @@ require("bufferline").setup {
                 separator = true,
             },
         },
+        show_close_icon = false,
     },
 }
 
@@ -44,7 +45,7 @@ require('close_buffers').setup({})
 -- Delete the current buffer
 vim.api.nvim_set_keymap(
     'n',
-    '<S-c>', -- k for kill
-    [[<CMD>lua require('close_buffers').delete({type = 'this'})<CR>]],
+    '<S-c>',
+    [[<CMD>lua require('close_buffers').delete({type = 'this', force = true})<CR>]],
     { noremap = true, silent = true }
 )
