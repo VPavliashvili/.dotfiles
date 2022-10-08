@@ -31,7 +31,8 @@ instance.on_attach = function(client, bufnr)
     vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename, bufopts)
     vim.keymap.set('n', '<space>ca', vim.lsp.buf.code_action, bufopts)
     vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
-    vim.keymap.set('n', '<space>f', vim.lsp.buf.formatting, bufopts)
+    vim.keymap.set('n', '<space>f', function() vim.lsp.buf.format { async = true } end, bufopts)
+    --vim.keymap.set('n', '<space>f', vim.lsp.buf.formatting, bufopts)
 end
 
 
@@ -69,7 +70,7 @@ instance.setup_cmp = function(completion_sources)
             ['<Tab>'] = cmp.mapping(function(fallback)
                 if cmp.visible() then
                     cmp.select_next_item()
-                --elseif luasnip.expand_or_jumpable() then
+                    --elseif luasnip.expand_or_jumpable() then
                     --luasnip.expand_or_jump()
                 else
                     fallback()

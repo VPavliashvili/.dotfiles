@@ -12,6 +12,7 @@ set scrolloff=4
 set signcolumn=yes  
 set nowritebackup
 set noswapfile
+set mouse=
 ]]
 
 vim.opt.termguicolors = true
