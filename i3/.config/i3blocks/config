@@ -58,7 +58,8 @@ DECIMALS=2
 [volume]
 interval=1
 signal=10
-command=~/.config/i3blocks/volume-pulseaudio/volume-pulseaudio -f
+#command=~/.config/i3blocks/volume-pulseaudio/volume-pulseaudio -f
+command=~/.config/i3blocks/volume-pipewire/volume-pipewire
 
 [script]
 label=
