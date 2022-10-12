@@ -11,8 +11,9 @@ local util = require "lspconfig/util"
 
 lspconfig.gopls.setup {
     cmd = { "gopls", "serve" },
-    filetypes = { "go", "gomod" },
-    root_dir = util.root_pattern("go.work", "go.mod", ".git"),
+    filetypes = { "go", "gomod", "gowork", "gotmpl" },
+    root_dir = util.root_pattern("go.mod", ".git"),
+    single_file_support = true,
     settings = {
         gopls = {
             analyses = {
