@@ -37,8 +37,7 @@ end
 
 
 -- Add additional capabilities supported by nvim-cmp
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-instance.capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
+instance.capabilities = require('cmp_nvim_lsp').default_capabilities()
 
 instance.flags = {
     -- This is the default in Nvim 0.7+

@@ -12,7 +12,7 @@ nnoremap <C-k> <C-y>
 nnoremap <C-j> <C-e>
 
 "hide highlighings
-nnoremap <leader>nh :noh<CR>
+nnoremap <space>nh :noh<CR>
 
 "Nvim Tree external maps
 nnoremap <leader>ft :NvimTreeFocus<CR>
