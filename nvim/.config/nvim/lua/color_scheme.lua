@@ -7,7 +7,7 @@ require('onedark').setup {
     },
 
     highlights = {
-        TSVariable = { fg = '$local_variable' },
+        ["@variable"] = {fg = '$local_variable'},
     },
 }
 
