@@ -22,3 +22,6 @@ nnoremap <leadeR>tt :NvimTreeToggle<CR>
 "json formatter
 autocmd FileType json nnoremap <leader>jq :%!jq<CR>==
 ]]
+
+-- font preview plugin maps
+vim.keymap.set("n", "<space>p", ":lua require('fold-preview').toggle_preview()<CR>")

@@ -13,6 +13,12 @@ set signcolumn=yes
 set nowritebackup
 set noswapfile
 set mouse=
+
+set foldlevel=20
+set foldmethod=expr
+set foldexpr=nvim_treesitter#foldexpr()
+
+set foldmethod=manual
 ]]
 
 vim.opt.termguicolors = true
