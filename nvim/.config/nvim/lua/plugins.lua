@@ -13,6 +13,9 @@ return require('packer').startup(function(use)
     use 'lukas-reineke/indent-blankline.nvim'
     use 'NvChad/nvim-colorizer.lua'
 
+    --git
+    use { 'lewis6991/gitsigns.nvim' }
+
     --buffer line
     use { 'akinsho/bufferline.nvim', tag = "v2.*", requires = 'kyazdani42/nvim-web-devicons' }
     --use 'kazhala/close-buffers.nvim'
