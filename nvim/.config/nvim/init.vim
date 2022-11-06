@@ -12,6 +12,7 @@ lua require('lsp_go')
 lua require('lsp_python')
 lua require('lsp_tsserver')
 lua require('lsp_csharp')
+lua require('lsp_json')
 
 "treesitter
 lua require('treesitter')
