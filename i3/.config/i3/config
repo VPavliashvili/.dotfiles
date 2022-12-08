@@ -252,10 +252,11 @@ workspace $ws7 output eDP-1
 workspace $ws8 output eDP-1
 workspace $ws10 output eDP-1
 
+workspace_auto_back_and_forth yes
+
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec setxkbmap -option grp:alt_shift_toggle "us,ge"
 exec ~/bin/slideshow.py -t 30 ~/Pictures/wallpapers
-exec xinput --set-prop 14 156 0.5 0 0 0 0.5 0 0 0 1
 exec_always --no-startup-id "picom --config ~/.config/picom/picom.conf"
 
 for_window [class="Gcolor3"] floating bar
