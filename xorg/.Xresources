@@ -1,0 +1,25 @@
+Xcursor.theme: Qogir
+Xcursor.size: 48
+
+Xft.dpi: 192
+
+! These might also be useful depending on your monitor and personal preference:
+!Xft.autohint: 0
+!Xft.lcdfilter:  lcddefault
+!Xft.hintstyle:  hintfull
+!Xft.hinting: 1
+!Xft.antialias: 1
+!Xft.rgba: rgb
+
+! i3 ws names start
+i3wm.ws1.name: 1:
+i3wm.ws2.name: 2:
+i3wm.ws3.name: 3:
+i3wm.ws4.name: 4:
+ws5.name: 5:
+ws6.name: 6:
+ws7.name: 7:
+ws8.name: 8:
+ws9.name: 9:
+ws10.name: 10:
+! i3 ws names end
