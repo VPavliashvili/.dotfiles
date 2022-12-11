@@ -259,7 +259,7 @@ exec setxkbmap -option grp:alt_shift_toggle "us,ge"
 exec ~/bin/slideshow.py -t 30 ~/Pictures/wallpapers
 exec_always --no-startup-id "picom --config ~/.config/picom/picom.conf"
 
-for_window [class="Gcolor3"] floating bar
+for_window [class="Gcolor3"] floating enable 
 for_window [class="Yad"] floating enable
 for_window [class="Thunar"] floating enable
 for_window [class="Blueman-manager"] floating enable

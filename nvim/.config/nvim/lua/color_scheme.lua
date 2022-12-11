@@ -1,11 +1,19 @@
 require("onedarkpro").setup({
     colors = {
         line_number = "#2D6D90",
-        line_number_highlighted = "#A5D4DC"
+        line_number_highlighted = "#A5D4DC",
+        nvim_tree_root_folder = "#e0a63b",
+        nvim_tree_folder_name = "#4f9ac6",
+        nvim_tree_folder_icon = "#4f9ac6",
+        nvim_tree_openedFolder_name = "#95e8e5",
     }, -- Override default colors or create your own
     highlights = {
         LineNr = { fg = "${line_number}" },
         CursorLineNr = { fg = "${line_number_highlighted}" },
+        NvimTreeRootFolder = { fg = "${nvim_tree_root_folder}" },
+        NvimTreeFolderName = { fg = "${nvim_tree_folder_name}" },
+        NvimTreeFolderIcon = { fg = "${nvim_tree_folder_name}" },
+        NvimTreeOpenedFolderName = { fg = "${nvim_tree_openedFolder_name}" },
     }, -- Override default highlight groups or create your own
     filetypes = { -- Override which filetype highlight groups are loaded
         -- See the 'Configuring filetype highlights' section for the available list
