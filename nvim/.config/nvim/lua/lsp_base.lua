@@ -1,5 +1,7 @@
 local instance = {}
 
+require('lspconfig.ui.windows').default_options.border = 'single'
+
 -- Mappings.
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
 local opts = { noremap = true, silent = true }
