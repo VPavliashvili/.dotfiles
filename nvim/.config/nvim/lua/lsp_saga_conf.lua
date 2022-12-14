@@ -4,7 +4,7 @@ local saga = require('lspsaga')
 saga.init_lsp_saga({
     -- Options with default value
     -- "single" | "double" | "rounded" | "bold" | "plus"
-    border_style = "single",
+    border_style = "double",
     --the range of 0 for fully opaque window (disabled) to 100 for fully
     --transparent background. Values between 0-30 are typically most useful.
     saga_winblend = 0,
@@ -67,7 +67,7 @@ saga.init_lsp_saga({
         tabe = '<C-c>t',
         quit = 'q',
     },
-    rename_action_quit = '<C-c>',
+    rename_action_quit = '<ESC>', --<C-c>',
     rename_in_select = true,
     -- show symbols in winbar must nightly
     -- in_custom mean use lspsaga api to get symbols
@@ -95,7 +95,7 @@ saga.init_lsp_saga({
         auto_enter = true,
         auto_preview = true,
         virt_text = '┃',
-        jump_key = 'o',
+        jump_key = '<CR>',
         -- auto refresh when change buffer
         auto_refresh = true,
     },
@@ -118,7 +118,7 @@ keymap("n", "gh", "<cmd>Lspsaga lsp_finder<CR>", { silent = true })
 keymap({ "n", "v" }, "<space>ca", "<cmd>Lspsaga code_action<CR>", { silent = true })
 
 -- Rename
-keymap("n", "gr", "<cmd>Lspsaga rename<CR>", { silent = true })
+keymap("n", "<space>r", "<cmd>Lspsaga rename<CR>", { silent = true })
 
 -- Peek Definition
 -- you can edit the definition file in this flaotwindow
