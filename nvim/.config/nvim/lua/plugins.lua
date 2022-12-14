@@ -49,6 +49,10 @@ return require('packer').startup(function(use)
     }
 
     --lsp
+    use({
+        "glepnir/lspsaga.nvim",
+        branch = "main",
+    })
     use 'neovim/nvim-lspconfig'
     use 'hrsh7th/cmp-nvim-lsp'
     use 'hrsh7th/cmp-buffer'
