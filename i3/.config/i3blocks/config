@@ -58,8 +58,8 @@ DECIMALS=2
 [volume]
 interval=1
 signal=10
-#command=~/.config/i3blocks/volume-pulseaudio/volume-pulseaudio -f
-command=~/.config/i3blocks/volume-pipewire/volume-pipewire
+command=~/.config/i3blocks/volume-pulseaudio/volume-pulseaudio -f
+#command=~/.config/i3blocks/volume-pipewire/volume-pipewire
 
 [script]
 label=
@@ -73,7 +73,7 @@ signal=13
 [battery2]
 command=~/.config/i3blocks/battery2/battery2
 markup=pango
-interval=30
+interval=1
 
 [kbdd_layout]
 command=~/.config/i3blocks/kbdd_layout/kbdd_layout

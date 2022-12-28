@@ -22,6 +22,7 @@ nnoremap <leadeR>tt :NvimTreeToggle<CR>
 "yanking
 vnoremap <space>y "+y
 nnoremap <space>p "+p
+vnoremap <space>p "+p
 
 "json formatter
 autocmd FileType json nnoremap <leader>jq :%!jq<CR>==

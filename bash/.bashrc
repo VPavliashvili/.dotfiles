@@ -138,7 +138,7 @@ ex ()
 
 isVideoFile ()
 {
-	if [[ $1 == *.mp4 ]] || [[ $1 == *.mov ]] || [[ $1 == *.wmv ]] || [[ $1 == *.avi ]] || [[ $1 == *.mpg ]]; then
+	if [[ $1 == *.mp4 ]] || [[ $1 == *.mov ]] || [[ $1 == *.wmv ]] || [[ $1 == *.avi ]] || [[ $1 == *.mpg ]] || [[ $1 == *.mkv ]]; then
         #means true for some reason
         return 0
     else
