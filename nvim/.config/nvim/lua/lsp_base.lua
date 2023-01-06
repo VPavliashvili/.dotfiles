@@ -2,6 +2,7 @@ local instance = {}
 
 require('lspconfig.ui.windows').default_options.border = 'single'
 require('lsp_saga_conf')
+require('lsp_error_diagnostics')
 
 -- Mappings.
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
