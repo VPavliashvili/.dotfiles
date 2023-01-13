@@ -2,17 +2,18 @@
 require('lualine').setup {
     options = {
         --theme = 'onedarkpro'
-        theme = 'codedark'
+        theme = 'material'
     },
     sections = {
         lualine_a = { 'mode' },
         lualine_b = { 'branch', 'diff', 'diagnostics' },
         lualine_c = { 'filename' },
         --lualine_x = { 'encoding', 'fileformat', 'filetype', 'os.date("%I:%M:%S", os.time())'},
-        lualine_x = { 'encoding', 'fileformat', 'filetype', 'os.date(" %H:%M", os.time())'},
+        lualine_x = { 'encoding', 'fileformat', 'filetype', 'os.date(" %H:%M", os.time())' },
         lualine_y = { 'progress' },
         lualine_z = { 'location' }
-    }
+    },
+    extensions = { 'nvim-tree' },
 }
 
 -- Turn off lualine inside nvim-tree
@@ -27,5 +28,4 @@ else
     _G.Statusline_timer:stop()
 end
 _G.Statusline_timer:start(0, 1000 * 60, vim.schedule_wrap(
-                              function() vim.api.nvim_command('redrawstatus') end))
-
+    function() vim.api.nvim_command('redrawstatus') end))
