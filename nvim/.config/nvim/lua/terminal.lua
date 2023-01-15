@@ -12,7 +12,7 @@ vim.keymap.set('t', '<A-i>', '<C-\\><C-n><CMD>lua require("FTerm").toggle()<CR>'
 
 local fterm = require("FTerm")
 
-local btop = fterm:new({
+local lazygit = fterm:new({
     ft = 'fterm_lazygit',
     cmd = "lazygit",
     dimensions = {
@@ -21,7 +21,20 @@ local btop = fterm:new({
     }
 })
 
+local btop = fterm:new({
+    ft = 'fterm_btop',
+    cmd = "btop",
+    dimensions = {
+        height = 1,
+        width = 1
+    }
+})
+
 -- Use this to toggle btop in a floating terminal
 vim.keymap.set('n', '<space>g', function()
+    lazygit:toggle()
+end)
+
+vim.keymap.set('n', '<space>bt', function()
     btop:toggle()
 end)
