@@ -37,3 +37,5 @@ augroup remember_folds
   autocmd BufWinLeave ?* mkview
   autocmd BufWinEnter ?* silent! loadview
 augroup END
+
+autocmd BufReadPost,FileReadPost * normal zR
