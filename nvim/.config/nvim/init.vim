@@ -28,6 +28,8 @@ lua require('bufline')
 lua require('terminal')
 lua require('git')
 
+lua require('folding')
+
 set encoding=utf-8
 scriptencoding utf-8
 
@@ -37,5 +39,3 @@ augroup remember_folds
   autocmd BufWinLeave ?* mkview
   autocmd BufWinEnter ?* silent! loadview
 augroup END
-
-autocmd BufReadPost,FileReadPost * normal zR
