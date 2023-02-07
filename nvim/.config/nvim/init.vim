@@ -28,7 +28,7 @@ lua require('bufline')
 lua require('terminal')
 lua require('git')
 
-lua require('folding')
+" lua require('folding')
 
 set encoding=utf-8
 scriptencoding utf-8

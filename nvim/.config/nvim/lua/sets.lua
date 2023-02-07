@@ -2,7 +2,7 @@ vim.cmd [[
 filetype plugin indent on
 " don't need set cursorline anymore
 " because of cursorline plugin setup in misc.lua
-set number
+set number relativenumber
 set tabstop=4 softtabstop=4
 set shiftwidth=4
 set expandtab
