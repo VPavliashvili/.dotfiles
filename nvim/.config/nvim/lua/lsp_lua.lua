@@ -6,7 +6,7 @@ local sources = {
 }
 lsp_base.setup_cmp(sources)
 
-require 'lspconfig'.sumneko_lua.setup {
+require 'lspconfig'.lua_ls.setup {
     settings = {
         Lua = {
             runtime = {

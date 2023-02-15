@@ -1,11 +1,6 @@
 local HEIGHT_RATIO = 0.88 -- You can change this
 local WIDTH_RATIO = 0.25 -- You can change this too
 
-local function openfile(node)
-    local nt_api = require("nvim-tree.api")
-    nt_api.node.open.edit(node)
-    nt_api.tree.focus()
-end
 
 -- nvim-tree
 require("nvim-tree").setup({
@@ -49,8 +44,19 @@ require("nvim-tree").setup({
     --   indent_width = 1,
     -- },
 })
-vim.cmd [[
-:NvimTreeFocus
-]]
+
+-- vim.cmd [[
+-- :NvimTreeFocus
+-- ]]
+
+local nvimtree_api = require("nvim-tree.api")
+
+local function openfile(node)
+    nvimtree_api.node.open.edit(node)
+    nvimtree_api.tree.focus()
+end
+
 local opts = { noremap = true, silent = false }
+
 vim.keymap.set('n', '<space>o', openfile, opts)
+nvimtree_api.tree.open()
