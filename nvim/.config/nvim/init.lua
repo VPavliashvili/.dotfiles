@@ -75,6 +75,14 @@ require("lazy").setup({
         },
     },
     {
+        'mfussenegger/nvim-dap',
+        'rcarriga/nvim-dap-ui',
+        'theHamsta/nvim-dap-virtual-text',
+        'jbyuki/one-small-step-for-vimkind',
+        'leoluz/nvim-dap-go',
+        'nvim-telescope/telescope-dap.nvim',
+    },
+    {
         'nvim-telescope/telescope.nvim',
         dependencies = {
             'nvim-lua/plenary.nvim',
@@ -93,3 +101,4 @@ require("lazy").setup({
 })
 
 require("lsp")
+require("debuggers")
