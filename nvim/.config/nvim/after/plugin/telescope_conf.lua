@@ -1,12 +1,8 @@
---basic maps
-vim.cmd [[
-nnoremap <leader>ff <cmd>lua require('telescope.builtin').find_files()<cr>
-nnoremap <leader>fg <cmd>lua require('telescope.builtin').live_grep()<cr>
-nnoremap <leader>fb <cmd>lua require('telescope.builtin').buffers()<cr>
-nnoremap <leader>fh <cmd>lua require('telescope.builtin').help_tags()<cr>
-]]
+vim.keymap.set('n', '<leader>ff', '<cmd>lua require("telescope.builtin").find_files()<cr>')
+vim.keymap.set('n', '<leader>lg', '<cmd>lua require("telescope.builtin").live_grep()<cr>')
+vim.keymap.set('n', '<leader>km', '<cmd>lua require("telescope.builtin").keymaps()<cr>')
+vim.keymap.set('n', '<leader>bf', '<cmd>lua require("telescope.builtin").buffers()<cr>')
 
-require('telescope').load_extension('media_files')
 require("telescope").load_extension('file_browser')
 
 require('telescope').setup {
@@ -37,10 +33,6 @@ require('telescope').setup {
         --   extension_config_key = value,
         -- }
         -- please take a look at the readme of the extension you want to configure
-        media_files = {
-            filetypes = { "png", "webp", "jpg", "jpeg" },
-            find_cmd = "rg" -- find command (defaults to `fd`)
-        },
         file_browser = {
             theme = "ivy",
             -- disables netrw and use telescope-file-browser in its place

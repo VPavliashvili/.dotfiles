@@ -1,21 +1,3 @@
---color scheme
-require('color_scheme')
-require('nvim_tree')
-
--- nvim-cursorline
-require('nvim-cursorline').setup {
-    cursorline = {
-        enable = true,
-        timeout = 0,
-        number = false,
-    },
-    cursorword = {
-        enable = true,
-        min_length = 3,
-        hl = { underline = true },
-    }
-}
-
 require 'colorizer'.setup {
     --'*'; -- Highlight all files, but customize some others.
     javascript = { names = false, },

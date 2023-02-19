@@ -1,4 +1,3 @@
---lualine
 require('lualine').setup {
     options = {
         --theme = 'onedarkpro'
@@ -8,7 +7,6 @@ require('lualine').setup {
         lualine_a = { 'mode' },
         lualine_b = { 'branch', 'diff', 'diagnostics' },
         lualine_c = { 'filename' },
-        --lualine_x = { 'encoding', 'fileformat', 'filetype', 'os.date("%I:%M:%S", os.time())'},
         lualine_x = { 'encoding', 'fileformat', 'filetype', 'os.date(" %H:%M", os.time())' },
         lualine_y = { 'progress' },
         lualine_z = { 'location' }

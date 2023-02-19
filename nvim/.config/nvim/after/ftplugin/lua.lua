@@ -1,8 +1,14 @@
-local lsp_base = require('lsp_base')
+local lsp_base = require('lsp')
 
 local sources = {
     { name = 'nvim_lsp' },
     { name = 'luasnip' },
+    { name = 'nvim_lsp_signature_help' },
+    { name = 'nvim_lua' },
+    {
+        name = "fonts",
+        option = { space_filter = "-" }
+    },
 }
 lsp_base.setup_cmp(sources)
 
@@ -31,4 +37,3 @@ require 'lspconfig'.lua_ls.setup {
     capabilities = lsp_base.capabilities,
     flags = lsp_base.flags,
 }
-
