@@ -82,7 +82,14 @@ require("lazy").setup({
             'nvim-lua/popup.nvim',
         }
     },
+    {
+        {
+            'akinsho/bufferline.nvim',
+            dependencies = {
+                'VPavliashvili/close-buffers.nvim',
+            }
+        },
+    }
 })
 
--- this will be overriden if ftplugin runs for specific file type
-require("cmpconf").setup_for_regular()
+require("lsp")

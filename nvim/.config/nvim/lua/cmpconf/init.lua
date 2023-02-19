@@ -91,13 +91,4 @@ instance.setup_for_lsp = function(completion_sources)
     shared_logic()
 end
 
-instance.setup_for_regular = function()
-    cmp.setup {
-        sources = {
-            { name = 'calk' }
-        }
-    }
-    shared_logic()
-end
-
 return instance
