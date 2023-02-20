@@ -55,6 +55,7 @@ require("lazy").setup({
             {
                 "glepnir/lspsaga.nvim",
                 event = "BufRead",
+                commit = "66bb067",
             },
             "folke/trouble.nvim",
         },
