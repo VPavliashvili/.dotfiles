@@ -1,6 +1,6 @@
 require('lspconfig.ui.windows').default_options.border = 'single'
-require('lsp.lspsaga')
-require('lsp.error_diagnostics')
+-- require('lsp.lspsaga')
+-- require('lsp.error_diagnostics')
 
 -- languages
 require('lsp.lang.lua')
