@@ -105,6 +105,25 @@ require('lspsaga').setup({
     -- the related filetypes into this table
     -- like server_filetype_map = { metals = { "sbt", "scala" } }
     server_filetype_map = {},
+    diagnostic = {
+        on_insert = false,
+        on_insert_follow = false,
+        insert_winblend = 0,
+        show_code_action = true,
+        show_source = true,
+        jump_num_shortcut = true,
+        --1 is max
+        max_width = 0.7,
+        custom_fix = nil,
+        custom_msg = nil,
+        text_hl_follow = false,
+        border_follow = true,
+        keys = {
+            exec_action = "o",
+            quit = "q",
+            go_action = "g"
+        },
+    },
 })
 
 -- Lsp finder find the symbol definition implement reference

@@ -18,8 +18,14 @@ require("lazy").setup({
     'NvChad/nvim-colorizer.lua',
     'yamatsum/nvim-cursorline',
     'nvim-lualine/lualine.nvim',
-    'lewis6991/gitsigns.nvim',
     "numToStr/FTerm.nvim",
+    {
+        'lewis6991/gitsigns.nvim',
+        dependencies = {
+            'nvim-lua/plenary.nvim',
+            'sindrets/diffview.nvim',
+        }
+    },
     {
         'numToStr/Comment.nvim',
         config = function()
@@ -55,7 +61,7 @@ require("lazy").setup({
             {
                 "glepnir/lspsaga.nvim",
                 event = "BufRead",
-                commit = "66bb067",
+                -- commit = "66bb067",
             },
             "folke/trouble.nvim",
         },
