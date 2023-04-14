@@ -136,20 +136,36 @@ ex ()
   fi
 }
 
-isVideoFile ()
-{
-	if [[ $1 == *.mp4 ]] || [[ $1 == *.mov ]] || [[ $1 == *.wmv ]] || [[ $1 == *.avi ]] || [[ $1 == *.mpg ]] || [[ $1 == *.mkv ]]; then
-        #means true for some reason
-        return 0
+isVideoFile() {
+    # get file extension
+    extension="${1##*.}"
+
+    # handle file names with spaces
+    filename=$(basename "$1")
+    extension="${filename##*.}"
+
+    # check if extension matches a video format
+    case "$extension" in
+        mp4|mov|avi|mkv|wmv|flv|webm)
+            return 0
+            ;;
+        *)
+            return 1
+            ;;
+    esac
+}
+
+check() {
+    if isVideoFile "$1" ; then
+        echo "$1 is vidoe file"
     else
-        return 1
+        echo "$1 is not a video file"
     fi
 }
 
-play ()
-{
-    if [ -f $1 ] && isVideoFile $1 ; then
-        mpv $1 -wid $(xwininfo | awk '{if(/Window id:/) print $4}' & xdotool click 1)
+play () {
+    if [ -f "$1" ] && isVideoFile "$1" ; then
+        mpv "$1" -wid $(xwininfo | awk '{if(/Window id:/) print $4}' & xdotool click 1)
     else
         echo "please provide proper video file"
     fi

@@ -2,5 +2,6 @@ wezterm/.config/wezterm/data.json
 wezterm/.config/wezterm/config.json
 .luarc.json
 nvim/.config/nvim/plugin/
+nvim/.config/nvim/lazy-lock.json
 bin/bin/connectLb.sh
 bin/bin/connectAlta.sh
