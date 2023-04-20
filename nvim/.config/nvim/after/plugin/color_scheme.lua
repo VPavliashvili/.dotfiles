@@ -17,6 +17,7 @@ require("onedarkpro").setup({
     }, -- Override default highlight groups or create your own
     filetypes = { -- Override which filetype highlight groups are loaded
         -- See the 'Configuring filetype highlights' section for the available list
+        go = true,
     },
     plugins = { -- Override which plugin highlight groups are loaded
         -- See the 'Supported plugins' section for the available list
