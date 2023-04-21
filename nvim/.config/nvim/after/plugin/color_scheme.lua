@@ -11,6 +11,7 @@ require("onedarkpro").setup({
         cyan                        = "#56b6c2",
         yellow                      = "#e5c07b",
         purple                      = "#c678dd",
+        orange                      = "#d19a66",
     }, -- Override default colors or create your own
     highlights = {
         LineNr = { fg = "${line_number}" },
@@ -20,6 +21,7 @@ require("onedarkpro").setup({
         NvimTreeFolderIcon = { fg = "${nvim_tree_folder_name}" },
         NvimTreeOpenedFolderName = { fg = "${nvim_tree_openedFolder_name}" },
         -- go modification
+        ["@punctuation.bracket.go"] = { fg = "${orange}" },
         ["@constant.go"] = { fg = "${red}" },
         ["@function.call.go"] = { fg = "${blue}" },
         ["@method.call.go"] = { fg = "${blue}" },
