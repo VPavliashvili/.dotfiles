@@ -11,3 +11,6 @@ require('gitsigns').setup {
     linehl     = false, -- Toggle with `:Gitsigns toggle_linehl`
     word_diff  = false, -- Toggle with `:Gitsigns toggle_word_diff`
 }
+
+vim.keymap.set('n', '<leader>do', ':DiffviewOpen<CR>')
+vim.keymap.set('n', '<leader>dc', ':DiffviewClose<CR>')

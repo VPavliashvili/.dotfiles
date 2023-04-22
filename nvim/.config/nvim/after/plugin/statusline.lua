@@ -1,3 +1,13 @@
+local current_line = function()
+    local max = tostring(vim.fn.line("$"))
+    local cur = tostring(vim.fn.line("."))
+    return cur .. "/" .. max
+end
+
+local current_time = function()
+    return os.date(" %H:%M", os.time())
+end
+
 require('lualine').setup {
     options = {
         theme = 'onedark'
@@ -6,9 +16,9 @@ require('lualine').setup {
         lualine_a = { 'mode' },
         lualine_b = { 'branch', 'diff', 'diagnostics' },
         lualine_c = { 'filename' },
-        lualine_x = { 'encoding', 'fileformat', 'filetype', 'os.date(" %H:%M", os.time())' },
-        lualine_y = { 'progress' },
-        lualine_z = { 'location' }
+        lualine_x = { 'encoding', 'fileformat', current_time },
+        lualine_y = { 'filetype' },
+        lualine_z = { current_line }
     },
     extensions = { 'nvim-tree' },
 }
