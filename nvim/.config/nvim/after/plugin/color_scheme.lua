@@ -22,17 +22,6 @@ require("onedarkpro").setup({
         NvimTreeOpenedFolderName = { fg = "${nvim_tree_openedFolder_name}" },
         -- go modification
         ["@punctuation.bracket.go"] = { fg = "${orange}" },
-        ["@constant.go"] = { fg = "${red}" },
-        ["@function.call.go"] = { fg = "${blue}" },
-        ["@method.call.go"] = { fg = "${blue}" },
-        ["@function.builtin.go"] = { fg = "${cyan}" },
-        ["@operator.go"] = { fg = "${cyan}" },
-        ["@type.go"] = { fg = "${yellow}" },
-        ["@type.builtin.go"] = { fg = "${purple}" },
-        ["@field.go"] = { fg = "${red}" },
-        ["@property.go"] = { fg = "${red}" },
-        ["@variable.go"] = { fg = "${red}" },
-        ["@parameter.go"] = { fg = "${red}" },
     }, -- Override default highlight groups or create your own
     filetypes = {
         -- Override which filetype highlight groups are loaded
