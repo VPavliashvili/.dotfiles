@@ -31,10 +31,6 @@ local btop = fterm:new({
 })
 
 -- Use this to toggle btop in a floating terminal
-vim.keymap.set('n', '<space>g', function()
-    lazygit:toggle()
-end)
-
 vim.keymap.set('n', '<space>bt', function()
     btop:toggle()
 end)

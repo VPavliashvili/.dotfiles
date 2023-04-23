@@ -32,27 +32,15 @@ local opened_buffers = function()
     return indexes
 end
 
-vim.keymap.set('n', '<leader>pr', function()
-    local msg = {}
-    for i = 1, vim.fn.bufnr("$") do
-        if vim.fn.buflisted(i) == 1 then
-            local name = vim.api.nvim_buf_get_name(i)
-            table.insert(msg, name)
-        end
-    end
-    print(vim.inspect(msg))
-end)
-
 local before = {}
 local after = {}
 
-vim.keymap.set('n', '<leader>do', function()
+vim.keymap.set('n', '<leader>gd', function()
     before = opened_buffers()
     vim.cmd(':DiffviewOpen')
-    print(vim.inspect(before))
 end)
 
-vim.keymap.set('n', '<leader>dc', function()
+vim.keymap.set('n', '<leader>gc', function()
     after = opened_buffers()
 
     local to_be_closed = {}
@@ -64,10 +52,11 @@ vim.keymap.set('n', '<leader>dc', function()
 
     vim.cmd('DiffviewClose')
 
-    -- print(vim.inspect(to_be_closed))
     for _, bufindex in ipairs(to_be_closed) do
         vim.cmd('bdelete' .. tostring(bufindex))
     end
     before = {}
     after = {}
 end)
+
+vim.keymap.set('n', '<leader>gh', ':DiffviewFileHistory<CR>')
