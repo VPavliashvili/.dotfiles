@@ -59,4 +59,7 @@ vim.keymap.set('n', '<leader>gc', function()
     after = {}
 end)
 
-vim.keymap.set('n', '<leader>gh', ':DiffviewFileHistory<CR>')
+vim.keymap.set('n', '<leader>gh', function()
+    before = opened_buffers()
+    vim.cmd(':DiffviewFileHistory')
+end)
