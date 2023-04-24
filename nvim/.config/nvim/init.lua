@@ -118,6 +118,28 @@ require("lazy").setup({
                     'VPavliashvili/close-buffers.nvim',
                 }
             },
+        },
+        {
+            'kevinhwang91/nvim-ufo',
+            dependencies = {
+                'kevinhwang91/promise-async',
+                {
+                    "luukvbaal/statuscol.nvim",
+                    config = function()
+                        local builtin = require("statuscol.builtin")
+                        require("statuscol").setup({
+                            -- foldfunc = "builtin",
+                            -- setopt = true,
+                            relculright = true,
+                            segments = {
+                                { text = { builtin.foldfunc } },
+                                { text = { "%s" } },
+                                { text = { builtin.lnumfunc, " " } },
+                            },
+                        })
+                    end,
+                },
+            }
         }
     },
     {
@@ -128,7 +150,7 @@ require("lazy").setup({
             -- automatically check for plugin updates
             enabled = true,
             concurrency = nil, ---@type number? set to 1 to check for updates very slowly
-            notify = true,    -- get a notification when new updates are found
+            notify = true,     -- get a notification when new updates are found
             frequency = 86400, -- check for updates every given seconds amount
         },
     })
