@@ -136,6 +136,10 @@ ex ()
   fi
 }
 
+xcopy() {
+    cat "$1" | xclip -selection clipboard
+}
+
 isVideoFile() {
     # get file extension
     extension="${1##*.}"
@@ -153,14 +157,6 @@ isVideoFile() {
             return 1
             ;;
     esac
-}
-
-check() {
-    if isVideoFile "$1" ; then
-        echo "$1 is vidoe file"
-    else
-        echo "$1 is not a video file"
-    fi
 }
 
 play () {
