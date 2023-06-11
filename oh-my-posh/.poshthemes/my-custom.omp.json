@@ -7,7 +7,7 @@
         {
           "foreground": "#7eb8da",
           "style": "plain",
-          "template": "┏[<#ffffff></> {{ .UserName }} from <#ffffff>ﲾ</> {{ .HostName }}]",
+          "template": "┏[<#ffffff></> {{ .UserName }} from <#ffffff>󱩊</> {{ .HostName }}]",
           "type": "session"
         },
         {
