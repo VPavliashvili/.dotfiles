@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 
+
 ## Author  : Aditya Shakya (adi1090x)
 ## Github  : @adi1090x
 #
@@ -16,14 +17,6 @@
 
 ## further modified by me, to avoid unnecessary timer option
 
-prompt='Screenshot'
-mesg="DIR: ~/Screenshots"
-
-# Options
-option_1="󰹑 Capture"
-
-option_capture_1="󰍺 All Screen"
-option_capture_2="󰍹 Capture Active Screen"
 option_capture_3="󱣴 Capture Area"
 
 list_col='1'
@@ -34,57 +27,6 @@ copy=' Copy'
 save=' Save'
 copy_save='Copy & Save'
 edit='Edit Screenshot'
-
-# Rofi CMD
-rofi_cmd() {
-  rofi -theme-str "window {width: $win_width;}" \
-    -theme-str "listview {columns: $list_col; lines: $list_row;}" \
-    -theme-str 'textbox-prompt-colon {str: "";}' \
-    -dmenu \
-    -p "$prompt" \
-    -mesg "$mesg" \
-    -markup-rows
-}
-
-# Pass variables to rofi dmenu
-run_rofi() {
-  echo -e "$option_1\n$option_2" | rofi_cmd
-}
-
-####
-# Chose Screenshot Type
-# CMD
-type_screenshot_cmd() {
-  rofi -theme-str 'window {location: center; anchor: center; fullscreen: false; width: 400px;}' \
-    -theme-str 'mainbox {orientation: vertical; children: [ "message", "listview" ];}' \
-    -theme-str 'listview {columns: 1; lines: 3;}' \
-    -theme-str 'element-text {horizontal-align: 0.5;}' \
-    -theme-str 'textbox {horizontal-align: 0.5;}' \
-    -dmenu \
-    -p 'Choose Option' \
-    -mesg 'Type Of Screenshot:'
-}
-
-# Ask for confirmation
-type_screenshot_exit() {
-  echo -e "$option_capture_1\n$option_capture_2\n$option_capture_3" | type_screenshot_cmd
-}
-
-# Confirm and execute
-type_screenshot_run() {
-  selected_type_screenshot="$(type_screenshot_exit)"
-  if [[ "$selected_type_screenshot" == "$option_capture_1" ]]; then
-    option_type_screenshot=screen
-    ${1}
-  elif [[ "$selected_type_screenshot" == "$option_capture_2" ]]; then
-    option_type_screenshot=output
-    ${1}
-  elif [[ "$selected_type_screenshot" == "$option_capture_3" ]]; then
-    option_type_screenshot=area
-    ${1}
-  fi
-}
-###
 
 ####
 # Choose to save or copy photo
@@ -97,7 +39,7 @@ copy_save_editor_cmd() {
     -theme-str 'textbox {horizontal-align: 0.5;}' \
     -dmenu \
     -p 'Choose Option' \
-    -mesg 'Copy/save the screenshot or open in image editor'
+    -mesg 'Take a screenshot'
 }
 
 # Ask for confirmation
@@ -126,13 +68,13 @@ copy_save_editor_run() {
 
 # take shots
 takescreenshot() {
-  grimblast --notify "$option_chosen" "$option_type_screenshot"
+    grimblast --notify "$option_chosen" "$option_type_screenshot"
 }
 
 # Execute Command
 run_cmd() {
-    type_screenshot_run
+    option_type_screenshot=area
     copy_save_editor_run "takescreenshot"
 }
 
-run_cmd --opt1
+run_cmd 
