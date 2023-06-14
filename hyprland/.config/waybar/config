@@ -53,7 +53,7 @@
         "spacing": 10
     },
     "clock": {
-        "format": "{:%b/%d/%Y,  %T}  󰃰",
+        "format": "{:%b/%d/%Y,  %R}  󰃰",
         //"format": "+%a %d.%m.%Y %H:%M:%S 󰃰"
         //"format-alt": "{:%H:%M}  ",
         "tooltip-format": "\n<span size='9pt' font='WenQuanYi Zen Hei Mono'>{calendar}</span>",
