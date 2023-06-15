@@ -1,6 +1,6 @@
 require 'nvim-treesitter.configs'.setup {
     ensure_installed = {
-        "c", "lua", "vim", "help", "c_sharp", "go", "gomod", "gosum", "gowork",
+        "c", "lua", "vim", "vimdoc", "c_sharp", "go", "gomod", "gosum", "gowork",
         "json", "markdown", "markdown_inline", "bash", "html", "json5", "python"
     },
     highlight = {
