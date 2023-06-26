@@ -1,8 +1,8 @@
 require 'nvim-treesitter.configs'.setup {
-    ensure_installed = {
-        "c", "lua", "vim", "vimdoc", "c_sharp", "go", "gomod", "gosum", "gowork",
-        "json", "markdown", "markdown_inline", "bash", "html", "json5", "python"
-    },
+    -- ensure_installed = {
+    --     "c", "lua", "vim", "vimdoc", "c_sharp", "go", "gomod", "gosum", "gowork",
+    --     "json", "markdown", "markdown_inline", "bash", "html", "json5", "python"
+    -- },
     highlight = {
         enable = true,
         additional_vim_regex_highlighting = false,
