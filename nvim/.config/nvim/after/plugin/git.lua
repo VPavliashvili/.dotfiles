@@ -55,6 +55,9 @@ end)
 
 vim.keymap.set('n', '<leader>gc', function()
     after = opened_buffers()
+    if #before == 0 then
+        return
+    end
 
     local to_be_closed = {}
     for _, value in ipairs(after) do
@@ -69,7 +72,7 @@ vim.keymap.set('n', '<leader>gc', function()
         vim.cmd('bdelete' .. tostring(bufindex))
     end
     before = {}
-    after = {}
+    after  = {}
 end)
 
 vim.keymap.set('n', '<leader>gh', function()
