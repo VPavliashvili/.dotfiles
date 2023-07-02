@@ -43,7 +43,7 @@ def get_mntinfos() -> list[tuple[str, str]]:
 
         fstype = words[0]
         mntpoint = words[1] 
-        if is_valid_file_system(fstype) and mntpoint != '/boot':
+        if is_valid_file_system(fstype) and '/boot' not in mntpoint:
             source = words[2]
             res.append((mntpoint, source))
 
