@@ -1,6 +1,6 @@
 
-@define-color bg rgb (18, 128, 185);
-@define-color fg rgb (255, 255, 255);
+@define-color bg rgba(18, 128, 185, 1);
+@define-color fg rgba(255, 255, 255, 1);
 
 * {
     /* `otf-font-awesome` is required to be installed for icons */
@@ -19,15 +19,6 @@ window#waybar {
 window#waybar.hidden {
     opacity: 0.2;
 }
-
-/*
-window#waybar.empty {
-    background-color: transparent;
-}
-window#waybar.solo {
-    background-color: #FFFFFF;
-}
-*/
 
 window#waybar.termite {
     background-color: #3F3F3F;
@@ -78,7 +69,7 @@ button:hover {
 #memory,
 #pulseaudio,
 #tray,
-#disk,
+#custom-disk,
 #language,
 #idle_inhibitor {
     padding: 0 10px;

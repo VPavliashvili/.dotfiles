@@ -15,7 +15,7 @@ require("preferences")
 
 require("lazy").setup({
         'lukas-reineke/indent-blankline.nvim',
-        'NvChad/nvim-colorizer.lua',
+        'norcalli/nvim-colorizer.lua',
         'yamatsum/nvim-cursorline',
         'nvim-lualine/lualine.nvim',
         "numToStr/FTerm.nvim",

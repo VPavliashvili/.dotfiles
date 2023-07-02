@@ -5,8 +5,8 @@
     // "width": 1280, // Waybar width
     "spacing": 5, // Gaps between modules (4px)
     // Choose the order of the modules
-    "modules-left": ["wlr/workspaces"],
-    "modules-center": ["disk", "memory", "cpu"],
+    "modules-left": ["custom/disk", "memory", "cpu"],
+    "modules-center": ["wlr/workspaces"],
     "modules-right": ["idle_inhibitor", "pulseaudio", "backlight", "battery", "hyprland/language", "clock", "tray"],
     // Modules configuration
     "wlr/workspaces": {
@@ -48,8 +48,6 @@
     },
     "clock": {
         "format": " {:%b/%d %R}",
-        //"format": "+%a %d.%m.%Y %H:%M:%S 󰃰"
-        //"format-alt": "{:%H:%M}  ",
         "tooltip-format": "\n<span size='9pt' font='WenQuanYi Zen Hei Mono'>{calendar}</span>",
         "calendar": {
                     "mode"          : "year",
@@ -80,10 +78,12 @@
     "memory": {
         "format": "{}% "
     },
-    "disk": {
-        "interval": 10,
-        "format": "{used}/{total} ",
-        "path": "/"
+    "custom/disk": {
+        "exec": "~/.dotfiles/hyprland/.config/waybar/scripts/disk/disk.py",
+        "return-type": "json",
+        "on-click": "~/.dotfiles/hyprland/.config/waybar/scripts/disk/next_diskinfo.py",
+        "on-click-middle": "~/.dotfiles/hyprland/.config/waybar/scripts/disk/launch_diskinfo.py",
+        "interval": 1
     },
     "backlight": {
         // "device": "acpi_video1",
