@@ -1,6 +1,6 @@
  {
     "layer": "top", // Waybar at top layer
-    "position": "bottom", // Waybar position (top|bottom|left|right)
+    "position": "top", // Waybar position (top|bottom|left|right)
     "height": 20, // Waybar height (to be removed for auto height)
     // "width": 1280, // Waybar width
     "spacing": 5, // Gaps between modules (4px)
@@ -76,7 +76,7 @@
         "tooltip": false
     },
     "memory": {
-        "format": "{}% "
+        "format": "{used}/{total}G ({percentage}%) "
     },
     "custom/disk": {
         "exec": "~/.dotfiles/hyprland/.config/waybar/scripts/disk/disk.py",
