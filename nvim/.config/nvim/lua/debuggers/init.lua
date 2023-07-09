@@ -54,3 +54,31 @@ dap.configurations.lua = {
 dap.adapters.nlua = function(callback, config)
     callback({ type = 'server', host = config.host, port = config.port })
 end
+
+local home = os.getenv("HOME")
+local netcoredbgcommang = home .. "/.local/share/nvim/mason/bin/netcoredbg"
+
+dap.adapters.coreclr = {
+    type = "executable",
+    -- command = "/usr/bin/netcoredbg",
+    command = netcoredbgcommang,
+    args = { "--interpreter=vscode" },
+}
+
+dap.adapters.netcoredbg = {
+    type = "executable",
+    -- command = "/usr/bin/netcoredbg",
+    command = netcoredbgcommang,
+    args = { "--interpreter=vscode" },
+}
+
+dap.configurations.cs = {
+    {
+        type = "coreclr",
+        name = "launch - netcoredbg",
+        request = "launch",
+        program = function()
+            return vim.fn.input("Path to dll: ", vim.fn.getcwd() .. "/bin/Debug/", "file")
+        end,
+    },
+}
