@@ -8,3 +8,8 @@ require('lsp.lang.json')
 require('lsp.lang.cpp')
 require('lsp.lang.csharp')
 require("lsp.lang.html")
+require('lsp.lang.tsserver')
+
+-- null_ls
+require('lsp.null_ls')
+

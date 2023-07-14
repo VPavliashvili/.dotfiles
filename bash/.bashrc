@@ -172,6 +172,7 @@ eval "$(oh-my-posh init bash --config ~/.poshthemes/my-custom.omp.json)"
 alias luamake="$HOME/lua-language-server/3rd/luamake/luamake"
 export LUA_CPATH="/usr/share/lua/5.4/?.so;"
 export PATH="$HOME/bin:$PATH"
+export PATH="$HOME/.local/share/nvim/mason/bin:$PATH"
 export GPG_TTY=$(tty)
 export PULSE_SCRIPT=/etc/xrdp/pulse/default.pa
 export XDG_SCREENSHOTS_DIR=$HOME/Pictures/Screenshots

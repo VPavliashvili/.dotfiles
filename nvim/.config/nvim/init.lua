@@ -106,11 +106,13 @@ require("lazy").setup({
                 "neovim/nvim-lspconfig",
                 "folke/trouble.nvim",
                 "Hoffs/omnisharp-extended-lsp.nvim",
+                "b0o/schemastore.nvim",
+                "jose-elias-alvarez/null-ls.nvim",
             },
         },
         {
             "glepnir/lspsaga.nvim",
-            commit = "4f075452",
+            -- commit = "4f075452",
         },
         {
             'hrsh7th/cmp-nvim-lsp',

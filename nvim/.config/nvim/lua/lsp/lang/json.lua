@@ -6,10 +6,17 @@ local sources = {
 }
 lsp_base.setup_cmp(sources)
 
+local schemas = require 'schemastore'.json.schemas()
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 
 require 'lspconfig'.jsonls.setup {
     capabilities = capabilities,
-    on_attach = lsp_base.on_attach
+    on_attach = lsp_base.on_attach,
+    settings = {
+        json = {
+            schemas = schemas,
+            validate = { enable = true },
+        }
+    }
 }
