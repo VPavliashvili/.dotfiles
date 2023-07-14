@@ -104,13 +104,13 @@ require("lazy").setup({
             dependencies = {
                 "williamboman/mason-lspconfig.nvim",
                 "neovim/nvim-lspconfig",
-                {
-                    "glepnir/lspsaga.nvim",
-                    event = "BufRead",
-                    -- commit = "66bb067",
-                },
                 "folke/trouble.nvim",
+                "Hoffs/omnisharp-extended-lsp.nvim",
             },
+        },
+        {
+            "glepnir/lspsaga.nvim",
+            commit = "4f075452",
         },
         {
             'hrsh7th/cmp-nvim-lsp',
@@ -197,26 +197,3 @@ require("lazy").setup({
 
 require("lsp")
 require("debuggers")
-
--- ominisharp workaround 
--- see https://github.com/OmniSharp/omnisharp-roslyn/issues/2483
--- specifically https://github.com/OmniSharp/omnisharp-roslyn/issues/2483#issuecomment-1546721190
-vim.api.nvim_create_autocmd("LspAttach", {
-  callback = function(ev)
-    local client = vim.lsp.get_client_by_id(ev.data.client_id)
-    local function toSnakeCase(str)
-      return string.gsub(str, "%s*[- ]%s*", "_")
-    end
-
-    if client.name == 'omnisharp' then
-      local tokenModifiers = client.server_capabilities.semanticTokensProvider.legend.tokenModifiers
-      for i, v in ipairs(tokenModifiers) do
-        tokenModifiers[i] = toSnakeCase(v)
-      end
-      local tokenTypes = client.server_capabilities.semanticTokensProvider.legend.tokenTypes
-      for i, v in ipairs(tokenTypes) do
-        tokenTypes[i] = toSnakeCase(v)
-      end
-    end
-  end,
-})
