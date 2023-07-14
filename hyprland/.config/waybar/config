@@ -82,7 +82,7 @@
         "exec": "~/.dotfiles/hyprland/.config/waybar/scripts/disk/disk.py",
         "return-type": "json",
         "on-click": "~/.dotfiles/hyprland/.config/waybar/scripts/disk/next_diskinfo.py",
-        "on-click-middle": "~/.dotfiles/hyprland/.config/waybar/scripts/disk/launch_diskinfo.py",
+        "on-click-right": "~/.dotfiles/hyprland/.config/waybar/scripts/disk/launch_diskinfo.py",
         "interval": 1
     },
     "backlight": {
