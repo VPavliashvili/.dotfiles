@@ -49,6 +49,9 @@ require('lspsaga').setup({
             ['tyd'] = 'textDocument/typeDefinition',
         },
     },
+    outline = {
+        layout = 'float'
+    },
     -- finder do lsp request timeout
     -- if your project is big enough or your server very slow
     -- you may need to increase this value
@@ -135,7 +138,7 @@ require('lspsaga').setup({
 -- if there is no implement it will hide
 -- when you use action in finder like open vsplit then you can
 -- use <C-t> to jump back
-keymap("n", "gh", "<cmd>Lspsaga finder def+ref+imp<CR>", { silent = true })
+keymap("n", "gh", "<cmd>Lspsaga finder def+ref+imp+tyd<CR>", { silent = true })
 
 -- Code action
 keymap({ "n", "v" }, "<leader>ca", "<cmd>Lspsaga code_action<CR>", { silent = true })
@@ -172,3 +175,7 @@ keymap("n", "<leader>o", "<cmd>Lspsaga outline<CR>", { silent = true })
 
 -- Hover Doc
 keymap("n", "K", "<cmd>Lspsaga hover_doc<CR>", { silent = true })
+
+keymap("n","<leader>hi", "<cmd>Lspsaga incoming_calls<CR>", { silent = true })
+keymap("n","<leader>ho", "<cmd>Lspsaga outgoing_calls<CR>", { silent = true })
+

@@ -77,8 +77,16 @@ button:hover {
     background-color: @bg;
 
     border-radius: 10px;
-    padding-left: 10px;
-    padding-right: 10px;
+    /* padding-left: 10px; */
+    /* padding-right: 10px; */
+}
+
+#tray {
+    margin-right: 5px;
+}
+
+#custom-disk {
+    margin-left: 5px;
 }
 
 #window,
