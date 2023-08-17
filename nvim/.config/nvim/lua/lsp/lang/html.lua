@@ -1,6 +1,15 @@
+local lsp_base = require('lsp.base')
+
 --Enable (broadcasting) snippet capability for completion
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities.textDocument.completion.completionItem.snippetSupport = true
+
+local sources = {
+    { name = 'nvim_lsp' },
+    { name = 'luasnip' },
+}
+
+lsp_base.setup_cmp(sources)
 
 require 'lspconfig'.html.setup {
     capabilities = capabilities,
@@ -10,6 +19,6 @@ require 'lspconfig'.html.setup {
             css = true,
             javascript = true
         },
-        provideFormatter = true
     },
+    on_attach = lsp_base.on_attach,
 }

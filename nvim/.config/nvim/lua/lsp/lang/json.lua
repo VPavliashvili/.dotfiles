@@ -20,3 +20,6 @@ require 'lspconfig'.jsonls.setup {
         }
     }
 }
+
+-- minifying json
+vim.keymap.set('n', '<leader>jm', ":%!jq -c <CR>==", { silent = true })
