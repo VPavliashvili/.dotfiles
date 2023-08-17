@@ -9,6 +9,7 @@ require('lsp.lang.cpp')
 require('lsp.lang.csharp')
 require("lsp.lang.html")
 require('lsp.lang.tsserver')
+require('lsp.lang.gdscript')
 
 -- null_ls
 require('lsp.null_ls')
