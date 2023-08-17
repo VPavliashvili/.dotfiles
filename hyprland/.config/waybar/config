@@ -48,7 +48,7 @@
     },
     "clock": {
         "format": " {:%b/%d %R}",
-        "on-click": "~/bin/calendar.sh",
+        "on-click": "~/.config/waybar/scripts/calendar.sh",
     },
     "cpu": {
         "format": "{usage}% ",
