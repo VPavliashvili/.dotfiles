@@ -6,6 +6,7 @@ import (
 	"fmt"
 	"net"
 	"os"
+	"os/exec"
 	"strconv"
 	"strings"
 )
@@ -66,6 +67,29 @@ func main() {
 
 			conn.Write(resp)
 			fmt.Printf("pavucontrol received. Open status -> %v\n", string(resp))
+		case "mic":
+			resp, err := mic()
+			if err != nil {
+				fmt.Println(err)
+				continue
+			}
+			conn.Write(resp)
+			fmt.Printf("mic received. responded with -> %v\n", string(resp))
+		case "mic_mute":
+			_, err := mic()
+			if err != nil {
+				fmt.Println(err)
+				continue
+			}
+
+			resp, err := mute_mic()
+			if err != nil {
+				fmt.Println(err)
+				continue
+			}
+
+			conn.Write([]byte(resp))
+			fmt.Printf("mic_mute received. responded with -> %v\n", resp)
 		default:
 			msg := fmt.Sprintf("unhandled mesage received -> %v\n", msg.body)
 			fmt.Print(msg)
@@ -90,4 +114,51 @@ func getRequets(conn net.Conn, ch chan message) {
 		body: strings.TrimSuffix(body, "\n"),
 	}
 	ch <- msg
+}
+
+// when "mic" ipc request is incoming
+func mic() ([]byte, error) {
+	isMuted, volume := micInfo()
+	data := struct {
+		IsMuted bool   `json:"isMuted"`
+		Volume  string `json:"volume"`
+	}{
+		IsMuted: isMuted,
+		Volume:  volume,
+	}
+	resp, err := json.Marshal(data)
+	if err != nil {
+		return nil, err
+	}
+
+	return resp, nil
+}
+
+// when "mic_mute" ipc request is incoming
+func mute_mic() (string, error) {
+	isMuted, _ := micInfo()
+	name, err := defaultMicName()
+	if err != nil {
+		return "", err
+	}
+
+	if isMuted {
+		//unmute
+		cmd := exec.Command("pactl", "set-source-mute", name, "0")
+
+		_, err = cmd.Output()
+		if err != nil {
+			return "", err
+		}
+
+		return "unmuted successfully", nil
+	}
+
+	// mute
+	cmd := exec.Command("pactl", "set-source-mute", name, "1")
+	_, err = cmd.Output()
+	if err != nil {
+		return "", err
+	}
+	return "muted successfully", nil
 }

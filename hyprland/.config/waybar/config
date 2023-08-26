@@ -7,7 +7,7 @@
     // Choose the order of the modules
     "modules-left": ["custom/disk", "memory", "cpu"],
     "modules-center": ["wlr/workspaces"],
-    "modules-right": ["idle_inhibitor", "pulseaudio", "backlight", "battery", "hyprland/language", "clock", "tray"],
+    "modules-right": ["idle_inhibitor", "pulseaudio", "custom/mic", "backlight", "battery", "hyprland/language", "clock", "tray"],
     // Modules configuration
     "wlr/workspaces": {
         "disable-scroll": true,
@@ -60,10 +60,10 @@
         "interval": 5
     },
     "custom/disk": {
-        "exec": "~/.dotfiles/hyprland/.config/waybar/scripts/disk/disk.py",
+        "exec": "~/.config/waybar/scripts/disk/disk.py",
         "return-type": "json",
-        "on-click": "~/.dotfiles/hyprland/.config/waybar/scripts/disk/next_diskinfo.py",
-        "on-click-right": "~/.dotfiles/hyprland/.config/waybar/scripts/disk/launch_diskinfo.py",
+        "on-click": "~/.config/waybar/scripts/disk/next_diskinfo.py",
+        "on-click-right": "~/.config/waybar/scripts/disk/launch_diskinfo.py",
         "interval": 1
     },
     "backlight": {
@@ -100,6 +100,12 @@
             "car": "",
             "default": ["", "", ""]
         },
-        "on-click": "~/.dotfiles/hyprland/.config/waybar/scripts/audio/open_pulseaudio.py"
+        "on-click": "~/.config/waybar/scripts/audio/open_pulseaudio.py"
+    },
+    "custom/mic": {
+        "exec": "~/.config/waybar/scripts/audio/mic.py",
+        "return-type": "json",
+        "on-click": "~/.config/waybar/scripts/audio/change_state.py",
+        "interval": 1
     }
 }

@@ -70,6 +70,7 @@ button:hover {
 #pulseaudio,
 #tray,
 #custom-disk,
+#custom-mic,
 #language,
 #idle_inhibitor {
     padding: 0 10px;

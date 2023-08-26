@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"math"
 	"os/exec"
+	"strings"
 )
 
 // hyprland client aka hyprctl clients -j
@@ -54,7 +55,7 @@ func getHyprlandClients() []client {
 
 func pavuInfo() (bool, int) {
 
-    clients := getHyprlandClients()
+	clients := getHyprlandClients()
 	for _, client := range clients {
 		if client.Class == "pavucontrol" {
 			return true, client.Pid
@@ -62,4 +63,65 @@ func pavuInfo() (bool, int) {
 	}
 
 	return false, math.MinInt
+}
+
+type pactlMicInfo struct {
+	Name   string `json:"name"`
+	Mute   bool   `json:"mute"`
+	Volume struct {
+		Data struct {
+			Value         int    `json:"value"`
+			Value_percent string `json:"value_percent"`
+			Db            string `json:"db"`
+		} `json:"front-left"`
+	} `json:"volume"`
+}
+
+func micInfo() (isMuted bool, volume string) {
+    source_name, err := defaultMicName()
+    if err != nil {
+        fmt.Println(err)
+        return isMuted, volume
+    }
+	fmt.Printf("default source name -> %v\n", string(source_name))
+
+    cmd := exec.Command("pactl", "-f", "json", "list", "sources")
+	output, err := cmd.Output()
+	if err != nil {
+		fmt.Println(err)
+		return isMuted, volume
+	}
+
+	var sources []pactlMicInfo
+	err = json.Unmarshal(output, &sources)
+	if err != nil {
+		fmt.Println(err)
+		return isMuted, volume
+	}
+	fmt.Println("deserialized objects")
+	fmt.Println(sources)
+
+	for _, source := range sources {
+		fmt.Printf("%v <-> %v => %v\n", string(source_name), source.Name, string(source_name) == source.Name)
+		if source.Name == string(source_name) {
+			isMuted = source.Mute
+			volume = source.Volume.Data.Value_percent
+		}
+	}
+
+	fmt.Println("entered the last line")
+	return isMuted, volume
+}
+
+func defaultMicName() (string, error) {
+	cmd := exec.Command("pactl", "get-default-source")
+	source_name_buffer, err := cmd.Output()
+	if err != nil {
+		fmt.Println(err)
+		return "", err
+	}
+	source_name := string(source_name_buffer)
+	source_name = strings.TrimSuffix(source_name, "\n")
+
+	return source_name, nil
 }
