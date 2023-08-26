@@ -52,10 +52,12 @@
     },
     "cpu": {
         "format": "{usage}% ",
-        "tooltip": false
+        "tooltip": false,
+        "interval": 1
     },
     "memory": {
-        "format": "{used}/{total}G ({percentage}%) "
+        "format": "{used}/{total}G ({percentage}%) ",
+        "interval": 5
     },
     "custom/disk": {
         "exec": "~/.dotfiles/hyprland/.config/waybar/scripts/disk/disk.py",
@@ -75,6 +77,7 @@
             "warning": 30,
             "critical": 15
         },
+        "interval": 1,
         "format": "{capacity}% {icon}",
         "format-charging": "{capacity}% ",
         "format-plugged": "{capacity}% ",
@@ -84,13 +87,10 @@
         "format-icons": ["", "", "", "", ""]
     },
     "pulseaudio": {
-        // "scroll-step": 1, // %, can be a float
-        "format": "{volume}% {icon} {format_source}",
-        "format-bluetooth": "{volume}% {icon} {format_source}",
-        "format-bluetooth-muted": " {icon} {format_source}",
-        "format-muted": " {format_source}",
-        "format-source": "{volume}% ",
-        "format-source-muted": "",
+        "format": "{volume}% {icon}",
+        "format-bluetooth": "{volume}% {icon}",
+        "format-bluetooth-muted": " {icon}",
+        "format-muted": " ",
         "format-icons": {
             "headphone": "",
             "hands-free": "",
@@ -100,6 +100,6 @@
             "car": "",
             "default": ["", "", ""]
         },
-        "on-click": "pavucontrol"
+        "on-click": "~/.dotfiles/hyprland/.config/waybar/scripts/audio/open_pulseaudio.py"
     }
 }

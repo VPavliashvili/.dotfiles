@@ -2,6 +2,7 @@ package main
 
 import (
 	"bytes"
+	"encoding/json"
 	"fmt"
 	"net"
 	"os"
@@ -48,12 +49,29 @@ func main() {
 			resp := strconv.Itoa(counter)
 			conn.Write([]byte(resp))
 			fmt.Printf("counter returned -> %v\n", counter)
+		case "pavucontrol":
+			isOpen, pid := pavuInfo()
+			data := struct {
+				IsOpen bool `json:"isOpen"`
+				Pid    int  `json:"pid"`
+			}{
+				IsOpen: isOpen,
+				Pid:    pid,
+			}
+			resp, err := json.Marshal(data)
+			if err != nil {
+				fmt.Println(err)
+				continue
+			}
+
+			conn.Write(resp)
+			fmt.Printf("pavucontrol received. Open status -> %v\n", string(resp))
 		default:
-            msg := fmt.Sprintf("unhandled mesage received -> %v\n", msg.body)
+			msg := fmt.Sprintf("unhandled mesage received -> %v\n", msg.body)
 			fmt.Print(msg)
 			conn.Write([]byte(msg))
 		}
-        conn.Close()
+		conn.Close()
 	}
 }
 
