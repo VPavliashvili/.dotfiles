@@ -24,6 +24,7 @@ require("lazy").setup({
             dependencies = {
                 'nvim-lua/plenary.nvim',
                 'sindrets/diffview.nvim',
+                'FabijanZulj/blame.nvim',
             }
         },
         {
