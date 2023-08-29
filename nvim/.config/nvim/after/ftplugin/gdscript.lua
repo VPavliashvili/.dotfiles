@@ -1,6 +1,4 @@
-vim.cmd [[
-    set autoindent
-    set noexpandtab
-    set tabstop=4
-    set shiftwidth=4
-]]
+vim.opt.tabstop = 4
+vim.opt.shiftwidth = 4
+vim.opt.noexpandtab = true
+vim.opt.autoindent = true

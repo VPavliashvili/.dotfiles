@@ -12,6 +12,8 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require("preferences")
+local filetypes = require("filetypes")
+vim.filetype.add(filetypes)
 
 require("lazy").setup({
         'lukas-reineke/indent-blankline.nvim',
@@ -93,6 +95,7 @@ require("lazy").setup({
                 require('nvim-treesitter.install').update({ with_sync = true })
             end,
         },
+        { "luckasRanarison/tree-sitter-hypr", ft = "hypr" },
         {
             'kyazdani42/nvim-tree.lua',
             dependencies = {
