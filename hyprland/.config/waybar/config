@@ -6,10 +6,10 @@
     "spacing": 5, // Gaps between modules (4px)
     // Choose the order of the modules
     "modules-left": ["custom/disk", "memory", "cpu"],
-    "modules-center": ["wlr/workspaces"],
+    "modules-center": ["hyprland/workspaces"],
     "modules-right": ["idle_inhibitor", "pulseaudio", "custom/mic", "backlight", "battery", "hyprland/language", "clock", "tray"],
     // Modules configuration
-    "wlr/workspaces": {
+    "hyprland/workspaces": {
         "disable-scroll": true,
         "all-outputs": true,
         "format": "{icon}",
