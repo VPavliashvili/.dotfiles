@@ -16,7 +16,12 @@ local filetypes = require("filetypes")
 vim.filetype.add(filetypes)
 
 require("lazy").setup({
-        'lukas-reineke/indent-blankline.nvim',
+        {
+            'lukas-reineke/indent-blankline.nvim',
+            config = function()
+                require("ibl").setup()
+            end
+        },
         'norcalli/nvim-colorizer.lua',
         'yamatsum/nvim-cursorline',
         'nvim-lualine/lualine.nvim',

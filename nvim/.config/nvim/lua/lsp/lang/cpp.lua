@@ -10,14 +10,26 @@ lsp_base.setup_cmp(sources)
 
 local lspconfig = require "lspconfig"
 
-lspconfig.ccls.setup {
-    init_options = {
-        compilationDatabaseDirectory = "build",
-        index = {
-            threads = 0,
-        },
-        clang = {
-            excludeArgs = { "-frounding-math" },
-        },
+-- lspconfig.ccls.setup {
+--     init_options = {
+--         compilationDatabaseDirectory = "build",
+--         index = {
+--             threads = 0,
+--         },
+--         clang = {
+--             excludeArgs = { "-frounding-math" },
+--         },
+--     }
+-- }
+
+lspconfig.clangd.setup {
+    on_attach = function(client, bufnr)
+        client.server_capabilities.signatureHelpProvided = false,
+        lsp_base.on_attach(client, bufnr)
+    end,
+    capabilities = lsp_base.capabilities,
+    cmd = {
+        "clangd",
+        "--offset-encoding=utf-16",
     }
 }

@@ -5,5 +5,6 @@ null_ls.setup({
             diagnostics_format = '[eslint] #{m}\n(#{c})'
         }),
         null_ls.builtins.formatting.prettierd,
+        null_ls.builtins.formatting.clang_format,
     }
 })
