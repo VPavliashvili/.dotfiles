@@ -176,4 +176,5 @@ export PATH="$HOME/.local/share/nvim/mason/bin:$PATH"
 export GPG_TTY=$(tty)
 export PULSE_SCRIPT=/etc/xrdp/pulse/default.pa
 export XDG_SCREENSHOTS_DIR=$HOME/Pictures/Screenshots
+export GRIM_DEFAULT_DIR=$HOME/Pictures/Screenshots
 export GRIMBLAST_EDITOR=pinta
