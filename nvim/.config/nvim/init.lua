@@ -16,6 +16,7 @@ local filetypes = require("filetypes")
 vim.filetype.add(filetypes)
 
 require("lazy").setup({
+        'kevinhwang91/rnvimr',
         {
             'lukas-reineke/indent-blankline.nvim',
             config = function()

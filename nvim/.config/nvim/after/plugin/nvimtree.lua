@@ -1,73 +1,73 @@
-local HEIGHT_RATIO = 0.8 -- You can change this
-local WIDTH_RATIO = 0.25 -- You can change this too
+-- local HEIGHT_RATIO = 0.8 -- You can change this
+-- local WIDTH_RATIO = 0.25 -- You can change this too
 
-require('nvim-tree').setup({
-    view = {
-        relativenumber = true,
-        float = {
-            enable = true,
-            open_win_config = function()
-                local screen_w = vim.opt.columns:get()
-                local screen_h = vim.opt.lines:get() - vim.opt.cmdheight:get()
-                local window_w = screen_w * WIDTH_RATIO
-                local window_h = screen_h * HEIGHT_RATIO
-                local window_w_int = math.floor(window_w)
-                local window_h_int = math.floor(window_h)
-                local center_x = (screen_w - window_w) / 2
-                local center_y = ((vim.opt.lines:get() - window_h) / 2)
-                    - vim.opt.cmdheight:get()
-                return {
-                    border = 'rounded',
-                    relative = 'editor',
-                    row = center_y,
-                    col = center_x,
-                    width = window_w_int,
-                    height = window_h_int,
-                }
-            end,
-        },
-        width = function()
-            return math.floor(vim.opt.columns:get() * WIDTH_RATIO)
-        end,
-    },
-})
+-- require('nvim-tree').setup({
+--     view = {
+--         relativenumber = true,
+--         float = {
+--             enable = true,
+--             open_win_config = function()
+--                 local screen_w = vim.opt.columns:get()
+--                 local screen_h = vim.opt.lines:get() - vim.opt.cmdheight:get()
+--                 local window_w = screen_w * WIDTH_RATIO
+--                 local window_h = screen_h * HEIGHT_RATIO
+--                 local window_w_int = math.floor(window_w)
+--                 local window_h_int = math.floor(window_h)
+--                 local center_x = (screen_w - window_w) / 2
+--                 local center_y = ((vim.opt.lines:get() - window_h) / 2)
+--                     - vim.opt.cmdheight:get()
+--                 return {
+--                     border = 'rounded',
+--                     relative = 'editor',
+--                     row = center_y,
+--                     col = center_x,
+--                     width = window_w_int,
+--                     height = window_h_int,
+--                 }
+--             end,
+--         },
+--         width = function()
+--             return math.floor(vim.opt.columns:get() * WIDTH_RATIO)
+--         end,
+--     },
+-- })
 
-local api = require("nvim-tree.api")
+-- local api = require("nvim-tree.api")
 
-local function open_nvim_tree(data)
-    -- buffer is a real file on the disk
-    local real_file = vim.fn.filereadable(data.file) == 1
+-- local function open_nvim_tree(data)
+--     -- buffer is a real file on the disk
+--     local real_file = vim.fn.filereadable(data.file) == 1
+--
+--     -- buffer is a [No Name]
+--     local no_name = data.file == "" and vim.bo[data.buf].buftype == ""
+--
+--     -- buffer is a directory
+--     local directory = vim.fn.isdirectory(data.file) == 1
+--
+--     if real_file then
+--         return
+--     elseif no_name then
+--         -- open the tree, find the file but don't focus it
+--         api.tree.toggle({ focus = true, find_file = true, })
+--     elseif directory then
+--         -- create a new, empty buffer
+--         vim.cmd.enew()
+--         -- wipe the directory buffer
+--         vim.cmd.bw(data.buf)
+--         -- change to the directory
+--         vim.cmd.cd(data.file)
+--         -- open the tree
+--         api.tree.toggle({ focus = true, find_file = true, })
+--     end
+-- end
 
-    -- buffer is a [No Name]
-    local no_name = data.file == "" and vim.bo[data.buf].buftype == ""
+-- local function openfile(node)
+--     api.node.open.edit(node)
+--     api.tree.focus()
+-- end
 
-    -- buffer is a directory
-    local directory = vim.fn.isdirectory(data.file) == 1
+-- vim.api.nvim_create_autocmd({ "VimEnter" }, { callback = open_nvim_tree })
 
-    if real_file then
-        return
-    elseif no_name then
-        -- open the tree, find the file but don't focus it
-        api.tree.toggle({ focus = true, find_file = true, })
-    elseif directory then
-        -- create a new, empty buffer
-        vim.cmd.enew()
-        -- wipe the directory buffer
-        vim.cmd.bw(data.buf)
-        -- change to the directory
-        vim.cmd.cd(data.file)
-        -- open the tree
-        api.tree.toggle({ focus = true, find_file = true, })
-    end
-end
-
-local function openfile(node)
-    api.node.open.edit(node)
-    api.tree.focus()
-end
-
-vim.api.nvim_create_autocmd({ "VimEnter" }, { callback = open_nvim_tree })
-
-vim.keymap.set('n', '<leader>ft', ':NvimTreeFocus<CR>')
-vim.keymap.set('n', '<leader>rt', ':NvimTreeRefresh<CR>')
-vim.keymap.set('n', '<leader><cr>', openfile)
+-- vim.keymap.set('n', '<leader>ft', ':NvimTreeFocus<CR>')
+-- vim.keymap.set('n', '<leader>rt', ':NvimTreeRefresh<CR>')
+-- vim.keymap.set('n', '<leader><cr>', openfile)
