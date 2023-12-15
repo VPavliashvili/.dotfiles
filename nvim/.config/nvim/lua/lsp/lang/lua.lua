@@ -12,6 +12,8 @@ local sources = {
 }
 lsp_base.setup_cmp(sources)
 
+require("neodev").setup({})
+
 require 'lspconfig'.lua_ls.setup {
     settings = {
         Lua = {

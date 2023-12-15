@@ -178,3 +178,5 @@ export PULSE_SCRIPT=/etc/xrdp/pulse/default.pa
 export XDG_SCREENSHOTS_DIR=$HOME/Pictures/Screenshots
 export GRIM_DEFAULT_DIR=$HOME/Pictures/Screenshots
 export GRIMBLAST_EDITOR=pinta
+
+set -o vi

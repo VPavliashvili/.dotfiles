@@ -30,6 +30,10 @@ require("lazy").setup({
         'norcalli/nvim-colorizer.lua',
         'yamatsum/nvim-cursorline',
         'nvim-lualine/lualine.nvim',
+        {
+            "folke/neodev.nvim",
+            opts = {}
+        },
         "numToStr/FTerm.nvim",
         {
             'lewis6991/gitsigns.nvim',
