@@ -6,5 +6,5 @@ vim.cmd([[
 
 -- image preview does not work on hidpi since 2x scaling brakes the offset
 
-vim.keymap.set('n', '<leader>ft', ':RnvimrToggle<CR>')
-vim.keymap.set('n', '<leader>rs', ':RnvimrResize<CR>')
+-- vim.keymap.set('n', '<leader>ft', ':RnvimrToggle<CR>')
+-- vim.keymap.set('n', '<leader>rs', ':RnvimrResize<CR>')
