@@ -10,19 +10,6 @@ require('gitsigns').setup {
     numhl      = false, -- Toggle with `:Gitsigns toggle_numhl`
     linehl     = false, -- Toggle with `:Gitsigns toggle_linehl`
     word_diff  = false, -- Toggle with `:Gitsigns toggle_word_diff`
-    hooks      = {
-        -- this hooks are for nvim.ufo overlap
-        -- which triggers all folds to automatically close after
-        -- exiting DiffviewOpen or DiffviewFileHistory
-        diff_buf_read = function(bufnr)
-            vim.opt_local.foldlevel = 99
-            vim.opt_local.foldenable = false
-        end,
-        diff_buf_win_enter = function(bufnr)
-            vim.opt_local.foldlevel = 99
-            vim.opt_local.foldenable = false
-        end
-    }
 }
 
 local function contains(tab, val)

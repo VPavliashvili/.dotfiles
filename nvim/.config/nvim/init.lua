@@ -12,6 +12,7 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require("preferences")
+require("utils")
 local filetypes = require("filetypes")
 vim.filetype.add(filetypes)
 
