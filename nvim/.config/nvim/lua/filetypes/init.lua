@@ -1,5 +1,2 @@
-return {
-    pattern = {
-        ["~/.dotfiles/hyprland/.config/hypr/.*"] = "hypr"
-    },
-}
+require("filetypes.hypr")
+require("filetypes.defoldscript")

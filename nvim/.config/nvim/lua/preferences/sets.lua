@@ -12,6 +12,7 @@ vim.opt.writebackup = false
 vim.opt.swapfile = false
 vim.opt.mouse = ""
 vim.opt.termguicolors = true
+vim.opt.splitright = true
 
 vim.opt.smartindent = true
 vim.opt.incsearch = true

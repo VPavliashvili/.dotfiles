@@ -1,4 +1,4 @@
--- stolen from tj(not all of it)
+-- mostly stolen from tj
 
 local function split(pString, pPattern)
     local Table = {} -- NOTE: use {n = 0} in Lua-5.0
@@ -28,7 +28,7 @@ if ok then
     reloader = plenary_reload.reload_module
 end
 
-RELOAD = function(...)
+ReloadPlugin = function(...)
     local ok, plenary_reload = pcall(require, "plenary.reload")
     if ok then
         reloader = plenary_reload.reload_module
@@ -38,7 +38,7 @@ RELOAD = function(...)
 end
 
 R = function(name)
-    RELOAD(name)
+    ReloadPlugin(name)
     return require(name)
 end
 

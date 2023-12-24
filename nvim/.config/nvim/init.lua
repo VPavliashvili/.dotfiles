@@ -13,8 +13,7 @@ vim.opt.rtp:prepend(lazypath)
 
 require("preferences")
 require("utils")
-local filetypes = require("filetypes")
-vim.filetype.add(filetypes)
+require("filetypes")
 
 require("lazy").setup({
         'kevinhwang91/rnvimr',
