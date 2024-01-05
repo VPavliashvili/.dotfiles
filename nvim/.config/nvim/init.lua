@@ -109,7 +109,10 @@ require("lazy").setup({
                 require('nvim-treesitter.install').update({ with_sync = true })
             end,
         },
-        { "luckasRanarison/tree-sitter-hypr", ft = "hypr" },
+        {
+            -- "luckasRanarison/tree-sitter-hypr", ft = "hypr"
+            "luckasRanarison/tree-sitter-hyprlang"
+        },
         {
             'kyazdani42/nvim-tree.lua',
             dependencies = {
@@ -125,7 +128,7 @@ require("lazy").setup({
                 "folke/trouble.nvim",
                 "Hoffs/omnisharp-extended-lsp.nvim",
                 "b0o/schemastore.nvim",
-                "jose-elias-alvarez/null-ls.nvim",
+                "nvimtools/none-ls.nvim",
             },
         },
         {

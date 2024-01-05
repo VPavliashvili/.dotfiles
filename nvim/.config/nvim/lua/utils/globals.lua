@@ -55,3 +55,10 @@ DumpPrettyPrint = function(v)
     vim.api.nvim_command('enew')
     vim.api.nvim_put(output, '', true, true)
 end
+
+-- useful when pasting from windows to linux
+function FmtNewlines()
+  local save = vim.fn.winsaveview()
+  vim.cmd("keeppatterns %s/\\s\\+$\\|\\r$//e")
+  vim.fn.winrestview(save)
+end

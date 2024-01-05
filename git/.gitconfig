@@ -1,7 +1,7 @@
 [user]
     name = VPavliashvili
     email = v_pavliashvili@yahoo.com
-	signingkey = ABACBFCA3262D8B4128FC5E37CCB2FDAD6A99597
+	signingkey = FE259FBDCEEB4D27!
 
 [alias]
     #log graph with short date
@@ -12,3 +12,5 @@
 	defaultBranch = master
 [credential]
 	credentialStore = gpg
+[commit]
+	gpgsign = true
