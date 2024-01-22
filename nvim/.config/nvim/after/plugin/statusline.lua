@@ -1,8 +1,13 @@
 local current_line = function()
     local max = tostring(vim.fn.line("$"))
     local cur = tostring(vim.fn.line("."))
-    return cur .. "/" .. max
+
+    local col = vim.api.nvim_win_get_cursor(0)[2]
+    col = col + 1
+
+    return cur .. "/" .. max .. " | " .. col
 end
+
 
 local current_time = function()
     return os.date(" %H:%M", os.time())
