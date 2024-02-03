@@ -5,7 +5,7 @@
     // "width": 1280, // Waybar width
     "spacing": 5, // Gaps between modules (4px)
     // Choose the order of the modules
-    "modules-left": ["custom/disk", "memory", "cpu"],
+    "modules-left": ["hyprland/submap", "custom/disk", "memory", "cpu"],
     "modules-center": ["hyprland/workspaces"],
     "modules-right": ["idle_inhibitor", "pulseaudio", "custom/mic", "backlight", "battery", "hyprland/language", "clock", "tray"],
     // Modules configuration
@@ -107,5 +107,9 @@
         "return-type": "json",
         "on-click": "~/.config/waybar/scripts/audio/change_state.py",
         "interval": 1
+    },
+    "hyprland/submap": {
+      "format": "✌️ {}",
+      "tooltip": false
     }
 }

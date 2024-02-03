@@ -20,7 +20,7 @@ echo $gui
 echo $vm_name
 echo $wn
 
-sudo virsh --connect qemu:///system start $vm_name
+virsh --connect qemu:///system start $vm_name
 
 if [ "$gui" = true ] ; then
     # virt-manager --connect qemu:///system --show-domain-console $vm_name
