@@ -16,207 +16,213 @@ require("utils")
 require("filetypes")
 
 require("lazy").setup({
-        'kevinhwang91/rnvimr',
-        {
-            'lukas-reineke/indent-blankline.nvim',
-            config = function()
-                require("ibl").setup {
-                    scope = {
-                        enabled = false,
-                    },
-                }
-            end
-        },
-        'norcalli/nvim-colorizer.lua',
-        'yamatsum/nvim-cursorline',
-        'nvim-lualine/lualine.nvim',
-        {
-            "folke/neodev.nvim",
-            opts = {}
-        },
-        "numToStr/FTerm.nvim",
-        {
-            'lewis6991/gitsigns.nvim',
-            dependencies = {
-                'nvim-lua/plenary.nvim',
-                'sindrets/diffview.nvim',
-                'FabijanZulj/blame.nvim',
-            }
-        },
-        {
-            "folke/which-key.nvim",
-            config = function()
-                vim.o.timeout = true
-                vim.o.timeoutlen = 300
-                require("which-key").setup({
-                    -- your configuration comes here
-                    -- or leave it empty to use the default settings
-                    -- refer to the configuration section below
-                })
-            end,
-        },
-        {
-            "nvim-neotest/neotest",
-            dependencies = {
-                "nvim-lua/plenary.nvim",
-                "nvim-treesitter/nvim-treesitter",
-                "antoinemadec/FixCursorHold.nvim",
-                "nvim-neotest/neotest-go",
-            },
-            config = function()
-                -- get neotest namespace (api call creates or returns namespace)
-                local neotest_ns = vim.api.nvim_create_namespace("neotest")
-                vim.diagnostic.config({
-                    virtual_text = {
-                        format = function(diagnostic)
-                            local message =
-                                diagnostic.message:gsub("\n", " "):gsub("\t", " "):gsub("%s+", " "):gsub("^%s+", "")
-                            return message
-                        end,
-                    },
-                }, neotest_ns)
-                require("neotest").setup({
-                    -- your neotest config here
-                    adapters = {
-                        require("neotest-go"),
-                    },
-                })
-            end
-        },
-        {
-            "chrishrb/gx.nvim",
-            event = { "BufEnter" },
-            dependencies = { "nvim-lua/plenary.nvim" },
-            config = true,
-        },
-        {
-            'numToStr/Comment.nvim',
-            config = function()
-                require('Comment').setup()
-            end,
-        },
-        {
-            "windwp/nvim-autopairs",
-            config = function() require("nvim-autopairs").setup {} end
-        },
-        {
-            "olimorris/onedarkpro.nvim",
-            priority = 1000 -- Ensure it loads first
-        },
-        {
-            'nvim-treesitter/nvim-treesitter',
-            build = function()
-                require('nvim-treesitter.install').update({ with_sync = true })
-            end,
-        },
-        {
-            -- "luckasRanarison/tree-sitter-hypr", ft = "hypr"
-            "luckasRanarison/tree-sitter-hyprlang"
-        },
-        {
-            'kyazdani42/nvim-tree.lua',
-            dependencies = {
-                'kyazdani42/nvim-web-devicons', -- optional, for file icons
-            },
-            tag = 'nightly'                     -- optional, updated every week. (see issue #1193)
-        },
-        {
-            "williamboman/mason.nvim",
-            dependencies = {
-                "williamboman/mason-lspconfig.nvim",
-                "neovim/nvim-lspconfig",
-                "folke/trouble.nvim",
-                "Hoffs/omnisharp-extended-lsp.nvim",
-                "b0o/schemastore.nvim",
-                "nvimtools/none-ls.nvim",
-            },
-        },
-        {
-            "glepnir/lspsaga.nvim",
-            -- commit = "4f075452",
-        },
-        {
-            'hrsh7th/cmp-nvim-lsp',
-            dependencies = {
-                'hrsh7th/cmp-buffer',
-                'hrsh7th/cmp-path',
-                'hrsh7th/cmp-cmdline',
-                'hrsh7th/nvim-cmp',
-                {
-                    'L3MON4D3/LuaSnip',
-                    dependencies = {
-                        "rafamadriz/friendly-snippets",
-                    },
-                    config = function()
-                        require("luasnip.loaders.from_vscode").lazy_load()
-                    end
+    "kevinhwang91/rnvimr",
+    {
+        "lukas-reineke/indent-blankline.nvim",
+        config = function()
+            require("ibl").setup({
+                scope = {
+                    enabled = false,
                 },
-                'saadparwaiz1/cmp_luasnip',
-                'hrsh7th/cmp-calc',
-                "amarakon/nvim-cmp-fonts",
-                "hrsh7th/cmp-nvim-lua",
-                'onsails/lspkind.nvim',
-            },
-        },
-        {
-            'mfussenegger/nvim-dap',
-            'rcarriga/nvim-dap-ui',
-            'theHamsta/nvim-dap-virtual-text',
-            'jbyuki/one-small-step-for-vimkind',
-            'leoluz/nvim-dap-go',
-            'nvim-telescope/telescope-dap.nvim',
-        },
-        {
-            'nvim-telescope/telescope.nvim',
-            dependencies = {
-                'nvim-lua/plenary.nvim',
-                'nvim-telescope/telescope-file-browser.nvim',
-                'nvim-lua/popup.nvim',
-            }
-        },
-        {
-            {
-                'akinsho/bufferline.nvim',
-                dependencies = {
-                    'VPavliashvili/close-buffers.nvim',
-                }
-            },
-        },
-        {
-            'kevinhwang91/nvim-ufo',
-            dependencies = {
-                'kevinhwang91/promise-async',
-                {
-                    "luukvbaal/statuscol.nvim",
-                    config = function()
-                        local builtin = require("statuscol.builtin")
-                        require("statuscol").setup({
-                            -- foldfunc = "builtin",
-                            -- setopt = true,
-                            relculright = true,
-                            segments = {
-                                { text = { builtin.foldfunc } },
-                                { text = { "%s" } },
-                                { text = { builtin.lnumfunc, " " } },
-                            },
-                        })
-                    end,
-                },
-            }
-        }
+            })
+        end,
     },
     {
-        ui = {
-            border = "double",
+        "norcalli/nvim-colorizer.lua",
+        dependencies = {
+            "NTBBloodbath/color-converter.nvim",
         },
-        checker = {
-            -- automatically check for plugin updates
-            enabled = true,
-            concurrency = nil, ---@type number? set to 1 to check for updates very slowly
-            notify = true,     -- get a notification when new updates are found
-            frequency = 86400, -- check for updates every given seconds amount
+    },
+    "yamatsum/nvim-cursorline",
+    "nvim-lualine/lualine.nvim",
+    {
+        "folke/neodev.nvim",
+        opts = {},
+    },
+    "numToStr/FTerm.nvim",
+    {
+        "lewis6991/gitsigns.nvim",
+        dependencies = {
+            "nvim-lua/plenary.nvim",
+            "sindrets/diffview.nvim",
+            "FabijanZulj/blame.nvim",
         },
-    })
+    },
+    {
+        "folke/which-key.nvim",
+        config = function()
+            vim.o.timeout = true
+            vim.o.timeoutlen = 300
+            require("which-key").setup({
+                -- your configuration comes here
+                -- or leave it empty to use the default settings
+                -- refer to the configuration section below
+            })
+        end,
+    },
+    {
+        "nvim-neotest/neotest",
+        dependencies = {
+            "nvim-lua/plenary.nvim",
+            "nvim-treesitter/nvim-treesitter",
+            "antoinemadec/FixCursorHold.nvim",
+            "nvim-neotest/neotest-go",
+        },
+        config = function()
+            -- get neotest namespace (api call creates or returns namespace)
+            local neotest_ns = vim.api.nvim_create_namespace("neotest")
+            vim.diagnostic.config({
+                virtual_text = {
+                    format = function(diagnostic)
+                        local message =
+                            diagnostic.message:gsub("\n", " "):gsub("\t", " "):gsub("%s+", " "):gsub("^%s+", "")
+                        return message
+                    end,
+                },
+            }, neotest_ns)
+            require("neotest").setup({
+                -- your neotest config here
+                adapters = {
+                    require("neotest-go"),
+                },
+            })
+        end,
+    },
+    {
+        "chrishrb/gx.nvim",
+        event = { "BufEnter" },
+        dependencies = { "nvim-lua/plenary.nvim" },
+        config = true,
+    },
+    {
+        "numToStr/Comment.nvim",
+        config = function()
+            require("Comment").setup()
+        end,
+    },
+    {
+        "windwp/nvim-autopairs",
+        config = function()
+            require("nvim-autopairs").setup({})
+        end,
+    },
+    {
+        "olimorris/onedarkpro.nvim",
+        priority = 1000, -- Ensure it loads first
+    },
+    {
+        "nvim-treesitter/nvim-treesitter",
+        build = function()
+            require("nvim-treesitter.install").update({ with_sync = true })
+        end,
+    },
+    {
+        -- "luckasRanarison/tree-sitter-hypr", ft = "hypr"
+        "luckasRanarison/tree-sitter-hyprlang",
+    },
+    {
+        "kyazdani42/nvim-tree.lua",
+        dependencies = {
+            "kyazdani42/nvim-web-devicons", -- optional, for file icons
+        },
+        tag = "nightly",           -- optional, updated every week. (see issue #1193)
+    },
+    {
+        "williamboman/mason.nvim",
+        dependencies = {
+            "williamboman/mason-lspconfig.nvim",
+            "neovim/nvim-lspconfig",
+            "folke/trouble.nvim",
+            "Hoffs/omnisharp-extended-lsp.nvim",
+            "b0o/schemastore.nvim",
+            "nvimtools/none-ls.nvim",
+        },
+    },
+    {
+        "glepnir/lspsaga.nvim",
+        -- commit = "4f075452",
+    },
+    {
+        "hrsh7th/cmp-nvim-lsp",
+        dependencies = {
+            "hrsh7th/cmp-buffer",
+            "hrsh7th/cmp-path",
+            "hrsh7th/cmp-cmdline",
+            "hrsh7th/nvim-cmp",
+            {
+                "L3MON4D3/LuaSnip",
+                dependencies = {
+                    "rafamadriz/friendly-snippets",
+                },
+                config = function()
+                    require("luasnip.loaders.from_vscode").lazy_load()
+                end,
+            },
+            "saadparwaiz1/cmp_luasnip",
+            "hrsh7th/cmp-calc",
+            "amarakon/nvim-cmp-fonts",
+            "hrsh7th/cmp-nvim-lua",
+            "onsails/lspkind.nvim",
+        },
+    },
+    {
+        "mfussenegger/nvim-dap",
+        "rcarriga/nvim-dap-ui",
+        "theHamsta/nvim-dap-virtual-text",
+        "jbyuki/one-small-step-for-vimkind",
+        "leoluz/nvim-dap-go",
+        "nvim-telescope/telescope-dap.nvim",
+    },
+    {
+        "nvim-telescope/telescope.nvim",
+        dependencies = {
+            "nvim-lua/plenary.nvim",
+            "nvim-telescope/telescope-file-browser.nvim",
+            "nvim-lua/popup.nvim",
+        },
+    },
+    {
+        {
+            "akinsho/bufferline.nvim",
+            dependencies = {
+                "VPavliashvili/close-buffers.nvim",
+            },
+        },
+    },
+    {
+        "kevinhwang91/nvim-ufo",
+        dependencies = {
+            "kevinhwang91/promise-async",
+            {
+                "luukvbaal/statuscol.nvim",
+                config = function()
+                    local builtin = require("statuscol.builtin")
+                    require("statuscol").setup({
+                        -- foldfunc = "builtin",
+                        -- setopt = true,
+                        relculright = true,
+                        segments = {
+                            { text = { builtin.foldfunc } },
+                            { text = { "%s" } },
+                            { text = { builtin.lnumfunc, " " } },
+                        },
+                    })
+                end,
+            },
+        },
+    },
+}, {
+    ui = {
+        border = "double",
+    },
+    checker = {
+        -- automatically check for plugin updates
+        enabled = true,
+        concurrency = nil, ---@type number? set to 1 to check for updates very slowly
+        notify = true, -- get a notification when new updates are found
+        frequency = 86400, -- check for updates every given seconds amount
+    },
+})
 
 require("lsp")
 require("debuggers")

@@ -1,115 +1,122 @@
- {
-    "layer": "top", // Waybar at top layer
-    "position": "bottom", // Waybar position (top|bottom|left|right)
-    "height": 20, // Waybar height (to be removed for auto height)
-    // "width": 1280, // Waybar width
-    "spacing": 5, // Gaps between modules (4px)
-    // Choose the order of the modules
-    "modules-left": ["hyprland/submap", "custom/disk", "memory", "cpu"],
-    "modules-center": ["hyprland/workspaces"],
-    "modules-right": ["idle_inhibitor", "pulseaudio", "custom/mic", "backlight", "battery", "hyprland/language", "clock", "tray"],
-    // Modules configuration
-    "hyprland/workspaces": {
-        "disable-scroll": true,
-        "all-outputs": true,
-        "format": "{icon}",
-        "sort-by-number": true,
-        "format-icons": {
-            "1": "",
-            "2": "",
-            "3": "",
-            "4": "",
-            "5": "",
-            "6": "",
-            "7": "",
-            "8": "",
-            "9": "",
-            "10": ""
-           // "urgent": "",
-           // "focused": "",
-           // "default": ""
+ [
+     {
+        "layer": "top", // Waybar at top layer
+        "position": "bottom", // Waybar position (top|bottom|left|right)
+        "height": 20,
+        // "width": 1280, // Waybar width
+        "spacing": 5, // Gaps between modules (4px)
+        // Choose the order of the modules
+        "modules-left": ["hyprland/submap", "custom/disk", "memory", "cpu"],
+        "modules-center": ["hyprland/workspaces"],
+        "modules-right": ["idle_inhibitor", "pulseaudio", "custom/mic", "backlight", "battery", "hyprland/language", "clock", "tray"],
+        // Modules configuration
+        "hyprland/workspaces": {
+            "disable-scroll": true,
+            "all-outputs": true,
+            "format": "{icon}",
+            "sort-by-number": true,
+            "format-icons": {
+                "1": "",
+                "2": "",
+                "3": "",
+                "4": "",
+                "5": "",
+                "6": "",
+                "7": "",
+                "8": "",
+                "9": "",
+                "10": ""
+               // "urgent": "",
+               // "focused": "",
+               // "default": ""
+            },
+            "on-click": "activate"
         },
-        "on-click": "activate"
-    },
-    "hyprland/language": {
-        "format-en": "Eng ",
-        "format-ka": "Geo ",
-    },
-    "idle_inhibitor": {
-        "format": "{icon}",
-        "format-icons": {
-            "activated": "",
-            "deactivated": ""
+        "hyprland/language": {
+            "format-en": "Eng ",
+            "format-ka": "Geo ",
+        },
+        "idle_inhibitor": {
+            "format": "{icon}",
+            "format-icons": {
+                "activated": "",
+                "deactivated": ""
+            }
+        },
+        "tray": {
+            // "icon-size": 21,
+            "spacing": 10
+        },
+        "clock": {
+            "format": " {:%b/%d %R}",
+            "on-click": "~/.config/waybar/scripts/calendar.sh",
+        },
+        "cpu": {
+            "format": "{usage}% ",
+            "tooltip": false,
+            "interval": 1
+        },
+        "memory": {
+            "format": "{used}/{total}G ({percentage}%) ",
+            "interval": 5
+        },
+        "custom/disk": {
+            "exec": "~/.config/waybar/scripts/disk/disk.py",
+            "return-type": "json",
+            "on-click": "~/.config/waybar/scripts/disk/next_diskinfo.py",
+            "on-click-right": "~/.config/waybar/scripts/disk/launch_diskinfo.py",
+            "interval": 1
+        },
+        "backlight": {
+            // "device": "acpi_video1",
+            "format": "{percent}% {icon}",
+            "format-icons": ["", "", "", "", "", "", "", "", ""]
+        },
+        "battery": {
+            "states": {
+                // "good": 95,
+                "warning": 30,
+                "critical": 15
+            },
+            "interval": 1,
+            "format": "{capacity}% {icon}",
+            "format-charging": "{capacity}% ",
+            "format-plugged": "{capacity}% ",
+            "format-alt": "{time} {icon}",
+            // "format-good": "", // An empty format will hide the module
+            // "format-full": "",
+            "format-icons": ["", "", "", "", ""]
+        },
+        "pulseaudio": {
+            "format": "{volume}% {icon}",
+            "format-bluetooth": "{volume}% {icon}",
+            "format-bluetooth-muted": " {icon}",
+            "format-muted": " ",
+            "format-icons": {
+                "headphone": "",
+                "hands-free": "",
+                "headset": "",
+                "phone": "",
+                "portable": "",
+                "car": "",
+                "default": ["", "", ""]
+            },
+            "on-click": "~/.config/waybar/scripts/audio/open_pulseaudio.py"
+        },
+        "custom/mic": {
+            "exec": "~/.config/waybar/scripts/audio/mic.py",
+            "return-type": "json",
+            "on-click": "~/.config/waybar/scripts/audio/change_state.py",
+            "interval": 1
+        },
+        "hyprland/submap": {
+          "format": "✌️ {}",
+          "tooltip": false
         }
     },
-    "tray": {
-        // "icon-size": 21,
-        "spacing": 10
-    },
-    "clock": {
-        "format": " {:%b/%d %R}",
-        "on-click": "~/.config/waybar/scripts/calendar.sh",
-    },
-    "cpu": {
-        "format": "{usage}% ",
-        "tooltip": false,
-        "interval": 1
-    },
-    "memory": {
-        "format": "{used}/{total}G ({percentage}%) ",
-        "interval": 5
-    },
-    "custom/disk": {
-        "exec": "~/.config/waybar/scripts/disk/disk.py",
-        "return-type": "json",
-        "on-click": "~/.config/waybar/scripts/disk/next_diskinfo.py",
-        "on-click-right": "~/.config/waybar/scripts/disk/launch_diskinfo.py",
-        "interval": 1
-    },
-    "backlight": {
-        // "device": "acpi_video1",
-        "format": "{percent}% {icon}",
-        "format-icons": ["", "", "", "", "", "", "", "", ""]
-    },
-    "battery": {
-        "states": {
-            // "good": 95,
-            "warning": 30,
-            "critical": 15
-        },
-        "interval": 1,
-        "format": "{capacity}% {icon}",
-        "format-charging": "{capacity}% ",
-        "format-plugged": "{capacity}% ",
-        "format-alt": "{time} {icon}",
-        // "format-good": "", // An empty format will hide the module
-        // "format-full": "",
-        "format-icons": ["", "", "", "", ""]
-    },
-    "pulseaudio": {
-        "format": "{volume}% {icon}",
-        "format-bluetooth": "{volume}% {icon}",
-        "format-bluetooth-muted": " {icon}",
-        "format-muted": " ",
-        "format-icons": {
-            "headphone": "",
-            "hands-free": "",
-            "headset": "",
-            "phone": "",
-            "portable": "",
-            "car": "",
-            "default": ["", "", ""]
-        },
-        "on-click": "~/.config/waybar/scripts/audio/open_pulseaudio.py"
-    },
-    "custom/mic": {
-        "exec": "~/.config/waybar/scripts/audio/mic.py",
-        "return-type": "json",
-        "on-click": "~/.config/waybar/scripts/audio/change_state.py",
-        "interval": 1
-    },
-    "hyprland/submap": {
-      "format": "✌️ {}",
-      "tooltip": false
+    {
+        "layer": "top", // Waybar at top layer
+        "position": "top", // Waybar position (top|bottom|left|right)
+        "height": 20,
     }
-}
+]
