@@ -50,15 +50,15 @@ end
 -- dumps lua table into a new buffer
 DumpPrettyPrint = function(v)
     local s = vim.inspect(v)
-    local output = split(s, '\n')
+    local output = split(s, "\n")
 
-    vim.api.nvim_command('enew')
-    vim.api.nvim_put(output, '', true, true)
+    vim.api.nvim_command("enew")
+    vim.api.nvim_put(output, "", true, true)
 end
 
 -- useful when pasting from windows to linux
 function FmtNewlines()
-  local save = vim.fn.winsaveview()
-  vim.cmd("keeppatterns %s/\\s\\+$\\|\\r$//e")
-  vim.fn.winrestview(save)
+    local save = vim.fn.winsaveview()
+    vim.cmd("keeppatterns %s/\\s\\+$\\|\\r$//e")
+    vim.fn.winrestview(save)
 end

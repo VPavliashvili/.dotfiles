@@ -1,5 +1,5 @@
 vim.filetype.add({
     pattern = {
-        ["~/gamedev/defold/.*%.script"] = "lua"
+        ["~/gamedev/defold/.*%.script"] = "lua",
     },
 })

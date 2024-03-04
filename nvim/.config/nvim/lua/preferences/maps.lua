@@ -12,10 +12,9 @@ vim.keymap.set("i", "<A-k>", "<Esc>:m .-2<CR>==gi")
 vim.keymap.set("n", "<C-j>", "<C-e>")
 vim.keymap.set("n", "<C-k>", "<C-y>")
 
-vim.keymap.set('v', '<leader>y', '"+y')
-vim.keymap.set('v', '<leader>p', '"+p')
-vim.keymap.set('n', '<leader>p', '"+p')
-
+vim.keymap.set("v", "<leader>y", '"+y')
+vim.keymap.set("v", "<leader>p", '"+p')
+vim.keymap.set("n", "<leader>p", '"+p')
 
 vim.keymap.set("n", "<C-d>", "<C-d>zz")
 vim.keymap.set("n", "<C-u>", "<C-u>zz")

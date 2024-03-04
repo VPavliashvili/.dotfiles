@@ -1,5 +1,5 @@
 vim.filetype.add({
     pattern = {
-        ["~/.dotfiles/hyprland/.config/hypr/.*conf"] = "hyprlang"
+        ["~/.dotfiles/hyprland/.config/hypr/.*conf"] = "hyprlang",
     },
 })
