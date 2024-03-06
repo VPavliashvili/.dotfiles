@@ -5,9 +5,9 @@
       "alignment": "left",
       "segments": [
         {
-          "foreground": "#7eb8da",
+          "foreground": "#61AFEF",
           "style": "plain",
-          "template": "┏[<#ffffff></> {{ .UserName }} from <#ffffff>󱩊</> {{ .HostName }}]",
+          "template": "[<#ABB2BF>󱩊 </>{{ .UserName }}<#ABB2BF> </>from {{ .HostName }}<#ABB2BF> ",
           "type": "session"
         },
         {
@@ -23,19 +23,12 @@
           "style": "plain",
           "template": "[]",
           "type": "root"
-        },
-        {
-          "foreground": "#ffa5d8",
-          "style": "powerline",
-          "template": "[<#ffffff>ﲍ</> Error, check your command]",
-          "type": "exit"
         }
       ],
       "type": "prompt"
     },
     {
       "alignment": "left",
-      "newline": true,
       "segments": [
         {
           "foreground": "#7eb8da",
@@ -43,7 +36,7 @@
             "style": "full"
           },
           "style": "plain",
-          "template": "┖[<#98bfad>{{ .Path }}</>]",
+          "template": "<#98C379>{{ .Path }}</>]",
           "type": "path"
         }
       ],
@@ -56,7 +49,7 @@
         {
           "foreground": "#7eb8da",
           "style": "plain",
-          "template": "└─Δ",
+          "template": "└ ",
           "type": "text"
         }
       ],
