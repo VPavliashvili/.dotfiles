@@ -16,6 +16,7 @@ local function setup()
     require("lualine").setup({
         options = {
             theme = "onedark",
+            globalstatus = true,
         },
         sections = {
             lualine_a = { "mode" },
@@ -25,13 +26,7 @@ local function setup()
             lualine_y = { "filetype" },
             lualine_z = { current_line },
         },
-        extensions = { "nvim-tree" },
     })
-
-    -- Turn off lualine inside nvim-tree
-    vim.cmd([[
-      au BufEnter,BufWinEnter,WinEnter,CmdwinEnter * if bufname('%') == "NvimTree" | set laststatus=0 | else | set laststatus=2 | endif
-    ]])
 
     -- Trigger rerender of status line every second for clock
     if _G.Statusline_timer == nil then
