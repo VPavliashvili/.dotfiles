@@ -65,6 +65,7 @@ require("lazy").setup({
             "nvim-lua/plenary.nvim",
             "nvim-telescope/telescope-file-browser.nvim",
             "nvim-lua/popup.nvim",
+            "nvim-telescope/telescope-media-files.nvim",
         },
     },
     {
