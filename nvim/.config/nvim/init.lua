@@ -189,6 +189,10 @@ require("lazy").setup({
         "folke/trouble.nvim",
         config = require("plugins.trouble"),
     },
+    {
+        "numToStr/FTerm.nvim",
+        config = require("plugins.fterm"),
+    },
 }, {
     ui = {
         border = "double",
@@ -197,7 +201,7 @@ require("lazy").setup({
         -- automatically check for plugin updates
         enabled = true,
         concurrency = nil, ---@type number? set to 1 to check for updates very slowly
-        notify = true,     -- get a notification when new updates are found
+        notify = true, -- get a notification when new updates are found
         frequency = 86400, -- check for updates every given seconds amount
     },
 })

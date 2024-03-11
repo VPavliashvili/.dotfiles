@@ -1,9 +1,9 @@
 local function setup()
-    vim.keymap.set("n", "<leader>ff", '<cmd>lua require("telescope.builtin").find_files()<cr>')
+    vim.keymap.set("n", "<leader>ff", '<cmd>lua require("telescope.builtin").git_files()<cr>')
     vim.keymap.set("n", "<leader>lg", '<cmd>lua require("telescope.builtin").live_grep()<cr>')
     vim.keymap.set("n", "<leader>km", '<cmd>lua require("telescope.builtin").keymaps()<cr>')
     vim.keymap.set("n", "<leader>bf", '<cmd>lua require("telescope.builtin").buffers()<cr>')
-    vim.keymap.set("n", "<leader>gf", '<cmd>lua require("telescope.builtin").git_files()<cr>')
+    vim.keymap.set("n", "<leader>af", '<cmd>lua require("telescope.builtin").find_files()<cr>')
 
     require("telescope").load_extension("file_browser")
     require("telescope").load_extension("media_files")

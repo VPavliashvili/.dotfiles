@@ -169,6 +169,7 @@ play () {
 
 eval "$(oh-my-posh init bash --config ~/.poshthemes/my-custom.omp.json)"
 
+alias checkupdates='echo "---pacman---" && /usr/bin/checkupdates && echo "----aur----" && yay -Qua'
 alias luamake="$HOME/lua-language-server/3rd/luamake/luamake"
 export LUA_CPATH="/usr/share/lua/5.4/?.so;"
 export PATH="$HOME/bin:$PATH"
@@ -178,5 +179,6 @@ export PULSE_SCRIPT=/etc/xrdp/pulse/default.pa
 export XDG_SCREENSHOTS_DIR=$HOME/Pictures/Screenshots
 export GRIM_DEFAULT_DIR=$HOME/Pictures/Screenshots
 export GRIMBLAST_EDITOR=pinta
+export SUDO_EDITOR=/usr/bin/nvim
 
 set -o vi
