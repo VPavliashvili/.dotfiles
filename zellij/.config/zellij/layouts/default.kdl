@@ -1,0 +1,28 @@
+layout {
+    default_tab_template {
+        pane
+        pane size=1 borderless=true {
+            plugin location="file:/home/stranger/.config/zellij/zjstatus.wasm" {
+                format_left "#[bg=#282C34,fg=#abb2bf,bold]{mode} "
+                format_center "#[bg=#282C34,fg=#abb2bf,bold]{tabs}"
+                format_right "{datetime}#[bg=#282C34,fg=#98C379,bold]{session} "
+
+                mode_locked "#[bg=#282C34,fg=#abb2bf,bold] {name} "
+                mode_normal "#[bg=#282C34,fg=#98C379,bold] {name} "
+                mode_resize "#[bg=#282C34,fg=#D75F00,bold] {name} "
+                mode_default_to_mode "normal"
+
+                tab_normal "#[bg=#282C34,fg=#abb2bf]{name} {sync_indicator}{fullscreen_indicator}{floating_indicator}"
+                tab_active "#[bg=#282C34,fg=#61AFEF,bold]{name} {sync_indicator}{fullscreen_indicator}{floating_indicator}"
+
+                tab_sync_indicator       " "
+                tab_fullscreen_indicator "□ "
+                tab_floating_indicator   "󰉈 "
+
+                datetime "#[fg=#abb2bf,bold]  {format} "
+                datetime_format "%H:%M"
+                datetime_timezone "Asia/Tbilisi"
+            }
+        }
+    }
+}

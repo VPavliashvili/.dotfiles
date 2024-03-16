@@ -9,10 +9,6 @@ local function setup()
         return cur .. "/" .. max .. " | " .. col
     end
 
-    local current_time = function()
-        return os.date(" %H:%M", os.time())
-    end
-
     require("lualine").setup({
         options = {
             theme = "onedark",
@@ -22,25 +18,11 @@ local function setup()
             lualine_a = { "mode" },
             lualine_b = { "branch", "diff", "diagnostics" },
             lualine_c = { { "filename", path = 3 } },
-            lualine_x = { "encoding", "fileformat", current_time },
+            lualine_x = { "encoding", "fileformat" },
             lualine_y = { "filetype" },
             lualine_z = { current_line },
         },
     })
-
-    -- Trigger rerender of status line every second for clock
-    if _G.Statusline_timer == nil then
-        _G.Statusline_timer = vim.loop.new_timer()
-    else
-        _G.Statusline_timer:stop()
-    end
-    _G.Statusline_timer:start(
-        0,
-        1000 * 60,
-        vim.schedule_wrap(function()
-            vim.api.nvim_command("redrawstatus")
-        end)
-    )
 end
 
 return setup
