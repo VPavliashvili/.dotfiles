@@ -19,4 +19,5 @@ return function()
 
     require("plugins.lsp.lua")({ on_attach = on_attach, capabilities = capabilities })
     require("plugins.lsp.cpp")({ on_attach = on_attach, capabilities = capabilities })
+    require("plugins.lsp.python")({ on_attach = on_attach, capabilities = capabilities })
 end

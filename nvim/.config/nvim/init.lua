@@ -30,6 +30,9 @@ require("lazy").setup({
         -- dir = "~/sourceCode/lua/json-nvim/",
         "VPavliashvili/json-nvim",
         ft = "json",
+        keys = {
+            { "<leader>fm", '<CMD>lua require("json-nvim").FormatFile()<cr>' },
+        },
     },
     {
         "iamcco/markdown-preview.nvim",
@@ -81,7 +84,12 @@ require("lazy").setup({
         dependencies = {
             "VPavliashvili/close-buffers.nvim",
             config = function()
-                require("close_buffers").setup({})
+                require("close_buffers").setup({
+                    preserve_window_layout = { "this" },
+                    next_buffer_cmd = function(windows)
+                        vim.cmd("buffer #")
+                    end,
+                })
             end,
             keys = {
                 { "<S-c>", [[<CMD>lua require('close_buffers').delete({type = 'this', force = true})<CR>]] },
