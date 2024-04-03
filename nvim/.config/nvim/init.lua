@@ -30,9 +30,6 @@ require("lazy").setup({
         -- dir = "~/sourceCode/lua/json-nvim/",
         "VPavliashvili/json-nvim",
         ft = "json",
-        keys = {
-            { "<leader>fm", '<CMD>lua require("json-nvim").FormatFile()<cr>' },
-        },
     },
     {
         "iamcco/markdown-preview.nvim",
