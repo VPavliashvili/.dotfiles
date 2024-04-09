@@ -1,4 +1,4 @@
- [
+[
      {
         "layer": "top", // Waybar at top layer
         "position": "bottom", // Waybar position (top|bottom|left|right)
@@ -8,7 +8,7 @@
         // Choose the order of the modules
         "modules-left": ["hyprland/submap", "custom/disk", "memory", "cpu"],
         "modules-center": ["hyprland/workspaces"],
-        "modules-right": ["idle_inhibitor", "pulseaudio", "custom/mic", "backlight", "battery", "hyprland/language", "clock", "tray"],
+        "modules-right": ["pulseaudio", "custom/mic", "backlight", "battery", "hyprland/language", "clock", "tray"],
         // Modules configuration
         "hyprland/workspaces": {
             "disable-scroll": true,
@@ -34,14 +34,7 @@
         },
         "hyprland/language": {
             "format-en": "Eng ",
-            "format-ka": "Geo ",
-        },
-        "idle_inhibitor": {
-            "format": "{icon}",
-            "format-icons": {
-                "activated": "",
-                "deactivated": ""
-            }
+            "format-ka": "Geo "
         },
         "tray": {
             // "icon-size": 21,
@@ -49,7 +42,7 @@
         },
         "clock": {
             "format": " {:%b/%d %R}",
-            "on-click": "~/.config/waybar/scripts/calendar.sh",
+            "on-click": "~/.config/waybar/scripts/calendar.py"
         },
         "cpu": {
             "format": "{usage}% ",
@@ -112,11 +105,27 @@
         "hyprland/submap": {
           "format": "✌️ {}",
           "tooltip": false
-        }
-    },
-    {
-        "layer": "top", // Waybar at top layer
-        "position": "top", // Waybar position (top|bottom|left|right)
-        "height": 20,
-    }
+        },
+    }//,
+    // {
+    //     "layer": "top", // Waybar at top layer
+    //     "position": "top", // Waybar position (top|bottom|left|right)
+    //     "height": 20,
+    //     "modules-center": ["wlr/taskbar"],
+    //     "wlr/taskbar": {
+    //         "format": "{icon}:{state}",
+    //         "icon-size": 21,
+    //         "icon-theme": "Numix-Circle",
+    //         "tooltip-format": "{title}",
+    //         "on-click": "activate",
+    //         "on-click-middle": "close",
+    //         "app_ids-mapping": {
+    //           "firefoxdeveloperedition": "firefox-developer-edition"
+    //         },
+    //         "rewrite": {
+    //             "Firefox Web Browser": "Firefox",
+    //             "Foot Server": "Terminal"
+    //         }
+    //     }
+    // }
 ]

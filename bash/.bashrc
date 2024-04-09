@@ -1,7 +1,3 @@
-#
-# ~/.bashrc
-#
-
 [[ $- != *i* ]] && return
 
 colors() {
@@ -167,9 +163,13 @@ play () {
     fi
 }
 
+checkupdates() {
+    echo ---pacman--- && /usr/bin/checkupdates
+    echo ----aur---- && yay -Qua
+}
+
 eval "$(oh-my-posh init bash --config ~/.poshthemes/my-custom.omp.json)"
 
-alias checkupdates='echo "---pacman---" && /usr/bin/checkupdates && echo "----aur----" && yay -Qua'
 alias luamake="$HOME/lua-language-server/3rd/luamake/luamake"
 export LUA_CPATH="/usr/share/lua/5.4/?.so;"
 export PATH="$HOME/bin:$PATH"
