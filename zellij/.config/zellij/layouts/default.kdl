@@ -5,7 +5,7 @@ layout {
             plugin location="file:/home/stranger/.config/zellij/zjstatus.wasm" {
                 format_left "#[bg=#282C34,fg=#abb2bf,bold]{mode} "
                 format_center "#[bg=#282C34,fg=#abb2bf,bold] {tabs}"
-                format_right "{datetime}#[bg=#282C34,fg=#98C379,bold] {session} "
+                format_right "[bg=#282C34,fg=#98C379,bold] {session} "
 
                 mode_locked "#[bg=#282C34,fg=#abb2bf,bold] {name} "
                 mode_normal "#[bg=#282C34,fg=#98C379,bold] {name} "
