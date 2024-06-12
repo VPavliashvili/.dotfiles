@@ -57,7 +57,8 @@ func pavuInfo() (bool, int) {
 
 	clients := getHyprlandClients()
 	for _, client := range clients {
-		if client.Class == "pavucontrol" {
+		class := strings.ToLower(client.Class)
+		if strings.Contains(class, "pavucontrol") {
 			return true, client.Pid
 		}
 	}
@@ -78,14 +79,14 @@ type pactlMicInfo struct {
 }
 
 func micInfo() (isMuted bool, volume string) {
-    source_name, err := defaultMicName()
-    if err != nil {
-        fmt.Println(err)
-        return isMuted, volume
-    }
+	source_name, err := defaultMicName()
+	if err != nil {
+		fmt.Println(err)
+		return isMuted, volume
+	}
 	fmt.Printf("default source name -> %v\n", string(source_name))
 
-    cmd := exec.Command("pactl", "-f", "json", "list", "sources")
+	cmd := exec.Command("pactl", "-f", "json", "list", "sources")
 	output, err := cmd.Output()
 	if err != nil {
 		fmt.Println(err)
