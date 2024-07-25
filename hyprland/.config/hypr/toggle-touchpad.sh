@@ -1,6 +1,7 @@
 #!/bin/sh
 
 HYPRLAND_DEVICE="asue140d:00-04f3:31bc-touchpad"
+HYPRLAND_VARIABLE="device[$HYPRLAND_DEVICE]:enabled"
 
 if [ -z "$XDG_RUNTIME_DIR" ]; then
   export XDG_RUNTIME_DIR=/run/user/$(id -u)
@@ -13,7 +14,7 @@ enable_touchpad() {
 
   notify-send -u normal "Enabling Touchpad"
 
-  hyprctl keyword "device:$HYPRLAND_DEVICE:enabled" true
+  hyprctl keyword $HYPRLAND_VARIABLE true -r
 }
 
 disable_touchpad() {
@@ -21,7 +22,7 @@ disable_touchpad() {
 
   notify-send -u normal "Disabling Touchpad"
 
-  hyprctl keyword "device:$HYPRLAND_DEVICE:enabled" false
+  hyprctl keyword $HYPRLAND_VARIABLE false -r
 }
 
 if ! [ -f "$STATUS_FILE" ]; then
