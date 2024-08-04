@@ -12,4 +12,4 @@ var="$1"
 var=$(awk '$1<-1{$1=-1}$1>1{$1=1}1' <<<"$var")
 echo 'mouse sensitivity set to ' "$var"
 
-hyprctl keyword input:sensitivity "$var"
+hyprctl keyword input:sensitivity -- "$var"

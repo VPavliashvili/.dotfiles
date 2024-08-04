@@ -173,6 +173,8 @@ require("lazy").setup({
                 config = function()
                     require("luasnip.loaders.from_vscode").lazy_load()
                 end,
+                build = "make install_jsregexp",
+                version = "v2.*",
             },
         },
     },
@@ -211,7 +213,7 @@ require("lazy").setup({
         -- automatically check for plugin updates
         enabled = true,
         concurrency = nil, ---@type number? set to 1 to check for updates very slowly
-        notify = false,    -- get a notification when new updates are found
+        notify = false, -- get a notification when new updates are found
         frequency = 86400, -- check for updates every given seconds amount
     },
 })
