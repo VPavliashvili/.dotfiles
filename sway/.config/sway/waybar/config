@@ -1,0 +1,83 @@
+[
+     {
+        "layer": "top",
+        "position": "bottom",
+        "height": 20,
+        "spacing": 5,
+        "modules-left": ["custom/disk", "memory", "cpu", "sway/mode"],
+        "modules-center": ["sway/workspaces"],
+        "modules-right": ["pulseaudio", "custom/mic", "sway/language", "clock", "tray"],
+        "sway/workspaces": {
+            "disable-scroll": true,
+            "all-outputs": true,
+            "format": "{icon}",
+            "sort-by-number": true,
+            "format-icons": {
+                "1": "",
+                "2": "",
+                "3": "",
+                "4": "",
+                "5": "",
+                "6": "",
+                "7": "",
+                "8": "",
+                "9": "",
+                "10": ""
+            },
+            "on-click": "activate"
+        },
+        "sway/mode": {
+            "format": "{}",
+            "max-length": 50
+        },
+        "sway/language": {
+            "format": "{short} {variant}"
+        },
+        "tray": {
+            // "icon-size": 21,
+            "spacing": 10
+        },
+        "clock": {
+            "format": " {:%b/%d %R}",
+            "on-click": "~/.config/waybar/scripts/calendar.py"
+        },
+        "cpu": {
+            "format": "{usage}% ",
+            "tooltip": false,
+            "interval": 1
+        },
+        "memory": {
+            "format": "{used}/{total}G ({percentage}%) ",
+            "interval": 5
+        },
+        "custom/disk": {
+            "exec": "~/.config/waybar/scripts/disk/disk.py",
+            "return-type": "json",
+            "on-click": "~/.config/waybar/scripts/disk/next_diskinfo.py",
+            "on-click-right": "~/.config/waybar/scripts/disk/launch_diskinfo.py",
+            "interval": 1
+        },
+        "pulseaudio": {
+            "format": "{volume}% {icon}",
+            "format-bluetooth": "{volume}% {icon}",
+            "format-bluetooth-muted": " {icon}",
+            "format-muted": " ",
+            "format-icons": {
+                "headphone": "",
+                "hands-free": "",
+                "headset": "",
+                "phone": "",
+                "portable": "",
+                "car": "",
+                "default": ["", "", ""]
+            },
+            "on-click": "~/.config/waybar/scripts/audio/open_pulseaudio.py"
+        },
+        "custom/mic": {
+            "exec": "~/.config/waybar/scripts/audio/mic.py",
+            "return-type": "json",
+            "on-click": "~/.config/waybar/scripts/audio/change_state.py",
+            "interval": 1
+        }
+    }
+]

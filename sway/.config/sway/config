@@ -1,0 +1,251 @@
+# Default config for sway
+#
+# Copy this to ~/.config/sway/config and edit it to your liking.
+#
+# Read `man 5 sway` for a complete reference.
+
+### Variables
+#
+# Logo key. Use Mod1 for Alt.
+set $mod Mod4
+# Home row direction keys, like vim
+set $left h
+set $down j
+set $up k
+set $right l
+# Your preferred terminal emulator
+set $term foot
+set $menu fuzzel -b 282c34ff -t 61afefff -s 98c379ff -m c678ddff -S 000000ff -f SourceCodePro:size=12 -i Arc -w 30 -l 15
+set $clipboard fuzzel -b 282c34ff -t 61afefff -s 98c379ff -m c678ddff -S 000000ff -f SourceCodePro:size=12 -i -w 50 -l 25
+
+### execs
+exec wl-paste --type text --watch cliphist store #Stores only text data
+exec wl-paste --type image --watch cliphist store #Stores only image data
+exec swaybg -i ~/Pictures/wallpapers/onedark/cyberpunk-sword.png
+exec /usr/lib/polkit-kde-authentication-agent-1
+exec nm-applet
+exec blueman-applet
+exec swaykbdd
+exec ~/bin/waybar_ipc
+
+# Set gaps around borders
+gaps inner 2
+gaps outer 2
+smart_gaps on
+
+# Remove title bars
+default_border pixel 4
+smart_borders on
+
+workspace_auto_back_and_forth yes
+
+### Output configuration
+output HDMI-A-3 resolution 1920x1080 position 0,0 transform 270
+output DP-1 resolution 2560x1440 position 1080,525 scale 1.25
+output DP-2 resolution 1920x1080 position 3128,0 transform 270
+#
+# You can get the names of your outputs by running: swaymsg -t get_outputs
+
+### Idle configuration
+#
+# Example configuration:
+#
+# exec swayidle -w \
+#          timeout 300 'swaylock -f -c 000000' \
+#          timeout 600 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
+#          before-sleep 'swaylock -f -c 000000'
+#
+# This will lock your screen after 300 seconds of inactivity, then turn off
+# your displays after another 300 seconds, and turn your screens back on when
+# resumed. It will also lock your screen before your computer goes to sleep.
+
+### Input configuration
+#
+    input type:keyboard {
+        xkb_layout us,ge
+        xkb_options grp:alt_shift_toggle
+    }
+
+    input type:pointer {
+        accel_profile "flat"
+        pointer_accel -0.25
+    }
+#
+# You can get the names of your inputs by running: swaymsg -t get_inputs
+# Read `man 5 sway-input` for more information about this section.
+
+### Key bindings
+bindsym $mod+v exec cliphist list | $clipboard --dmenu | cliphist decode | wl-copy
+bindsym $mod+SHIFT+x exec swaylock --indicator --clock  -e -F -S -k --effect-scale 0.3 -r --effect-vignette 0.2:7
+bindsym Print exec grim -g "$(slurp)" - | swappy -f -
+
+# audio and mic
+bindsym XF86AudioRaiseVolume exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+
+bindsym XF86AudioLowerVolume exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-
+bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
+bindsym XF86AudioMicMute exec pactl set-source-mute @DEFAULT_SOURCE@ toggle
+bindsym $mod+SHIFT+M exec ~/.config/waybar/scripts/audio/change_state.py
+
+# media control
+bindsym XF86AudioPlay exec playerctl play-pause
+bindsym XF86AudioNext exec playerctl next
+bindsym XF86AudioPrev exec playerctl previous
+bindsym XF86audiostop exec playerctl stop
+
+
+#
+# Basics:
+#
+    # Start a terminal
+    bindsym $mod+Return exec $term
+
+    # Kill focused window
+    bindsym $mod+q kill
+
+    # Start your launcher
+    bindsym $mod+d exec $menu
+
+    # Drag floating windows by holding down $mod and left mouse button.
+    # Resize them with right mouse button + $mod.
+    # Despite the name, also works for non-floating windows.
+    # Change normal to inverse to use left mouse button for resizing and right
+    # mouse button for dragging.
+    floating_modifier $mod normal
+
+    # Reload the configuration file
+    bindsym $mod+Shift+r reload
+
+    # Exit sway (logs you out of your Wayland session)
+    bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
+#
+# Moving around:
+#
+    # Move your focus around
+    bindsym $mod+$left focus left
+    bindsym $mod+$down focus down
+    bindsym $mod+$up focus up
+    bindsym $mod+$right focus right
+
+    # Move the focused window with the same, but add Shift
+    bindsym $mod+Shift+$left move left
+    bindsym $mod+Shift+$down move down
+    bindsym $mod+Shift+$up move up
+    bindsym $mod+Shift+$right move right
+#
+# Workspaces:
+
+    # Switch to workspace
+    bindsym $mod+1 workspace number 1
+    bindsym $mod+2 workspace number 2
+    bindsym $mod+3 workspace number 3
+    bindsym $mod+4 workspace number 4
+    bindsym $mod+5 workspace number 5
+    bindsym $mod+6 workspace number 6
+    bindsym $mod+7 workspace number 7
+    bindsym $mod+8 workspace number 8
+    bindsym $mod+9 workspace number 9
+    bindsym $mod+0 workspace number 10
+    # Move focused container to workspace
+    bindsym $mod+Shift+1 move container to workspace number 1
+    bindsym $mod+Shift+2 move container to workspace number 2
+    bindsym $mod+Shift+3 move container to workspace number 3
+    bindsym $mod+Shift+4 move container to workspace number 4
+    bindsym $mod+Shift+5 move container to workspace number 5
+    bindsym $mod+Shift+6 move container to workspace number 6
+    bindsym $mod+Shift+7 move container to workspace number 7
+    bindsym $mod+Shift+8 move container to workspace number 8
+    bindsym $mod+Shift+9 move container to workspace number 9
+    bindsym $mod+Shift+0 move container to workspace number 10
+    # Bind workspace to monitors
+    workspace 1 output DP-1
+    workspace 2 output DP-1
+    workspace 3 output DP-1
+    workspace 4 output DP-1
+    workspace 5 output DP-1
+    workspace 6 output DP-1
+    workspace 7 output HDMI-A-3
+    workspace 8 output DP-1
+    workspace 9 output DP-1
+    workspace 10 output DP-2
+#
+# Layout stuff:
+#
+    # You can "split" the current object of your focus with
+    # $mod+b or $mod+v, for horizontal and vertical splits
+    # respectively.
+    # bindsym $mod+b splith
+    # bindsym $mod+v splitv
+
+    # Switch the current container between different layout styles
+    bindsym $mod+s layout stacking
+    bindsym $mod+w layout tabbed
+    bindsym $mod+e layout toggle split
+
+    # Make the current focus fullscreen
+    bindsym $mod+Shift+f fullscreen
+
+    # Toggle the current focus between tiling and floating mode
+    bindsym $mod+Shift+space floating toggle
+
+    # Swap focus between the tiling area and the floating area
+    bindsym $mod+space focus mode_toggle
+
+    # Move focus to the parent container
+    # bindsym $mod+a focus parent
+#
+# Scratchpad:
+#
+    # Sway has a "scratchpad", which is a bag of holding for windows.
+    # You can send windows there and get them back later.
+
+    # Move the currently focused window to the scratchpad
+    bindsym $mod+Shift+minus move scratchpad
+
+    # Show the next scratchpad window or hide the focused scratchpad window.
+    # If there are multiple scratchpad windows, this command cycles through them.
+    bindsym $mod+minus scratchpad show
+#
+# Resizing containers:
+#
+mode "resize" {
+    bindsym $left resize shrink width 10px
+    bindsym $down resize grow height 10px
+    bindsym $up resize shrink height 10px
+    bindsym $right resize grow width 10px
+
+    # Return to default mode
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+bindsym $mod+r mode "resize"
+
+mode "runner: [h]ome_apps, [e]mojis" {
+    bindsym h exec ~/.config/sway/startup_home.sh, mode "default"
+    bindsym e exec wofimoji, mode "default"
+
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+bindsym $mod+p mode "runner: [h]ome_apps, [e]mojis"
+
+mode "vms: [6]remote, [7]teams, [9]gaming" {
+    bindsym 6 exec ~/.config/sway/run_vm.sh -n win10_liberty_work -w 6 -f -a "-f /dev/shm/looking-glass-work win:showFPS=yes -c 127.0.0.1 -p 5906", mode "default"
+    bindsym 7 exec ~/.config/sway/run_vm.sh -n win10_teams -w 7 -a "-f /dev/shm/looking-glass-teams audio:micDefault=allow win:showFPS=yes -c 127.0.0.1 -p 5907", mode "default"
+    bindsym 9 exec ~/.config/sway/run_vm.sh -n win10_gaming -w 9 -f -a "-f /dev/shm/looking-glass-gaming audio:micDefault=allow win:showFPS=yes -c 127.0.0.1 -p 5905", mode "default"
+
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+bindsym $mod+shift+v mode "vms: [6]remote, [7]teams, [9]gaming"
+
+
+#
+# Status Bar:
+#
+# Read `man 5 sway-bar` for more information about this section.
+bar {
+    # .config/ is relative by default and means ~/.config/
+    swaybar_command .config/sway/waybar/launch.sh
+}
+
+include /etc/sway/config.d/*
