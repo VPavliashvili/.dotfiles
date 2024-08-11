@@ -1,5 +1,11 @@
 #!/bin/sh
 
+json=$(swaymsg -t get_workspaces)
+focused=$(echo "${json}" | jq -r '.[] | select(.focused == true)')
+
+current=$(echo "${focused}" | jq -r '.name')
+echo "${current}"
+
 vm_name=""
 wn=""
 additional=""
@@ -33,3 +39,5 @@ else
 fi
 
 echo "vm command -> looking-glass-client ${additional}"
+
+swaymsg "workspace --no-auto-back-and-forth $current"
