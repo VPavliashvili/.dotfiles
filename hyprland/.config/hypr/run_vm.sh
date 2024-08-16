@@ -37,7 +37,7 @@ if [ "$gui" = 0 ] ; then
     # virt-manager --connect qemu:///system --show-domain-console $vm_name
 
     if [ "$fakefullscreen" = true ] ; then
-        hyprctl dispatch exec "[workspace $wn silent;fakefullscreen]" "virt-viewer --connect qemu:///system -w -a $vm_name --hotkeys=release-cursor=ctrl+alt"
+        hyprctl dispatch exec "[workspace $wn silent;fullscreenstate, 0, 2]" "virt-viewer --connect qemu:///system -w -a $vm_name --hotkeys=release-cursor=ctrl+alt"
         echo "run as fakefullscreen on workspace $wn"
     elif [ "$fullscreen" = true ] ; then
         hyprctl dispatch exec "[workspace $wn silent]" "virt-viewer --connect qemu:///system -f -w -a $vm_name --hotkeys=release-cursor=ctrl+alt"
@@ -50,7 +50,7 @@ if [ "$gui" = 0 ] ; then
     echo "hyprland -> virtual machine ${vm_name} started with window address: ${address} in workspace ${wn}"
 elif [ "$gui" = 1 ] ; then
     if [ "$fakefullscreen" = true ] ; then
-        hyprctl dispatch exec "[workspace $wn silent;fakefullscreen]" "looking-glass-client ${additional}"
+        hyprctl dispatch exec "[workspace $wn silent;fullscreenstate, 0, 2]" "looking-glass-client ${additional}"
         echo "run as fakefullscreen on workspace $wn"
     elif [ "$fullscreen" = true ] ; then
         hyprctl dispatch exec "[workspace $wn silent]" "looking-glass-client -F ${additional}"

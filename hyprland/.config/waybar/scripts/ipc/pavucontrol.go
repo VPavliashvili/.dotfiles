@@ -30,7 +30,6 @@ type client struct {
 	Pinned         bool     `json:"pinned"`
 	Fullscreen     bool     `json:"fullscreen"`
 	FullscreenMode int      `json:"fullscreenMode"`
-	FakeFullscreen bool     `json:"fakeFullscreen"`
 	Grouped        []string `json:"grouped"`
 	Swallowing     string   `json:"swallowing"`
 }
