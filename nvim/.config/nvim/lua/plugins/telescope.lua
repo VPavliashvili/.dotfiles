@@ -1,9 +1,15 @@
 local function setup()
-    vim.keymap.set("n", "<leader>ff", '<cmd>lua require("telescope.builtin").git_files()<cr>')
+    vim.keymap.set("n", "<leader>ff", '<cmd>lua require("telescope.builtin").find_files()<cr>')
     vim.keymap.set("n", "<leader>lg", '<cmd>lua require("telescope.builtin").live_grep()<cr>')
     vim.keymap.set("n", "<leader>km", '<cmd>lua require("telescope.builtin").keymaps()<cr>')
     vim.keymap.set("n", "<leader>bf", '<cmd>lua require("telescope.builtin").buffers()<cr>')
-    vim.keymap.set("n", "<leader>af", '<cmd>lua require("telescope.builtin").find_files()<cr>')
+
+    -- this will be overriten for lsp_dynamic_workspace_symbols for go files
+    vim.keymap.set(
+        "n",
+        "<leader>tt",
+        '<cmd>lua require("telescope.builtin").lsp_workspace_symbols({ symbols = { "class", "struct", "interface", "method", "function", "module", enum} })<cr>'
+    )
 
     require("telescope").load_extension("file_browser")
     require("telescope").load_extension("media_files")
@@ -19,6 +25,9 @@ local function setup()
                     -- e.g. git_{create, delete, ...}_branch for the git_branches picker
                     -- ["<C-h>"] = "which_key"
                 },
+            },
+            file_ignore_patterns = {
+                "^.git/",
             },
         },
         pickers = {
