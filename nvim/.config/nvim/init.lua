@@ -84,7 +84,36 @@ require("lazy").setup({
                 require("close_buffers").setup({
                     preserve_window_layout = { "this" },
                     next_buffer_cmd = function(windows)
-                        vim.cmd("buffer #")
+                        local prev_buf_id = vim.fn.bufnr("#")
+                        local alive_buffers = vim.fn.getbufinfo({ buflisted = 1 })
+                        local prev_is_alive = false
+
+                        for _, buf in ipairs(alive_buffers) do
+                            if prev_is_alive == false and buf["bufnr"] == prev_buf_id then
+                                prev_is_alive = true
+                            end
+                        end
+
+                        if prev_is_alive then
+                            vim.cmd("buffer #")
+                        elseif #alive_buffers > 1 then
+                            local max_buf_nr = 0
+                            for _, buf in ipairs(alive_buffers) do
+                                local buf_id = buf["bufnr"]
+                                if buf_id == prev_buf_id or buf_id == vim.api.nvim_get_current_buf() then
+                                    goto continue
+                                end
+
+                                if max_buf_nr < buf_id then
+                                    max_buf_nr = buf_id
+                                end
+
+                                vim.cmd("buffer " .. max_buf_nr)
+                                ::continue::
+                            end
+                        else
+                            error("0 buffers should not have happened")
+                        end
                     end,
                 })
             end,
