@@ -234,16 +234,17 @@ mode "resize" {
 }
 bindsym --to-code $mod+r mode "resize"
 
-mode "runner: [h]ome_apps, [e]mojis" {
+mode "runner: [h]ome_apps, [w]ork, [e]mojis" {
     bindsym --to-code {
         h exec ~/.config/sway/startup_home.sh, mode "default"
+        w exec ~/.config/sway/startup_work.sh, mode "default"
         e exec wofimoji, mode "default"
 
         Return mode "default"
         Escape mode "default"
     }
 }
-bindsym --to-code $mod+p mode "runner: [h]ome_apps, [e]mojis"
+bindsym --to-code $mod+p mode "runner: [h]ome_apps, [w]ork, [e]mojis"
 
 mode "vms: [6]work, [7]teams, [9]gaming, [a]ll, [x]killall" {
     bindsym --to-code {
