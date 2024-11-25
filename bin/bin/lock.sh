@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 ICON=~/Pictures/icons/key-fancy.png
 TMPBG=~/temp/lock.png
