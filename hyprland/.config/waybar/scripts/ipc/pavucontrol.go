@@ -28,10 +28,7 @@ type client struct {
 	Pid            int      `json:"pid"`
 	Xwayland       bool     `json:"xwayland"`
 	Pinned         bool     `json:"pinned"`
-	Fullscreen     bool     `json:"fullscreen"`
-	FullscreenMode int      `json:"fullscreenMode"`
-	Grouped        []string `json:"grouped"`
-	Swallowing     string   `json:"swallowing"`
+	Fullscreen     int      `json:"fullscreen"`
 }
 
 func getHyprlandClients() []client {
