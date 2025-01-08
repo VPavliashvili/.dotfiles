@@ -123,7 +123,7 @@ require("lazy").setup({
                 })
             end,
             keys = {
-                { "<S-c>", [[<CMD>lua require('close_buffers').delete({type = 'this', force = true})<CR>]] },
+                { "<C-W>c", [[<CMD>lua require('close_buffers').delete({type = 'this', force = true})<CR>]] },
             },
         },
     },

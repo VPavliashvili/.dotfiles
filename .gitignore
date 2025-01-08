@@ -5,6 +5,7 @@ nvim/.config/nvim/plugin/
 nvim/.config/nvim/lazy-lock.json
 bin/bin/connectLb.sh
 bin/bin/connectAlta.sh
+bin/bin/connectwork.sh
 bin/bin/waybar_ipc
 __pycache__/
 *.py[cod]
