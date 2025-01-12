@@ -27,6 +27,19 @@ require("lazy").setup({
         end,
     },
     {
+        "mfussenegger/nvim-dap",
+        dependencies = {
+            "rcarriga/nvim-dap-ui",
+            "nvim-neotest/nvim-nio",
+            "theHamsta/nvim-dap-virtual-text"
+        },
+        config = function()
+            require("dapui").setup()
+            require("nvim-dap-virtual-text").setup()
+            require("plugins.dap").setup()
+        end
+    },
+    {
         -- dir = "~/sourceCode/lua/json-nvim/",
         "VPavliashvili/json-nvim",
         ft = "json",
@@ -229,6 +242,15 @@ require("lazy").setup({
     },
     {
         "neovim/nvim-lspconfig",
+        dependencies = {
+            {
+                "seblj/roslyn.nvim",
+                ft = "cs",
+                opts = {
+                    exe = vim.fn.exepath("Microsoft.CodeAnalysis.LanguageServer"), -- this for NixOS
+                },
+            },
+        },
         config = require("plugins.lsp"),
     },
     {
@@ -247,7 +269,7 @@ require("lazy").setup({
         -- automatically check for plugin updates
         enabled = true,
         concurrency = nil, ---@type number? set to 1 to check for updates very slowly
-        notify = false, -- get a notification when new updates are found
+        notify = false,    -- get a notification when new updates are found
         frequency = 86400, -- check for updates every given seconds amount
     },
 })
