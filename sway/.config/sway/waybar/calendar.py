@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/env python
 
 import subprocess
 import json
@@ -16,8 +16,8 @@ for monitor in monitors:
 if focused is None:
     raise Exception("could not find focused monitor")
 
-# in sway 270 means vertical with orientation up, without flip
-is_vertical = focused["transform"] == "270"
+# in sway 90 means vertical with orientation up, without flip
+is_vertical = focused["transform"] == "90"
 
 x_axis = (
     focused["current_mode"]["height"]

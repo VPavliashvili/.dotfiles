@@ -23,7 +23,6 @@ exec wl-paste --type text --watch cliphist store #Stores only text data
 exec wl-paste --type image --watch cliphist store #Stores only image data
 exec swaybg -o DP-1 -i ~/Pictures/wallpapers/onedark/cyberpunk-sword.png
 exec swaybg -o DP-2 -i ~/Pictures/wallpapers/vertical/berserk.jpg
-exec swaybg -o HDMI-A-1 -i ~/Pictures/wallpapers/vertical/berserk.jpg
 exec /usr/lib/polkit-kde-authentication-agent-1
 exec nm-applet
 exec blueman-applet
@@ -42,9 +41,8 @@ smart_borders on
 workspace_auto_back_and_forth yes
 
 ### Output configuration
-output HDMI-A-1 resolution 1920x1080 position 0,0 transform 270
-output DP-1 resolution 2560x1440 position 1080,525 scale 1.25
-output DP-2 resolution 1920x1080 position 3128,0 transform 270
+output DP-1 resolution 2560x1440 position 0,525 scale 1.25
+output DP-2 resolution 1920x1080 position 2048,0 transform 90
 #
 # You can get the names of your outputs by running: swaymsg -t get_outputs
 
@@ -174,7 +172,7 @@ bindsym --to-code {
     workspace 4 output DP-1
     workspace 5 output DP-1
     workspace 6 output DP-1
-    workspace 7 output HDMI-A-1
+    workspace 7 output DP-2
     workspace 8 output DP-1
     workspace 9 output DP-1
     workspace 10 output DP-2
@@ -238,7 +236,7 @@ mode "runner: [h]ome_apps, [w]ork, [e]mojis" {
     bindsym --to-code {
         h exec ~/.config/sway/startup_home.sh, mode "default"
         w exec ~/.config/sway/startup_work.sh, mode "default"
-        e exec wofimoji, mode "default"
+        e exec wofi-emoji, mode "default"
 
         Return mode "default"
         Escape mode "default"
@@ -246,19 +244,16 @@ mode "runner: [h]ome_apps, [w]ork, [e]mojis" {
 }
 bindsym --to-code $mod+p mode "runner: [h]ome_apps, [w]ork, [e]mojis"
 
-mode "vms: [6]work, [7]teams, [9]gaming, [a]ll, [x]killall" {
+mode "vms: [6]work, [9]gaming" {
     bindsym --to-code {
-        6 exec ~/.config/sway/run_vm.sh -n win10_liberty_work -w 6 -f -a "-f /dev/shm/looking-glass-work win:showFPS=yes -c 127.0.0.1 -p 5906", mode "default"
-        7 exec ~/.config/sway/run_vm.sh -n win10_teams -w 7 -a "-f /dev/shm/looking-glass-teams audio:micDefault=allow win:showFPS=yes -c 127.0.0.1 -p 5907", mode "default"
-        9 exec ~/.config/sway/run_vm.sh -n win10_gaming -w 9 -f -a "-f /dev/shm/looking-glass-gaming audio:micDefault=allow win:showFPS=yes -c 127.0.0.1 -p 5905", mode "default"
-        a exec ~/.config/sway/run_vm.sh -n win10_liberty_work -w 6 -f -a "-f /dev/shm/looking-glass-work win:showFPS=yes -c 127.0.0.1 -p 5906" && ~/.config/sway/run_vm.sh -n win10_teams -w 7 -a "-f /dev/shm/looking-glass-teams audio:micDefault=allow win:showFPS=yes -c 127.0.0.1 -p 5907", mode "default"
-        x exec virsh --connect qemu:///system shutdown win10_teams && virsh --connect qemu:///system shutdown win10_liberty_work, mode "default"
+        6 exec ~/.config/sway/run_vm.sh -n win10_work -w 6 -f -a "-f /dev/shm/win10_work win:showFPS=yes -c 127.0.0.1 -p 5906", mode "default"
+        9 exec ~/.config/sway/run_vm.sh -n win10_gaming -w 9 -f -a "-f /dev/shm/win10_gaming audio:micDefault=allow win:showFPS=yes -c 127.0.0.1 -p 5905", mode "default"
 
         Return mode "default"
         Escape mode "default"
     }
 }
-bindsym --to-code $mod+shift+v mode "vms: [6]work, [7]teams, [9]gaming, [a]ll, [x]killall"
+bindsym --to-code $mod+shift+v mode "vms: [6]work, [9]gaming"
 
 
 #
