@@ -273,3 +273,5 @@ require("lazy").setup({
         frequency = 86400, -- check for updates every given seconds amount
     },
 })
+
+require("snippets")
