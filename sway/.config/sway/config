@@ -195,10 +195,10 @@ bindsym --to-code {
     $mod+Shift+f fullscreen
 
     # Toggle the current focus between tiling and floating mode
-    $mod+Shift+space floating toggle
+    $mod+Shift+Tab floating toggle
 
     # Swap focus between the tiling area and the floating area
-    $mod+space focus mode_toggle
+    $mod+Tab focus mode_toggle
 
     # Move focus to the parent container
     # $mod+a focus parent
@@ -209,11 +209,11 @@ bindsym --to-code {
     # You can send windows there and get them back later.
 
     # Move the currently focused window to the scratchpad
-    $mod+Shift+minus move scratchpad
+    $mod+Shift+i move scratchpad
 
     # Show the next scratchpad window or hide the focused scratchpad window.
     # If there are multiple scratchpad windows, this command cycles through them.
-    $mod+minus scratchpad show
+    $mod+i scratchpad show
 }
 #
 # Resizing containers:
@@ -232,19 +232,20 @@ mode "resize" {
 }
 bindsym --to-code $mod+r mode "resize"
 
-mode "runner: [h]ome_apps, [w]ork, [e]mojis, [c]work, [d]work" {
+mode "runner: [h]ome_apps, [w]ork, [e]mojis, [c]work, [d]work, [k]illall" {
     bindsym --to-code {
         h exec ~/.config/sway/startup_home.sh, mode "default"
         w exec ~/.config/sway/startup_work.sh, mode "default"
         e exec wofi-emoji, mode "default"
         c exec ~/bin/connectwork.sh, mode "default"
         d exec ~/bin/disconnectwork.sh, mode "default"
+        k exec ~/.config/sway/killall.sh, mode "default"
 
         Return mode "default"
         Escape mode "default"
     }
 }
-bindsym --to-code $mod+p mode "runner: [h]ome_apps, [w]ork, [e]mojis, [c]work, [d]work"
+bindsym --to-code $mod+p mode "runner: [h]ome_apps, [w]ork, [e]mojis, [c]work, [d]work, [k]illall"
 
 mode "vms: [6]work, [9]gaming" {
     bindsym --to-code {

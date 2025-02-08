@@ -8,7 +8,7 @@ sleep 2.5
 swaymsg 'workspace --no-auto-back-and-forth 7'
 swaymsg exec vesktop
 
-sleep 3.5
+sleep 4.0
 
 swaymsg 'workspace --no-auto-back-and-forth 10'
 swaymsg exec "foot -e btop"

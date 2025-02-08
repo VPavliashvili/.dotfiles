@@ -15,18 +15,27 @@ swaymsg exec brave
 
 sleep 2.5
 
-swaymsg 'workspace --no-auto-back-and-forth 7'
-swaymsg exec "foot -e btop"
-swaymsg exec "teams-for-linux"
-swaymsg exec vesktop
-
-sleep 3.5
-
 swaymsg 'workspace --no-auto-back-and-forth 10'
 swaymsg exec "foot -e btop"
 swaymsg exec spotify
 
 sleep 2
+
+swaymsg 'workspace --no-auto-back-and-forth 7'
+swaymsg exec "foot -e btop"
+sleep 0.5
+swaymsg exec "teams-for-linux"
+swaymsg exec vesktop
+
+sleep 4.0
+
+swaymsg '[app_id="teams-for-linux"] focus, mark teams_container'
+swaymsg "splith"
+swaymsg "layout tabbed"
+swaymsg '[app_id="vesktop"] move window to mark teams_container'
+swaymsg 'unmark teams_container'
+
+sleep 1.0
 
 swaymsg 'workspace --no-auto-back-and-forth 1'
 swaymsg exec "foot -e zellij attach main-terminal"
