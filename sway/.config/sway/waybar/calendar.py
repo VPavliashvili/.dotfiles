@@ -47,7 +47,7 @@ cmd = [
 subprocess.getoutput(cmd)
 
 cmd = [
-    'swaymsg exec "yad --calendar --undecorated --no-buttons --width={} --height={}" && sleep 0.1 && swaymsg "[app_id="yad"] move position {} {}"'.format(
+    'swaymsg exec "yad --calendar --undecorated --no-buttons --width={} --height={}" && sleep 0.125 && swaymsg "[app_id="yad"] move position {} {}"'.format(
         width, height, int(posX), int(posY)
     )
 ]

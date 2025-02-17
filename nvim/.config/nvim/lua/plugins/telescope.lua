@@ -2,9 +2,9 @@ local function setup()
     vim.keymap.set("n", "<leader>ff", '<cmd>lua require("telescope.builtin").find_files()<cr>')
     vim.keymap.set("n", "<leader>lg", '<cmd>lua require("telescope.builtin").live_grep()<cr>')
     vim.keymap.set("n", "<leader>km", '<cmd>lua require("telescope.builtin").keymaps()<cr>')
-    vim.keymap.set("n", "<leader>bf", '<cmd>lua require("telescope.builtin").buffers()<cr>')
+    vim.keymap.set("n", "<S-t>", '<cmd>lua require("telescope.builtin").buffers({sort_lastused=true, sort_mru=true})<cr>')
 
-    -- this will be overriten for lsp_dynamic_workspace_symbols for go files
+    -- when needed, this will be overriten for lsp_dynamic_workspace_symbols per distincs file types from ./after/ftplugin/
     vim.keymap.set(
         "n",
         "<leader>tt",
