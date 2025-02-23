@@ -23,11 +23,6 @@ local function get_lsp_capabilities()
 end
 
 local on_attach = function(client, bufnr)
-    -- Enable completion triggered by <c-x><c-o>
-    vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
-
-    -- Mappings.
-    -- See `:help vim.lsp.*` for documentation on any of the below functions
     local bufopts = { noremap = true, silent = true, buffer = bufnr }
     vim.keymap.set("n", "gd", vim.lsp.buf.definition, bufopts)
     vim.keymap.set("n", "gi", vim.lsp.buf.implementation, bufopts)
@@ -114,7 +109,7 @@ local function get_lazy_specs(args)
 
                 local lsp_configs = language_configs.get_lsp_configs({
                     on_attach = on_attach,
-                    capabilities = capabilities,
+                    capabilities = get_lsp_capabilities(),
                 })
 
                 for k, cfg in pairs(lsp_configs) do

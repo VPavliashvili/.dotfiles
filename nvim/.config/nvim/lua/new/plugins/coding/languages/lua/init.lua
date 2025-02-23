@@ -8,6 +8,9 @@ local function get_plugins(args)
                     { path = "${3rd}/luv/library", words = { "vim%.uv" } },
                 },
             },
+            dependencies = {
+                "nvim-lua/plenary.nvim",
+            },
         },
     }
 end
@@ -42,6 +45,45 @@ local function get_lsp(args)
             end,
             on_attach = args.on_attach,
             capabilites = args.capabilites,
+            settings = {
+                Lua = {
+                    completion = {
+                        callSnippet = "Replace",
+                    },
+                    diagnostics = {
+                        workspaceEvent = "OnChange",
+                        globals = {
+                            "describe",
+                            "before_each",
+                            "it",
+                            "mock",
+                            "assert",
+                        },
+                        groupSeverity = {
+                            strong = "Warning",
+                            strict = "Warning",
+                        },
+                        groupFileStatus = {
+                            ["ambiguity"] = "Opened",
+                            ["await"] = "Opened",
+                            ["codestyle"] = "None",
+                            ["duplicate"] = "Opened",
+                            ["global"] = "Opened",
+                            ["luadoc"] = "Opened",
+                            ["redefined"] = "Opened",
+                            ["strict"] = "Opened",
+                            ["strong"] = "Opened",
+                            ["type-check"] = "Opened",
+                            ["unbalanced"] = "Opened",
+                            ["unused"] = "Opened",
+                        },
+                        unusedLocalExclude = { "_*" },
+                    },
+                    telemetry = {
+                        enable = false,
+                    },
+                },
+            },
         },
     }
 end
