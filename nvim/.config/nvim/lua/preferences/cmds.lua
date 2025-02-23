@@ -7,4 +7,5 @@ vim.api.nvim_create_autocmd({ "BufEnter", "CursorHold", "CursorHoldI", "FocusGai
 })
 
 -- avoid inserting comments on new line in any language
-vim.cmd([[autocmd FileType * set formatoptions-=ro]])
+-- for now commenting this out, I am not sure I was this feature disabled
+-- vim.cmd([[autocmd FileType * set formatoptions-=ro]])

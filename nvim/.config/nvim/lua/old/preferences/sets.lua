@@ -1,4 +1,3 @@
--- settings
 vim.opt.number = true
 vim.opt.relativenumber = true
 vim.opt.tabstop = 4
@@ -19,3 +18,12 @@ vim.opt.splitbelow = true
 vim.opt.smartindent = true
 vim.opt["guicursor"] = ""
 
+-- auto-reload files when modified externally
+-- https://unix.stackexchange.com/a/383044
+vim.o.autoread = true
+vim.api.nvim_create_autocmd({ "BufEnter", "CursorHold", "CursorHoldI", "FocusGained" }, {
+    command = "if mode() != 'c' | checktime | endif",
+    pattern = { "*" },
+})
+
+vim.cmd([[autocmd FileType * set formatoptions-=ro]])

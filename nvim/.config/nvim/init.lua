@@ -276,5 +276,9 @@
 --
 -- require("snippets")
 
-local lazy = require("new.lazy")
+local lazy = require("lazy")
 lazy.load()
+
+require("settings")
+require("utils")
+require("filetypes")

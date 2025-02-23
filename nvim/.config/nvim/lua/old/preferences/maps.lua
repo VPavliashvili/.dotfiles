@@ -1,4 +1,3 @@
--- builtin keymaps
 vim.g.mapleader = " "
 
 vim.keymap.set("n", "<leader>nh", vim.cmd.noh)
