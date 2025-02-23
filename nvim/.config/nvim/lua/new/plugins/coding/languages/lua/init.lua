@@ -1,4 +1,4 @@
-local function get_plugins()
+local function get_plugins(args)
     return {
         {
             "folke/lazydev.nvim",
