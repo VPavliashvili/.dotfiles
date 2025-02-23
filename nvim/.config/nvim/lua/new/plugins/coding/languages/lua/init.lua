@@ -93,11 +93,9 @@ local function get_cmp(args)
 end
 
 return {
-    specs = {
-        get_lsp = get_lsp,
-        get_dap = get_dap,
-        get_cmp = get_cmp,
-        get_null_ls = get_null_ls,
-        get_plugins = get_plugins,
-    },
+    get_lsp = get_lsp,
+    get_dap = get_dap,
+    get_cmp = get_cmp,
+    get_null_ls = get_null_ls,
+    get_plugins = get_plugins,
 }

@@ -1,11 +1,9 @@
-local coding_specs = require("coding")
+local coding_module = require("new.plugins.coding")
 
-local plugins = {}
-
--- for k, specs_fn in pairs(coding_specs) do
---     table.insert(plugins, )
--- end
+local coding_plugins = coding_module.get_lazy_specs({})
 
 return {
-    plugins = coding_specs.plugins,
+    get_coding_plugins = function()
+        return coding_plugins
+    end,
 }

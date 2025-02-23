@@ -1,4 +1,26 @@
-local language_configs = require("languages")
+local language_configs = require("new.plugins.coding.languages")
+
+local capabilities
+local function get_lsp_capabilities()
+    if capabilities then
+        return capabilities
+    end
+
+    local success, cmp_lsp = pcall(require, "cmp_nvim_lsp")
+
+    if not success then
+        -- vim.notify("Failed to load cmp_nvim_lsp", vim.log.levels.ERROR)
+        return
+    end
+
+    capabilities = cmp_lsp.default_capabilities(vim.lsp.protocol.make_client_capabilities())
+    capabilities.textDocument.completion.completionItem.snippetSupport = true
+    capabilities.textDocument.foldingRange = {
+        dynamicRegistration = false,
+        lineFoldingOnly = true,
+    }
+    return capabilities
+end
 
 local on_attach = function(client, bufnr)
     -- Enable completion triggered by <c-x><c-o>
@@ -60,23 +82,21 @@ local function get_lazy_specs(args)
             end,
         },
         {
-            {
-                "nvimtools/none-ls.nvim",
-                config = function()
-                    local null_ls = require("null-ls")
+            "nvimtools/none-ls.nvim",
+            config = function()
+                local null_ls = require("null-ls")
 
-                    local null_ls_sources = language_configs.get_null_ls_configs({ null_ls = null_ls.builtins })
-                    local sources = {}
-                    for k, src in pairs(null_ls_sources) do
-                        table.insert(sources, src)
-                    end
+                local null_ls_sources = language_configs.get_null_ls_configs({ null_ls = null_ls.builtins })
+                local sources = {}
+                for k, src in pairs(null_ls_sources) do
+                    table.insert(sources, src)
+                end
 
-                    null_ls.setup({
-                        sources = sources,
-                        on_attach = on_attach,
-                    })
-                end,
-            },
+                null_ls.setup({
+                    sources = sources,
+                    on_attach = on_attach,
+                })
+            end,
         },
         {
             "neovim/nvim-lspconfig",
@@ -91,7 +111,6 @@ local function get_lazy_specs(args)
             },
             config = function()
                 require("lspconfig.ui.windows").default_options.border = "single"
-                local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
                 local lsp_configs = language_configs.get_lsp_configs({
                     on_attach = on_attach,

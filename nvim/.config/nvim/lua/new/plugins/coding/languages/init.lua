@@ -1,10 +1,6 @@
--- coding/init unda gadmovides coding/languages/init-shi
--- da iqit unda daiweros ushualod lazy nvim-istvis config=-shi gadasacemi
--- gamzadebuli table
-
 local language_specs = {}
 
-local lua = require("lua")
+local lua = require("new.plugins.coding.languages.lua")
 
 table.insert(language_specs, lua)
 
@@ -22,6 +18,9 @@ local function get_dap_configs(args)
     local dap_configs = {}
     for k, specs in pairs(language_specs) do
         local dap_specs = specs.get_dap(args)
+        if dap_specs == nil or next(dap_specs) == nil then
+            goto continue
+        end
 
         table.insert(dap_configs, {
             adapter = {
@@ -33,6 +32,7 @@ local function get_dap_configs(args)
                 config = dap_specs.configuration.config,
             },
         })
+        ::continue::
     end
 
     return dap_configs
@@ -72,11 +72,9 @@ local function get_plugins_setups(args)
 end
 
 return {
-    specs = {
-        get_lsp_configs = get_lsp_configs,
-        get_dap_configs = get_dap_configs,
-        get_cmp_configs = get_cmp_configs,
-        get_null_ls_configs = get_null_ls_configs,
-        get_plugins_setups = get_plugins_setups,
-    },
+    get_lsp_configs = get_lsp_configs,
+    get_dap_configs = get_dap_configs,
+    get_cmp_configs = get_cmp_configs,
+    get_null_ls_configs = get_null_ls_configs,
+    get_plugins_setups = get_plugins_setups,
 }
