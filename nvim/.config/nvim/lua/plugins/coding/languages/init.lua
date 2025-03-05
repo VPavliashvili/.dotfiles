@@ -1,6 +1,6 @@
 local language_specs = {}
 
-local lua = require("new.plugins.coding.languages.lua")
+local lua = require("plugins.coding.languages.lua")
 
 table.insert(language_specs, lua)
 

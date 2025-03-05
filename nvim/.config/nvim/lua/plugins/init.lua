@@ -1,4 +1,4 @@
-local coding_module = require("new.plugins.coding")
+local coding_module = require("plugins.coding")
 
 local coding_plugins = coding_module.get_lazy_specs({})
 

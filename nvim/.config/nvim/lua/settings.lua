@@ -1,3 +1,3 @@
-require("new.preferences.maps")
-require("new.preferences.sets")
-require("new.preferences.cmds")
+require("preferences.maps")
+require("preferences.sets")
+require("preferences.cmds")

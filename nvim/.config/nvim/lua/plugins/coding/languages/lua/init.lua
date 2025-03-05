@@ -16,6 +16,8 @@ local function get_plugins(args)
 end
 
 local function get_lsp(args)
+    local utils = require("utils.helpers")
+
     -- nvim-lspconfig setup
     return {
         name = "lua_ls",
@@ -43,8 +45,8 @@ local function get_lsp(args)
                     },
                 })
             end,
-            on_attach = args.on_attach,
-            capabilites = args.capabilites,
+            on_attach = utils.on_attach,
+            capabilites = utils.get_lsp_capabilities,
             settings = {
                 Lua = {
                     completion = {

@@ -15,7 +15,7 @@ local function ensure_lazy_installation()
 end
 
 local function load()
-    local plugins = require("new.plugins").get_coding_plugins()
+    local plugins = require("plugins").get_coding_plugins()
 
     -- vim.list_extend(plugins, plugins_specs.plugins)
     vim.list_extend(plugins, {
