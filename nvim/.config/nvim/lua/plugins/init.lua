@@ -1,9 +1,17 @@
-local coding_module = require("plugins.coding")
+local function get_specs()
+    local coding_module = require("plugins.coding")
+    local core_module = require("plugins.core")
+    local ui_module = require("plugins.ui")
 
-local coding_plugins = coding_module.get_lazy_specs({})
+    local specs = {}
+
+    vim.list_extend(specs, coding_module.get_lazy_specs())
+    vim.list_extend(specs, core_module.get_lazy_specs())
+    vim.list_extend(specs, ui_module.get_lazy_specs())
+
+    return specs
+end
 
 return {
-    get_coding_plugins = function()
-        return coding_plugins
-    end,
+    get_specs = get_specs,
 }

@@ -276,9 +276,7 @@
 --
 -- require("snippets")
 
-local lazy = require("lazy-nvim")
-lazy.load()
-
 require("settings")
 require("utils")
 require("filetypes")
+require("lazy-nvim").load()

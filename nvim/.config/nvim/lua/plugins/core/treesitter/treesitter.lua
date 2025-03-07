@@ -1,4 +1,4 @@
-local function setup()
+local function config()
     require("nvim-treesitter.configs").setup({
         highlight = {
             enable = true,
@@ -16,7 +16,24 @@ local function setup()
         indent = {
             enable = true,
         },
+        endwise = {
+            enable = true,
+        },
     })
 end
 
-return setup
+local function get_plugin_spec()
+    return {
+        {
+            "nvim-treesitter/nvim-treesitter",
+            config = config,
+            dependencies = {
+                "RRethy/nvim-treesitter-endwise",
+            },
+        },
+    }
+end
+
+return {
+    get_plugin_spec = get_plugin_spec,
+}

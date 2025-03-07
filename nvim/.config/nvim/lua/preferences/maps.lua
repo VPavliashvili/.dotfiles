@@ -1,7 +1,7 @@
 -- builtin keymaps
 vim.g.mapleader = " "
 
-vim.keymap.set("n", "<leader>nh", vim.cmd.noh)
+vim.keymap.set("n", "<leader>nh", vim.cmd.noh, { desc = "remove current highligt" })
 
 vim.keymap.set("n", "<A-j>", ":m .+1<CR>==")
 vim.keymap.set("n", "<A-k>", ":m .-2<CR>==")
