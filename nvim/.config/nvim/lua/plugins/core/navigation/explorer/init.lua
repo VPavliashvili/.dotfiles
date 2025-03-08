@@ -1,26 +1,10 @@
-local function config()
-    require("neo-tree").setup({
-        window = {
-            position = "float",
-        },
-    })
-
-    vim.keymap.set("n", "<leader>ex", ":Neotree toggle<CR>")
-end
-
 local function get_plugins_setups()
-    return {
-        {
-            "nvim-neo-tree/neo-tree.nvim",
-            branch = "v3.x",
-            dependencies = {
-                "nvim-lua/plenary.nvim",
-                "nvim-tree/nvim-web-devicons",
-                "MunifTanjim/nui.nvim",
-            },
-            config = config,
-        },
-    }
+    local neotree = require("plugins.core.navigation.explorer.neo-tree")
+
+    local plugins = {}
+    vim.list_extend(plugins, neotree.get_plugin_spec())
+
+    return plugins
 end
 
 return {

@@ -19,3 +19,7 @@ vim.opt.splitbelow = true
 vim.opt.smartindent = true
 vim.opt["guicursor"] = ""
 
+-- i hate having blank buffers for no particular reason
+vim.cmd([[
+  cnoreabbrev tabnew tabnew %
+]])

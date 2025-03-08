@@ -32,13 +32,13 @@ local function config()
             -- See the 'Supported plugins' section for the available list
         },
         options = {
-            bold = true,                        -- Use bold styles?
-            italic = true,                      -- Use italic styles?
-            underline = true,                   -- Use underline styles?
-            undercurl = true,                   -- Use undercurl styles?
-            cursorline = true,                  -- Use cursorline highlighting?
-            transparency = true,                -- Use a transparent background?
-            terminal_colors = true,             -- Use the theme's colors for Neovim's :terminal?
+            bold = true, -- Use bold styles?
+            italic = true, -- Use italic styles?
+            underline = true, -- Use underline styles?
+            undercurl = true, -- Use undercurl styles?
+            cursorline = false, -- Use cursorline highlighting?
+            transparency = true, -- Use a transparent background?
+            terminal_colors = true, -- Use the theme's colors for Neovim's :terminal?
             highlight_inactive_windows = false, -- When the window is out of focus, change the normal background?
         },
     })
