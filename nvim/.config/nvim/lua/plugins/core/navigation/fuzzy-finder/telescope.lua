@@ -17,7 +17,7 @@ local function config()
             },
             file_ignore_patterns = {
                 "node_modules",
-                ".git/",
+                "^.git/",
                 "bin/",
                 "obj/",
                 ".nx/",
