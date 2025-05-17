@@ -44,8 +44,11 @@ sleep 0.25
 
 swaymsg exec "foot -e zellij attach scratchpad"
 
-sleep 0.25
+sleep 0.5
 
+swaymsg floating toggle
+swaymsg resize 'set width 1645 px height 955 px'
+swaymsg 'move position 235 px 100 px'
 swaymsg move scratchpad
 swaymsg 'workspace --no-auto-back-and-forth 1'
 

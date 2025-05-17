@@ -81,7 +81,8 @@ bindsym --to-code {
 ### Key bindings
     $mod+v exec cliphist list | $clipboard --dmenu | cliphist decode | wl-copy
     $mod+SHIFT+x exec swaylock --indicator --clock  -e -F -S -k --effect-scale 0.3 -r --effect-vignette 0.2:7
-    Print exec grim -g "$(slurp)" - | swappy -f -
+    # Print exec grim -g "$(slurp)" - | swappy -f -
+    Print exec ~/.config/sway/swappy.sh
 
 # audio and mic
     XF86AudioRaiseVolume exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+
