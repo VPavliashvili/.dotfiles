@@ -12,7 +12,7 @@ local function config()
                 n = {
                     ["<C-j>"] = actions.preview_scrolling_down,
                     ["<C-k>"] = actions.preview_scrolling_up,
-                    ['<c-d>'] = require('telescope.actions').delete_buffer,
+                    ["<c-d>"] = require("telescope.actions").delete_buffer,
                     ["q"] = actions.close,
                 },
             },
@@ -31,9 +31,14 @@ local function config()
         },
         pickers = {
             find_files = {
-                hidden = true
-            }
-        }
+                hidden = true,
+            },
+            live_grep = {
+                additional_args = function(opts)
+                    return { "--hidden" }
+                end,
+            },
+        },
     })
 
     local builtin = require("telescope.builtin")

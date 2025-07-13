@@ -237,7 +237,7 @@ mode "runner: [h]ome_apps, [w]ork, [e]mojis, [c]work, [d]work, [k]illall" {
     bindsym --to-code {
         h exec ~/.config/sway/startup_home.sh, mode "default"
         w exec ~/.config/sway/startup_work.sh, mode "default"
-        e exec bemoji, mode "default"
+        e exec bemoji -n, mode "default"
         c exec ~/bin/connectwork.sh, mode "default"
         d exec ~/bin/disconnectwork.sh, mode "default"
         k exec ~/.config/sway/killall.sh, mode "default"

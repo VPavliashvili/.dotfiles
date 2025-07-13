@@ -4,7 +4,7 @@ local function config()
 
     local dap = require("dap")
     local dap_utils = require("dap.utils")
-    local dap_configs = require("plugins.coding.languages").get_dap_configs({ dap_utils = dap_utils })
+    local dap_configs = require("plugins.coding.languages").get_dap_configs({ dap_utils = dap_utils, dap = dap })
 
     vim.fn.sign_define("DapBreakpoint", { text = "🔴", texthl = "DapBreakpoint", linehl = "", numhl = "" })
     vim.fn.sign_define(

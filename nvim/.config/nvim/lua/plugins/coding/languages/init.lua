@@ -1,14 +1,20 @@
 local language_specs = {}
 
+local csharp = require("plugins.coding.languages.csharp")
 local lua = require("plugins.coding.languages.lua")
 
 table.insert(language_specs, lua)
+table.insert(language_specs, csharp)
 
 local function get_lsp_configs(args)
     local lspconfigs = {}
     for k, specs in pairs(language_specs) do
         local lsp = specs.get_lsp(args)
-        table.insert(lspconfigs, { name = lsp.name, setup = lsp.setup })
+        if lsp == nil or lsp.name == nil then
+            goto continue
+        end
+        table.insert(lspconfigs, { name = lsp.name, setup = lsp.setup, filetype = lsp.filetype })
+        ::continue::
     end
 
     return lspconfigs
@@ -53,8 +59,12 @@ local function get_null_ls_configs(args)
     local null_ls_sources = {}
     for k, specs in pairs(language_specs) do
         local null_ls = specs.get_null_ls(args)
+        if null_ls == nil then
+            goto continue
+        end
 
-        null_ls_sources = vim.tbl_extend("keep", null_ls_sources, null_ls.sources)
+        vim.list_extend(null_ls_sources, null_ls.sources)
+        ::continue::
     end
 
     return null_ls_sources
@@ -65,7 +75,8 @@ local function get_plugins_setups(args)
     for k, specs in pairs(language_specs) do
         local incoming = specs.get_plugins(args)
 
-        plugins = vim.tbl_deep_extend("keep", plugins, incoming)
+        -- plugins = vim.tbl_deep_extend("keep", plugins, incoming)
+        table.insert(plugins, incoming)
     end
 
     return plugins

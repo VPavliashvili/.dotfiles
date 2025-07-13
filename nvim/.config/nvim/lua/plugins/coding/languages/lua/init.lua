@@ -1,17 +1,24 @@
 local function get_plugins(args)
     return {
         {
-            "folke/lazydev.nvim",
-            ft = "lua",
-            opts = {
-                library = {
-                    { path = "${3rd}/luv/library", words = { "vim%.uv" } },
-                },
-            },
-            dependencies = {
-                "nvim-lua/plenary.nvim",
-            },
+            "folke/neodev.nvim",
+            config = function()
+                require("neodev").setup({})
+            end,
+            opts = {},
         },
+        -- {
+        --     "folke/lazydev.nvim",
+        --     ft = "lua",
+        --     opts = {
+        --         library = {
+        --             { path = "${3rd}/luv/library", words = { "vim%.uv" } },
+        --         },
+        --     },
+        --     dependencies = {
+        --         "nvim-lua/plenary.nvim",
+        --     },
+        -- },
     }
 end
 
@@ -20,6 +27,7 @@ local function get_lsp(args)
 
     -- nvim-lspconfig setup
     return {
+        filetype = "lua",
         name = "lua_ls",
         setup = {
             on_init = function(client)
@@ -121,15 +129,15 @@ local function get_cmp(args)
             filetype = {
                 name = "lua",
                 sources = {
-                    { name = "calc",                    group_index = 0 },
-                    { name = "lazydev",                 group_index = 0 },
-                    { name = "snippets",                group_index = 0 },
-                    { name = "nvim_lsp",                group_index = 1 },
-                    { name = "nvim_lua",                group_index = 1 },
+                    { name = "calc", group_index = 0 },
+                    { name = "lazydev", group_index = 0 },
+                    { name = "snippets", group_index = 0 },
+                    { name = "nvim_lsp", group_index = 1 },
+                    { name = "nvim_lua", group_index = 1 },
                     { name = "nvim_lsp_signature_help", group_index = 1 },
-                    { name = "treesitter",              group_index = 2 },
-                    { name = "path",                    group_index = 2 },
-                    { name = "buffer",                  group_index = 2 },
+                    { name = "treesitter", group_index = 2 },
+                    { name = "path", group_index = 2 },
+                    { name = "buffer", group_index = 2 },
                 },
             },
         },
