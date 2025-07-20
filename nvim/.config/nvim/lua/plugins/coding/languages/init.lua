@@ -1,10 +1,16 @@
 local language_specs = {}
 
 local csharp = require("plugins.coding.languages.csharp")
+local css = require("plugins.coding.languages.css")
+local html = require("plugins.coding.languages.html")
+local js = require("plugins.coding.languages.js")
 local lua = require("plugins.coding.languages.lua")
 
 table.insert(language_specs, lua)
 table.insert(language_specs, csharp)
+table.insert(language_specs, js)
+table.insert(language_specs, html)
+table.insert(language_specs, css)
 
 local function get_lsp_configs(args)
     local lspconfigs = {}
