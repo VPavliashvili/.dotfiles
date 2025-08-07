@@ -1,12 +1,10 @@
 local function get_plugins()
     return {
         {
-            {
-                "seblj/roslyn.nvim",
-                ft = "cs",
-                opts = {
-                    exe = vim.fn.exepath("Microsoft.CodeAnalysis.LanguageServer"),
-                },
+            "seblj/roslyn.nvim",
+            ft = "cs",
+            opts = {
+                exe = vim.fn.exepath("Microsoft.CodeAnalysis.LanguageServer"),
             },
         },
     }
@@ -29,6 +27,18 @@ local function get_lsp(args)
             end
         end,
     })
+
+    vim.lsp.config("roslyn", {
+        cmd = {
+            vim.fn.exepath("Microsoft.CodeAnalysis.LanguageServer"),
+            "--logLevel",
+            "Information",
+            "--extensionLogDirectory",
+            vim.fs.joinpath(vim.uv.os_tmpdir(), "roslyn_ls/logs"),
+            "--stdio",
+        },
+    })
+
     return nil
 end
 
