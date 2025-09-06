@@ -112,14 +112,20 @@ keybinds {
     }
     session {
         bind "Ctrl o" { SwitchToMode "Normal"; }
-        bind "Ctrl s" { SwitchToMode "Scroll"; }
         bind "d" { Detach; }
-        bind "w" {
+        bind "s" {
             LaunchOrFocusPlugin "zellij:session-manager" {
                 floating true
                 move_to_focused_tab true
             };
             SwitchToMode "Normal"
+        }
+        bind "w" {
+            Run "zellij" "run" "-c" "--" "sessions" {
+                close_on_exit true
+                direction "Down"
+            };
+            SwitchToMode "normal";
         }
     }
     tmux {
@@ -191,6 +197,8 @@ plugins {
     compact-bar { path "compact-bar"; }
     session-manager { path "session-manager"; }
 }
+
+show_startup_tips false
 
 // Choose what to do when zellij receives SIGTERM, SIGINT, SIGQUIT or SIGHUP
 // eg. when terminal window with an active zellij session is closed

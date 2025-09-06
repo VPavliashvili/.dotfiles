@@ -38,11 +38,22 @@ swaymsg 'unmark teams_container'
 sleep 1.0
 
 swaymsg 'workspace --no-auto-back-and-forth 1'
-swaymsg exec "foot -e zellij attach main-terminal"
+
+main="$(zellij list-sessions -s | grep main-terminal)"
+if [[ -n "$main" ]]; then
+    swaymsg exec "foot -e zellij attach main-terminal"
+else
+    swaymsg exec "foot -e zellij attach main-terminal -c"
+fi
 
 sleep 0.25
 
-swaymsg exec "foot -e zellij attach scratchpad"
+scr="$(zellij list-sessions -s | grep scratchpad)"
+if [[ -n "$scr" ]]; then
+    swaymsg exec "foot -e zellij attach scratchpad"
+else
+    swaymsg exec "foot -e zellij attach scratchpad -c"
+fi
 
 sleep 0.5
 
