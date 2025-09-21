@@ -10,7 +10,7 @@ local function get_plugins()
     }
 end
 
-local function get_lsp(args)
+local function init_lsp(args)
     local utils = require("utils.helpers")
 
     vim.api.nvim_create_autocmd("LspAttach", {
@@ -38,8 +38,6 @@ local function get_lsp(args)
             "--stdio",
         },
     })
-
-    return nil
 end
 
 local function get_null_ls(args)
@@ -70,13 +68,13 @@ local function get_cmp(args)
             filetype = {
                 name = "cs",
                 sources = {
-                    { name = "snippets", group_index = 0 },
+                    { name = "snippets",                group_index = 0 },
                     { name = "nvim_lsp_signature_help", group_index = 1 },
-                    { name = "nvim_lsp", group_index = 2 },
-                    { name = "buffer", group_index = 2 },
-                    { name = "calc", group_index = 4 },
-                    { name = "treesitter", group_index = 5 },
-                    { name = "path", group_index = 5 },
+                    { name = "nvim_lsp",                group_index = 2 },
+                    { name = "buffer",                  group_index = 2 },
+                    { name = "calc",                    group_index = 4 },
+                    { name = "treesitter",              group_index = 5 },
+                    { name = "path",                    group_index = 5 },
                 },
             },
         },
@@ -162,7 +160,7 @@ local function get_dap(args)
 end
 
 return {
-    get_lsp = get_lsp,
+    init_lsp = init_lsp,
     get_dap = get_dap,
     get_cmp = get_cmp,
     get_null_ls = get_null_ls,

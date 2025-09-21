@@ -22,80 +22,90 @@ local function get_plugins(args)
     }
 end
 
-local function get_lsp(args)
+local function init_lsp(args)
     local utils = require("utils.helpers")
 
-    -- nvim-lspconfig setup
-    return {
-        filetype = "lua",
-        name = "lua_ls",
-        setup = {
-            on_init = function(client)
-                if client.workspace_folders then
-                    local path = client.workspace_folders[1].name
-                    if
-                        path ~= vim.fn.stdpath("config")
-                        and (vim.loop.fs_stat(path .. "/.luarc.json") or vim.loop.fs_stat(path .. "/.luarc.jsonc"))
-                    then
-                        return
-                    end
-                end
+    vim.api.nvim_create_autocmd("LspAttach", {
+        callback = function(arg)
+            local bufnr = arg.buf
+            local client = vim.lsp.get_client_by_id(arg.data.client_id)
+            if client == nil then
+                error("client was nil")
+                return
+            end
 
-                client.config.settings.Lua = vim.tbl_deep_extend("force", client.config.settings.Lua, {
-                    runtime = {
-                        version = "LuaJIT",
+            if client.name == "lua_ls" then
+                utils.on_attach(client, bufnr)
+            end
+        end,
+    })
+
+    vim.lsp.config("lua_ls", {
+        on_init = function(client)
+            if client.workspace_folders then
+                local path = client.workspace_folders[1].name
+                if
+                    path ~= vim.fn.stdpath("config")
+                    and (vim.loop.fs_stat(path .. "/.luarc.json") or vim.loop.fs_stat(path .. "/.luarc.jsonc"))
+                then
+                    return
+                end
+            end
+
+            client.config.settings.Lua = vim.tbl_deep_extend("force", client.config.settings.Lua, {
+                runtime = {
+                    version = "LuaJIT",
+                },
+                workspace = {
+                    checkThirdParty = false,
+                    library = {
+                        vim.env.VIMRUNTIME,
                     },
-                    workspace = {
-                        checkThirdParty = false,
-                        library = {
-                            vim.env.VIMRUNTIME,
-                        },
+                },
+            })
+        end,
+        settings = {
+            Lua = {
+                completion = {
+                    callSnippet = "Replace",
+                },
+                diagnostics = {
+                    workspaceEvent = "OnChange",
+                    globals = {
+                        "describe",
+                        "before_each",
+                        "it",
+                        "mock",
+                        "assert",
                     },
-                })
-            end,
-            on_attach = utils.on_attach,
-            capabilites = utils.get_lsp_capabilities,
-            settings = {
-                Lua = {
-                    completion = {
-                        callSnippet = "Replace",
+                    groupSeverity = {
+                        strong = "Warning",
+                        strict = "Warning",
                     },
-                    diagnostics = {
-                        workspaceEvent = "OnChange",
-                        globals = {
-                            "describe",
-                            "before_each",
-                            "it",
-                            "mock",
-                            "assert",
-                        },
-                        groupSeverity = {
-                            strong = "Warning",
-                            strict = "Warning",
-                        },
-                        groupFileStatus = {
-                            ["ambiguity"] = "Opened",
-                            ["await"] = "Opened",
-                            ["codestyle"] = "None",
-                            ["duplicate"] = "Opened",
-                            ["global"] = "Opened",
-                            ["luadoc"] = "Opened",
-                            ["redefined"] = "Opened",
-                            ["strict"] = "Opened",
-                            ["strong"] = "Opened",
-                            ["type-check"] = "Opened",
-                            ["unbalanced"] = "Opened",
-                            ["unused"] = "Opened",
-                        },
-                        unusedLocalExclude = { "_*" },
+                    groupFileStatus = {
+                        ["ambiguity"] = "Opened",
+                        ["await"] = "Opened",
+                        ["codestyle"] = "None",
+                        ["duplicate"] = "Opened",
+                        ["global"] = "Opened",
+                        ["luadoc"] = "Opened",
+                        ["redefined"] = "Opened",
+                        ["strict"] = "Opened",
+                        ["strong"] = "Opened",
+                        ["type-check"] = "Opened",
+                        ["unbalanced"] = "Opened",
+                        ["unused"] = "Opened",
                     },
-                    telemetry = {
-                        enable = false,
-                    },
+                    unusedLocalExclude = { "_*" },
+                },
+                telemetry = {
+                    enable = false,
                 },
             },
         },
-    }
+        capabilites = utils.get_lsp_capabilities,
+    })
+    vim.lsp.enable("lua_ls")
 end
 
 local function get_null_ls(args)
@@ -129,15 +139,15 @@ local function get_cmp(args)
             filetype = {
                 name = "lua",
                 sources = {
-                    { name = "calc", group_index = 0 },
-                    { name = "lazydev", group_index = 0 },
-                    { name = "snippets", group_index = 0 },
-                    { name = "nvim_lsp", group_index = 1 },
-                    { name = "nvim_lua", group_index = 1 },
+                    { name = "calc",                    group_index = 0 },
+                    { name = "lazydev",                 group_index = 0 },
+                    { name = "snippets",                group_index = 0 },
+                    { name = "nvim_lsp",                group_index = 1 },
+                    { name = "nvim_lua",                group_index = 1 },
                     { name = "nvim_lsp_signature_help", group_index = 1 },
-                    { name = "treesitter", group_index = 2 },
-                    { name = "path", group_index = 2 },
-                    { name = "buffer", group_index = 2 },
+                    { name = "treesitter",              group_index = 2 },
+                    { name = "path",                    group_index = 2 },
+                    { name = "buffer",                  group_index = 2 },
                 },
             },
         },
@@ -145,7 +155,7 @@ local function get_cmp(args)
 end
 
 return {
-    get_lsp = get_lsp,
+    init_lsp = init_lsp,
     get_dap = get_dap,
     get_cmp = get_cmp,
     get_null_ls = get_null_ls,

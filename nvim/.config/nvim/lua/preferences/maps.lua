@@ -26,5 +26,9 @@ vim.keymap.set("n", "<C-i>", "<C-i>zz")
 vim.keymap.set("n", "n", "nzzzv")
 vim.keymap.set("n", "N", "Nzzzv")
 
+-- this keymap keeps visual mode selection after indenting
+vim.keymap.set("v", "<", "<gv")
+vim.keymap.set("v", ">", ">gv")
+
 -- when searching for a word avoid jumping automatically
 vim.keymap.set("n", "*", "*N", { noremap = true })

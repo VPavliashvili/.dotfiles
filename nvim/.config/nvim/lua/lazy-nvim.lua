@@ -21,11 +21,11 @@ local function load()
     vim.list_extend(plugins, {
         -- plugins which are not separated and I want to install 'inline' from this location
         -- goes here, e.g.
-        -- {
-        --     -- dir = "~/sourceCode/lua/json-nvim/",
-        --     "VPavliashvili/json-nvim",
-        --     ft = "json",
-        -- },
+        {
+            -- dir = "~/sourceCode/lua/json-nvim/",
+            "VPavliashvili/json-nvim",
+            -- ft = "json",
+        },
     })
 
     ensure_lazy_installation()

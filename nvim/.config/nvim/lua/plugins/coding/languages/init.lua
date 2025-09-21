@@ -2,6 +2,7 @@ local language_specs = {}
 
 local csharp = require("plugins.coding.languages.csharp")
 local css = require("plugins.coding.languages.css")
+local go = require("plugins.coding.languages.go")
 local html = require("plugins.coding.languages.html")
 local js = require("plugins.coding.languages.js")
 local lua = require("plugins.coding.languages.lua")
@@ -11,11 +12,12 @@ table.insert(language_specs, csharp)
 table.insert(language_specs, js)
 table.insert(language_specs, html)
 table.insert(language_specs, css)
+table.insert(language_specs, go)
 
-local function get_lsp_configs(args)
+local function init_lsp_configs(args)
     local lspconfigs = {}
     for k, specs in pairs(language_specs) do
-        local lsp = specs.get_lsp(args)
+        local lsp = specs.init_lsp(args)
         if lsp == nil or lsp.name == nil then
             goto continue
         end
@@ -89,7 +91,7 @@ local function get_plugins_setups(args)
 end
 
 return {
-    get_lsp_configs = get_lsp_configs,
+    init_lsp_configs = init_lsp_configs,
     get_dap_configs = get_dap_configs,
     get_cmp_configs = get_cmp_configs,
     get_null_ls_configs = get_null_ls_configs,

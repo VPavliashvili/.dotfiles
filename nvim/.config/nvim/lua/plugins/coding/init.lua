@@ -4,15 +4,6 @@ local language_configs = require("plugins.coding.languages")
 local linting = require("plugins.coding.linting")
 
 local function get_lazy_specs(args)
-    -- this will be used in c# part of the lazy specs
-    -- {
-    --     "seblj/roslyn.nvim",
-    --     ft = "cs",
-    --     opts = {
-    --         exe = vim.fn.exepath("Microsoft.CodeAnalysis.LanguageServer"), -- this for NixOS
-    --     },
-    -- },
-
     local plugins = {
         {
             "lukas-reineke/indent-blankline.nvim",
