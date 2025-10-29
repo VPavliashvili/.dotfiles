@@ -79,7 +79,7 @@ set_last_session "$current_session"
 
 if [[ -n "$ZELLIJ" ]]; then
     if [[ -z "$is_current_session" ]]; then
-        zellij pipe --plugin https://github.com/mostafaqanbaryan/zellij-switch/releases/download/0.2.0/zellij-switch.wasm -- "--session=$session_name --cwd=$cwd"
+        zellij pipe --plugin "file:$HOME/.config/zellij/plugins/zellij-switch.wasm" -- "--session=$session_name --cwd=$cwd"
     fi
 else
     if [[ -n "$session" ]]; then
