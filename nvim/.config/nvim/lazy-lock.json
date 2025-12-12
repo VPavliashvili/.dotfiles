@@ -28,6 +28,7 @@
   "lspkind.nvim": { "branch": "master", "commit": "3ddd1b4edefa425fda5a9f95a4f25578727c0bb3" },
   "lspsaga.nvim": { "branch": "main", "commit": "8efe00d6aed9db6449969f889170f1a7e43101a1" },
   "lualine.nvim": { "branch": "master", "commit": "b8c23159c0161f4b89196f74ee3a6d02cdc3a955" },
+  "markdown-preview.nvim": { "branch": "master", "commit": "a923f5fc5ba36a3b17e289dc35dc17f66d0548ee" },
   "neodev.nvim": { "branch": "main", "commit": "46aa467dca16cf3dfe27098042402066d2ae242d" },
   "nerdy.nvim": { "branch": "main", "commit": "a8e3f70dc0232e956adfb12c647b7e9e2b2e6c89" },
   "none-ls.nvim": { "branch": "main", "commit": "78111a97cebed3dfda8157af8141bf1915cfc327" },
