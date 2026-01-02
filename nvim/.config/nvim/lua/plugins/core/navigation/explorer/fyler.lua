@@ -3,17 +3,28 @@
 -- end
 
 local function get_plugin_spec()
-    vim.keymap.set("n", "<leader>ex", ":Fyler kind=float<CR>")
+    -- vim.keymap.set("n", "<leader>ex", ":Fyler kind=float<CR>")
 
     return {
         {
             "A7Lavinraj/fyler.nvim",
-            dependencies = { "nvim-tree/nvim-web-devicons" },
-            branch = "stable",
-            opts = { -- check the default options in the README.md
-                icon_provider = "nvim-web-devicons",
+            dependencies = "echasnovski/mini.icons",
+            cmd = { "Fyler" },
+            keys = {
+                {
+                    "<Space>ex",
+                    "<CMD>Fyler kind=float<CR>",
+                    desc = "Open Fyler",
+                },
             },
-            -- config = config,
+            opts = {
+                views = {
+                    explorer = {
+                        default_explorer = false,
+                    },
+                },
+            },
+            lazy = false,
         },
     }
 end
