@@ -8,7 +8,7 @@
 @define-color gray rgb(171, 178, 191);
 @define-color orange rgba(209, 154, 102, 1.0);
 
-@define-color waybar_bg rgba(0, 0, 0, 0.8);
+@define-color waybar_bg rgba(0, 0, 0, 0.95);
 
 * {
     /* `otf-font-awesome` is required to be installed for icons */

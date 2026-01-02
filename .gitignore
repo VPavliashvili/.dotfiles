@@ -8,3 +8,5 @@ bin/bin/disconnectwork.sh
 bin/bin/waybar_ipc
 __pycache__/
 *.py[cod]
+
+*.log
