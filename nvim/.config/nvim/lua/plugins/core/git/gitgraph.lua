@@ -28,6 +28,13 @@ local function get_plugin_spec()
                 {
                     "<leader>gl",
                     function()
+                        if vim.g.user_counter == nil then
+                            vim.g.user_counter = 1
+                        else
+                            vim.g.user_counter = vim.g.user_counter + 1
+                        end
+
+                        vim.cmd("tabnew")
                         require("gitgraph").draw({}, { all = true, max_count = 5000 })
                     end,
                     desc = "GitGraph - Draw",

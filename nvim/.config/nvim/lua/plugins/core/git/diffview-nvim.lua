@@ -5,6 +5,13 @@ local function config()
 
     vim.keymap.set("n", "<leader>gc", function()
         vim.cmd("DiffviewClose")
+
+        if vim.g.user_counter and vim.g.user_counter > 0 then
+            local tab_no = vim.fn.tabpagenr()
+            vim.cmd(tab_no .. "tabclose!")
+
+            vim.g.user_counter = vim.g.user_counter - 1
+        end
     end)
 
     vim.keymap.set("n", "<leader>gh", function()
