@@ -4,11 +4,14 @@ keybinds {
     normal {
         // uncomment this and adjust key if using copy_on_select=false
         // bind "Alt c" { Copy; }
+        unbind "Ctrl g"
     }
     locked {
-        bind "Ctrl g" { SwitchToMode "Normal"; }
+        bind "Alt g" { SwitchToMode "Normal"; }
+        unbind "Ctrl g"
     }
     resize {
+        unbind "Ctrl g"
         bind "Ctrl n" { SwitchToMode "Normal"; }
         bind "h" "Left" { Resize "Increase Left"; }
         bind "j" "Down" { Resize "Increase Down"; }
@@ -22,6 +25,7 @@ keybinds {
         bind "-" { Resize "Decrease"; }
     }
     pane {
+        unbind "Ctrl g"
         bind "Ctrl p" { SwitchToMode "Normal"; }
         bind "h" "Left" { MoveFocus "Left"; }
         bind "l" "Right" { MoveFocus "Right"; }
@@ -39,6 +43,7 @@ keybinds {
         bind "c" { SwitchToMode "RenamePane"; PaneNameInput 0;}
     }
     move {
+        unbind "Ctrl g"
         bind "Ctrl h" { SwitchToMode "Normal"; }
         bind "n" "Tab" { MovePane; }
         bind "p" { MovePaneBackwards; }
@@ -48,6 +53,7 @@ keybinds {
         bind "l" "Right" { MovePane "Right"; }
     }
     tab {
+        unbind "Ctrl g"
         bind "Ctrl t" { SwitchToMode "Normal"; }
         bind "r" { SwitchToMode "RenameTab"; TabNameInput 0; }
         bind "h" "Left" "Up" "k" { GoToPreviousTab; }
@@ -70,6 +76,7 @@ keybinds {
         bind "Tab" { ToggleTab; }
     }
     scroll {
+        unbind "Ctrl g"
         bind "Ctrl s" { SwitchToMode "Normal"; }
         bind "e" { EditScrollback; SwitchToMode "Normal"; }
         bind "s" { SwitchToMode "EnterSearch"; SearchInput 0; }
@@ -84,6 +91,7 @@ keybinds {
         // bind "Alt c" { Copy; }
     }
     search {
+        unbind "Ctrl g"
         bind "Ctrl s" { SwitchToMode "Normal"; }
         bind "Ctrl c" { ScrollToBottom; SwitchToMode "Normal"; }
         bind "j" "Down" { ScrollDown; }
@@ -99,18 +107,22 @@ keybinds {
         bind "o" { SearchToggleOption "WholeWord"; }
     }
     entersearch {
+        unbind "Ctrl g"
         bind "Ctrl c" "Esc" { SwitchToMode "Scroll"; }
         bind "Enter" { SwitchToMode "Search"; }
     }
     renametab {
+        unbind "Ctrl g"
         bind "Ctrl c" { SwitchToMode "Normal"; }
         bind "Esc" { UndoRenameTab; SwitchToMode "Tab"; }
     }
     renamepane {
+        unbind "Ctrl g"
         bind "Ctrl c" { SwitchToMode "Normal"; }
         bind "Esc" { UndoRenamePane; SwitchToMode "Pane"; }
     }
     session {
+        unbind "Ctrl g"
         bind "Ctrl o" { SwitchToMode "Normal"; }
         bind "d" { Detach; }
         bind "s" {
@@ -129,6 +141,7 @@ keybinds {
         }
     }
     tmux {
+        unbind "Ctrl g"
         bind "[" { SwitchToMode "Scroll"; }
         bind "Ctrl b" { Write 2; SwitchToMode "Normal"; }
         bind "\"" { NewPane "Down"; SwitchToMode "Normal"; }
@@ -153,7 +166,7 @@ keybinds {
     }
     shared_except "locked" {
         bind "Alt q" { Quit; }
-        bind "Ctrl g" { SwitchToMode "Locked"; }
+        bind "Alt g" { SwitchToMode "Locked"; }
         bind "Alt n" { NewPane; }
         bind "Alt h" "Alt Left" { MoveFocusOrTab "Left"; }
         bind "Alt l" "Alt Right" { MoveFocusOrTab "Right"; }

@@ -10,14 +10,19 @@ log ()
 
 # get special workspace name from second argument
 SCRATCHPAD_WS="$2"
-LAST_WINDOW_ADDRESS=""
-BASE_WORKSPACE=""
+
+LAST_WINDOW_ADDRESS="" # last window inside special scratchpad container workspace
+BASE_WORKSPACE="" # wokrspace name in which scrachpad window should appear from special scrathpad continer workspace
 
 log "action name $1 on workspace: $SCRATCHPAD_WS"
 
 if [[ "$1" == "push" ]]; then
-    echo ""
+    focused_window=$(hyprctl activewindow -j | jq -r '.address')
+
+    # send focused window to special contianer workspace
+    hyprctl dispatch movetoworkspacesilent $SCRATCHPAD_WS
 elif [[ "$1" == "pull" ]]; then
+    # else if inside pull branches is toggle(show/hide) for existing windows inside scratchpad container workspace
     if hyprctl clients -j | jq -e ".[] | select(.workspace.name == \"$SCRATCHPAD_WS\")" > /dev/null; then
         # this if flow shows the window from the scratchpad special ws
 
