@@ -7,6 +7,7 @@ local html = require("plugins.coding.languages.html")
 local js = require("plugins.coding.languages.js")
 local lua = require("plugins.coding.languages.lua")
 local nix = require("plugins.coding.languages.nix")
+local python = require("plugins.coding.languages.python")
 
 table.insert(language_specs, lua)
 table.insert(language_specs, csharp)
@@ -15,6 +16,7 @@ table.insert(language_specs, html)
 table.insert(language_specs, css)
 table.insert(language_specs, go)
 table.insert(language_specs, nix)
+table.insert(language_specs, python)
 
 local function init_lsp_configs(args)
     local lspconfigs = {}

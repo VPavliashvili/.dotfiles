@@ -1,7 +1,11 @@
 #!/usr/bin/env bash
 
+# this is a simple scratchpad which means it only supports
+# one window per special workspace container
+
 log ()
 {
+    return
     logfile="/tmp/hyprland_scratchpad.log"
     dt=$(date +'%F %T')
     echo $1
@@ -22,7 +26,7 @@ if [[ "$1" == "push" ]]; then
     # send focused window to special contianer workspace
     hyprctl dispatch movetoworkspacesilent $SCRATCHPAD_WS
 elif [[ "$1" == "pull" ]]; then
-    # else if inside pull branches is toggle(show/hide) for existing windows inside scratchpad container workspace
+    # else if inside pull branches is toggle(show/hide) for existing window inside scratchpad container workspace
     if hyprctl clients -j | jq -e ".[] | select(.workspace.name == \"$SCRATCHPAD_WS\")" > /dev/null; then
         # this if flow shows the window from the scratchpad special ws
 

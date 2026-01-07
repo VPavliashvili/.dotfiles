@@ -32,12 +32,12 @@
             },
             "on-click": "activate",
 
-            // commend below when debugging special workspaces(i.e wanna see them in the bar)
-            "show-special": false,
-            "special-visible-only": true
+            // comment below when debugging special workspaces(i.e wanna see them in the bar)
+            // "show-special": false,
+            // "special-visible-only": true,
 
             // uncomment below for debugging special workspaces
-            "show-special": true,
+            "show-special": true
         },
         "hyprland/language": {
             "format-en": "Eng ",
