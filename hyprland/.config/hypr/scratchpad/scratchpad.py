@@ -1,16 +1,11 @@
 #!/usr/bin/env python
 
 import argparse
-from ast import Try
 import json
 import sys
 import subprocess
 import os
-from pathlib import Path
-
-sys.path.insert(0, str(Path(__file__).parent.parent))
-
-from complex.common import Logger, Message, CommChannel
+from common import Logger, CommChannel
 
 parser = argparse.ArgumentParser(
     description="Sway like scratchpad in hyprland",

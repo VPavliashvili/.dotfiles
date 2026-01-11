@@ -3,16 +3,9 @@
 import argparse
 import json
 import os
-import sys
 import socket
 import select
-from pathlib import Path
-
-# Add parent directory to path
-sys.path.insert(0, str(Path(__file__).parent.parent))
-
-from complex.common import Logger, Message, CommChannel
-import complex.common
+from common import Logger, CommChannel, ROOT_PATH
 
 parser = argparse.ArgumentParser(
     description="Daemon for scratchpad implementation script",
@@ -40,8 +33,8 @@ container_queue = []
 
 # before doing anything
 # make base dir if not exist
-if not os.path.exists(complex.common.ROOT_PATH):
-    os.makedirs(complex.common.ROOT_PATH, exist_ok=True)
+if not os.path.exists(ROOT_PATH):
+    os.makedirs(ROOT_PATH, exist_ok=True)
 
 logger = Logger(args.name, args.log)
 

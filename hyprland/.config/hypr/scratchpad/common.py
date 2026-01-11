@@ -1,37 +1,8 @@
 from datetime import datetime
 import os
 import socket
-import subprocess
-import sys
-from pathlib import Path
-
 
 ROOT_PATH = "/tmp/hyprland_scratchpad/"
-
-
-class HyprlandWindow:
-    def __init__(
-        self, address: str, already_in_scratchpad: bool, scratchpad_ws_name: str
-    ):
-        self.address: str = address
-        self.already_in_scratchpad: bool = already_in_scratchpad
-        self.scratchpad_ws_name: str = scratchpad_ws_name
-
-
-class Message:
-    def __init__(
-        self,
-        action: str,
-        scratchpad_type: str,
-        container_workspace: str,
-        hyprland_windows: list[HyprlandWindow],
-    ):
-        self.action: str = action  # this is a string
-        self.scratchpad_type: str = scratchpad_type  # this is a string
-        self.container_workspace: str = container_workspace  # this is a string
-
-        # this is a queue of hyprland windows
-        self.hyprland_windows: list[HyprlandWindow] = hyprland_windows
 
 
 class Logger:
