@@ -133,7 +133,7 @@ keybinds {
             SwitchToMode "Normal"
         }
         bind "w" {
-            Run "zellij" "run" "-c" "--" "bash" "-c" "~/.config/zellij/scripts/sessions.sh" {
+            Run "zellij" "run" "-c" "--" "sessions" {
                 close_on_exit true
                 direction "Down"
             };
