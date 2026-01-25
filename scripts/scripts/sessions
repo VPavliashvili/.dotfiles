@@ -1,0 +1,90 @@
+# stolen from https://github.com/mostafaqanbaryan
+# and slightly modified by me
+
+#!/usr/bin/env bash
+LAST_SESSION="$(cat /tmp/zellij_last_session || '')"
+
+transform_home_path() {
+    HOME_SED_SAFE=$?
+    if [ $HOME_SED_SAFE -eq 0 ]; then
+        echo "$1" | sed -e "s|^~/|$HOME/|"
+    else
+        echo "$1"
+    fi
+}
+
+fzf_window() {
+    fzf --reverse --no-sort --border "rounded" --info inline --pointer "→" --prompt "Session > " --header "Select session" --preview "bash -c \"echo {2} | grep -q 'Session' && echo {} || ls {3}\""
+}
+
+set_last_session() {
+    echo "$1" > /tmp/zellij_last_session
+}
+
+last_session() {
+    if [[ -n "$LAST_SESSION" ]]; then
+        echo $LAST_SESSION | awk '{ print "("NR")\t[Session]\t"$1 }'
+    fi
+}
+
+sessions_list(){
+    if [[ -n "$LAST_SESSION" ]]; then
+        zellij list-sessions -s | grep -v "$(echo $LAST_SESSION)" | awk '{ print "("NR")\t[Session]\t"$1 }'
+    else
+        zellij list-sessions -s | awk '{ print "("NR")\t[Session]\t"$1 }'
+    fi
+}
+
+directory_list(){
+    list=$(find ~/ -maxdepth 3 -type d)
+    echo $list | tr --truncate-set1 " /" "\n" | awk '{ print "("NR")\t[Directory]\t"$1 }' 
+}
+
+select_project() {
+    project_dir=$({ last_session; sessions_list; directory_list; } | fzf_window)
+    if [ "$project_dir" = "" ]; then
+        exit
+    fi
+    echo "$project_dir"
+}
+
+get_sanitized_selected(){
+    echo "$1" | sed "s/^([0-9]*)\t\[[^]]*\]\t//"
+}
+
+get_session_name() {
+    project_dir=$1
+    directory=$(basename "$project_dir")
+    session_name=$(echo "$directory" | tr ' .:' '_')
+    echo "$session_name"
+}
+
+if [[ -n "$1" ]]; then
+    selected=$(realpath $1)
+else
+    selected=$(select_project)
+fi
+
+if [ -z "$selected" ]; then
+    exit 0
+fi
+
+cwd=$(get_sanitized_selected "$selected")
+session_name=$(get_session_name "$(transform_home_path "$cwd")")
+session=$(zellij list-sessions | grep "$session_name")
+current_session=$(zellij list-sessions -n | grep '(current)' | grep -o '^[^ ]*')
+is_current_session=$(zellij list-sessions -n | grep "^$session_name \[Created" | grep "(current)")
+
+set_last_session "$current_session"
+
+if [[ -n "$ZELLIJ" ]]; then
+    if [[ -z "$is_current_session" ]]; then
+        zellij pipe --plugin "file:$HOME/.config/zellij/plugins/zellij-switch.wasm" -- "--session=$session_name --cwd=$cwd"
+    fi
+else
+    if [[ -n "$session" ]]; then
+        zellij attach $session_name -c
+    else
+        zellij attach $session_name -c options --default-cwd $cwd
+    fi
+fi

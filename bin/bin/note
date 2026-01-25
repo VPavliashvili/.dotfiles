@@ -1,0 +1,7 @@
+NOTE: this dir(i.e. bin/) contains shell files
+      all of which eventually should move to scripts/ dir
+      this directory is only for binary files compiled 
+      from various places across the .dotfiles
+
+for now I am keeping some of the shell files here because undesired work involved
+to refactor dangling files references of these shell files in various config files
