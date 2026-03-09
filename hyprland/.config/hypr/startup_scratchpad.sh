@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 
-hyprctl dispatch exec "[workspace special:scratch; float; size 80% 85%] foot -e sessions scratchpad"
+hyprctl dispatch exec "[workspace special:scratch; float; size (monitor_w*0.8) (monitor_h*0.85)] foot -e sessions scratchpad"
 
 # 2. Give Hyprland time to create & focus the window
 sleep 0.5
