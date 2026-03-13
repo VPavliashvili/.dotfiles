@@ -3,8 +3,7 @@
 
 hyprctl dispatch exec "[workspace special:scratch; float; size (monitor_w*0.8) (monitor_h*0.85)] foot -e sessions scratchpad"
 
-# 2. Give Hyprland time to create & focus the window
-sleep 0.5
+sleep 1.0
 
 WIN_ADDR=$(hyprctl activewindow -j | jq -r '.address')
 
