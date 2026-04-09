@@ -1,3 +1,12 @@
+local function no_restore_args()
+    for _, arg in ipairs(vim.v.argv) do
+        if arg == "terminal" or arg == "term" then
+            return false
+        end
+    end
+    return true
+end
+
 local function config()
     vim.o.sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions"
     require("auto-session").setup({
@@ -5,6 +14,7 @@ local function config()
             local cmd = "git rev-parse --is-inside-work-tree"
             return vim.fn.system(cmd) == "true\n"
         end,
+        auto_restore = no_restore_args(),
     })
 end
 
