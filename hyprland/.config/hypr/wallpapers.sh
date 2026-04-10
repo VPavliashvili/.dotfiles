@@ -1,8 +1,5 @@
 #!/usr/bin/env sh
 
-# this script is relevant to hyrpaper prior to v0.8.0
-# should change after the update
-
 rate=5 # rate of refresh wallapeprs(default is 5)
 unit=s # unit of time of refresh(default is seconds)
 
