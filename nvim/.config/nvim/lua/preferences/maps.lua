@@ -32,3 +32,24 @@ vim.keymap.set("v", ">", ">gv")
 
 -- when searching for a word avoid jumping automatically
 vim.keymap.set("n", "*", "*N", { noremap = true })
+
+vim.keymap.set("n", "<leader>gc", function()
+    local count = #vim.api.nvim_list_tabpages()
+    if count > 1 then
+        vim.cmd("tabclose")
+    end
+end, { desc = "close current tab if its not only" })
+
+vim.keymap.set("n", "<leader>tn", function()
+    local buf = vim.api.nvim_get_current_buf()
+    local name = vim.api.nvim_buf_get_name(buf)
+    local is_empty = name == ""
+
+    if is_empty then
+        -- used for unnamed buffers
+        vim.cmd("tabnew")
+    else
+        -- used for anything else
+        vim.cmd("tabnew %")
+    end
+end, { desc = "create new tab" })

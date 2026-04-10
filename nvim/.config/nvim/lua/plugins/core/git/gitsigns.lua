@@ -8,10 +8,33 @@ local function config()
             changedelete = { text = "~" },
             untracked = { text = "┆" },
         },
-        signcolumn = true, -- Toggle with `:Gitsigns toggle_signs`
-        numhl = false,     -- Toggle with `:Gitsigns toggle_numhl`
-        linehl = false,    -- Toggle with `:Gitsigns toggle_linehl`
-        word_diff = false, -- Toggle with `:Gitsigns toggle_word_diff`
+        preview_config = {
+            border = "rounded",
+            relative = "cursor",
+            row = 0,
+            col = 1,
+        },
+        signcolumn = true,
+        numhl = false,
+        linehl = false,
+        word_diff = false,
+        on_attach = function(bufnr)
+            local function map(mode, l, r, opts)
+                opts = opts or {}
+                opts.buffer = bufnr
+                vim.keymap.set(mode, l, r, opts)
+            end
+
+            local gitsigns = require("gitsigns")
+
+            -- popup window with git info for the current line
+            map("n", "<leader>gi", function()
+                gitsigns.blame_line({ full = true })
+            end)
+            map("n", "<leader>bl", function()
+                gitsigns.blame()
+            end)
+        end,
     })
 end
 

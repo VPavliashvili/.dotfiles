@@ -14,13 +14,13 @@ local function get_plugin_spec()
                 hooks = {
                     -- Check diff of a commit
                     on_select_commit = function(commit)
-                        vim.notify("DiffviewOpen " .. commit.hash .. "^!")
-                        vim.cmd(":DiffviewOpen " .. commit.hash .. "^!")
+                        vim.notify("CodeDiff " .. commit.hash .. "~ " .. commit.hash)
+                        vim.cmd("CodeDiff " .. commit.hash .. "~ " .. commit.hash)
                     end,
                     -- Check diff from commit a -> commit b
                     on_select_range_commit = function(from, to)
-                        vim.notify("DiffviewOpen " .. from.hash .. "~1.." .. to.hash)
-                        vim.cmd(":DiffviewOpen " .. from.hash .. "~1.." .. to.hash)
+                        vim.notify("CodeDiff " .. from.hash .. "~ " .. to.hash)
+                        vim.cmd("CodeDiff " .. from.hash .. "~ " .. to.hash)
                     end,
                 },
             },

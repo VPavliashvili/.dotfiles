@@ -2,6 +2,10 @@ local function config()
     vim.keymap.set("n", "<leader>gd", function()
         vim.cmd(":CodeDiff")
     end)
+
+    vim.keymap.set("n", "<leader>gh", function()
+        vim.cmd(":CodeDiff history %")
+    end)
 end
 
 local function get_plugin_spec()
@@ -20,7 +24,6 @@ local function get_plugin_spec()
                 },
                 keymaps = {
                     view = {
-                        quit = "<leader>gc",
                         toggle_stage = "s",
                     },
                 },
