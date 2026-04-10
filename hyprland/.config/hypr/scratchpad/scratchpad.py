@@ -211,28 +211,6 @@ try:
 
                 sock = channel.getConnectedSocket()
                 sock.sendall(cmd)
-
-                # # below code is for a bug which appeared
-                # # after hyprland update to 0.54.later
-                # # when I send scratchpad window to special container workspace
-                # # and the real workspace is empty, focus remains on the scratchpad window
-                # # even tho I am standing on that normal and empty workspace
-                # focused_now = hyprctl_cmd("activewindow -j")
-                #
-                # if (focused_now is not None) and (focused_now.strip() != "[]") and (focused_now.strip() != "{}"):
-                #     focused_now = json.loads(focused_now)
-                #
-                #     logger.log("DEBUG", f"after hiding scratchpad back to container, focused focused window now is: {focused_now['address']}")
-                #
-                #     if focused_now["address"] == focused_window_addr:
-                #         raw = hyprctl_cmd("activeworkspace -j")
-                #         active_workspace = json.loads(raw)
-                #         active_ws_name = active_workspace["name"]
-                #
-                #         _ = hyprctl_dispatch(
-                #             f"movetoworkspacesilent {active_ws_name},address:{focused_window_addr}"
-                #         )
-                #         _ = hyprctl_dispatch(f"focuswindow address:{focused_window_addr}")
             else:
                 next_window_address = queue[0]
 
@@ -244,7 +222,7 @@ try:
                     f"movetoworkspacesilent {active_ws_name},address:{next_window_address}"
                 )
                 _ = hyprctl_dispatch(f"focuswindow address:{next_window_address}")
-
+                _ = hyprctl_dispatch(f"alterzorder top,address:{next_window_address}")
         else:
             next_window_address = queue[0]
 
@@ -256,6 +234,7 @@ try:
                 f"movetoworkspacesilent {active_ws_name},address:{next_window_address}"
             )
             _ = hyprctl_dispatch(f"focuswindow address:{next_window_address}")
+            _ = hyprctl_dispatch(f"alterzorder top,address:{next_window_address}")
 
 except Exception as e:
     logger.log("ERROR", f"exception thrown from {args.action} action: {repr(e)}")
