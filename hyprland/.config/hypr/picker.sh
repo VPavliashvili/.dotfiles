@@ -11,9 +11,9 @@ is_gui() {
 
 if [[ $operation == "options" ]]; then
     declare -A items 
-    items["emojis"]="bemoji -n"
-    items["work layout"]="~/.config/hypr/run_work_layout.sh"
-    items["home layout"]="~/.config/hypr/run_home_layout.sh"
+    items["fans zero"]="fan_control.sh zero"
+    items["fans medium"]="fan_control.sh mid"
+    items["fans full"]="fan_control.sh full"
 
     choice=$(printf '%s\n' "${!items[@]}" | fuzzel -b 282c34ff -t 61afefff -s 98c379ff -m c678ddff -S 000000ff -f SourceCodePro:size=12 -i -w 90 -l 25 --dmenu)
 
