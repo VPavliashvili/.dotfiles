@@ -19,21 +19,23 @@ set_all() {
 # only change speed if current rpm is not zero
 # this way avoiding setting unnecessary fans in my specific
 # pc fan configuration
-set_active_full() {
+set_active_rpm() {
   for fan in "${FANS[@]}"; do
     local num="${fan##*pwm}"
     local rpm_file="$(dirname "$fan")/fan${num}_input"
+
+    local value=$1
     if [ -f "$rpm_file" ] && [ "$(cat "$rpm_file")" -gt 0 ]; then
       echo 1 > "${fan}_enable"
-      echo 255 > "$fan"
+      echo "$value" > "$fan"
     fi
   done
 }
 
 case "${1:-}" in
   zero)   set_all 0   ;;
-  mid) set_all 128 ;;
-  full)   set_active_full ;;
+  mid) set_active_rpm 155 ;;
+  full)   set_active_rpm 255 ;;
   auto)
     for fan in "${FANS[@]}"; do
       echo 2 > "${fan}_enable"

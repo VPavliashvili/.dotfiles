@@ -43,7 +43,7 @@ elif [[ $operation == "runhst" ]]; then
                 else
                     # notify-send "$chosen is a cli app"
                     cmd="$chosen"
-                    hyprctl dispatch exec "[float; size (monitor_w*0.7) (monitor_h*0.7); center] foot bash -c '$cmd'"
+                    hyprctl dispatch exec "[float; size (monitor_w*0.7) (monitor_h*0.7); center] $TERMINAL bash -c '$cmd'"
                 fi
 
                 # also update the history
