@@ -18,11 +18,13 @@ get_wallpaper() {
     monitors_count=$(hyprctl monitors -j | jq 'length')
 
     if [[ $(echo "$active" | wc -l) != "no wallpapers active" && $(echo "$active" | wc -l) -eq $monitors_count ]]; then
-        existing=$(echo "$active" | sed -n "s/.*$name = \([^ ]*\).*/\1/p")
+        # this avoids mismatch between full path because of .wallpapers is symlink of .dotfiles/.wallpapers
+        existing=$(basename "$(echo "$active" | sed -n "s/^$name: \(.*\)/\1/p")")
+
         count=$(fd -e png -e jpg -e jpeg . $directory | wc -l)
 
         if [[ $count -gt 1 ]]; then
-            fd -e png -e jpg -e jpeg . $directory | grep -vF $existing | shuf -n1
+            fd -e png -e jpg -e jpeg . $directory | grep -vF "$existing" | shuf -n1
         else
             echo $existing
         fi
@@ -32,9 +34,6 @@ get_wallpaper() {
 }
 
 main() {
-
-    hyprctl hyprpaper unload all
-
     hyprctl monitors -j | jq -r '.[] | "\(.name) \(.transform)"' | while IFS=' ' read -r name transform; do
         # echo "Monitor $name, transform $transform"
 
@@ -45,7 +44,6 @@ main() {
             wallpaper=$(get_wallpaper ~/.wallpapers/vertical)
         fi
 
-        hyprctl hyprpaper preload $wallpaper
         hyprctl hyprpaper wallpaper "$name,$wallpaper"
     done
 
