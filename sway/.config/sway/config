@@ -21,9 +21,9 @@ set $clipboard fuzzel -b 282c34ff -t 61afefff -s 98c379ff -m c678ddff -S 000000f
 ### execs
 exec wl-paste --type text --watch cliphist store #Stores only text data
 exec wl-paste --type image --watch cliphist store #Stores only image data
-exec swaybg -o DP-1 -i ~/Pictures/wallpapers/onedark/cyberpunk-sword.png
-exec swaybg -o DP-2 -i ~/Pictures/wallpapers/vertical/berserk.jpg
-exec /usr/lib/polkit-kde-authentication-agent-1
+# exec swaybg -o DP-1 -i ~/Pictures/wallpapers/onedark/cyberpunk-sword.png
+# exec swaybg -o DP-2 -i ~/Pictures/wallpapers/vertical/berserk.jpg
+# exec /usr/lib/polkit-kde-authentication-agent-1
 exec nm-applet
 exec blueman-applet
 exec swaykbdd
@@ -41,8 +41,9 @@ smart_borders on
 workspace_auto_back_and_forth yes
 
 ### Output configuration
-output DP-1 resolution 2560x1440 position 0,525 scale 1.25
-output DP-2 resolution 1920x1080 position 2048,0 transform 90
+# output DP-1 resolution 2560x1440 position 0,525 scale 1.25
+# output DP-2 resolution 1920x1080 position 2048,0 transform 90
+output DP-2 resolution 1920x1080 position 0,0 scale 1
 #
 # You can get the names of your outputs by running: swaymsg -t get_outputs
 
@@ -167,15 +168,15 @@ bindsym --to-code {
 }
 
     # Bind workspace to monitors
-    workspace 1 output DP-1
-    workspace 2 output DP-1
-    workspace 3 output DP-1
-    workspace 4 output DP-1
-    workspace 5 output DP-1
-    workspace 6 output DP-1
+    workspace 1 output DP-2
+    workspace 2 output DP-2
+    workspace 3 output DP-2
+    workspace 4 output DP-2
+    workspace 5 output DP-2
+    workspace 6 output DP-2
     workspace 7 output DP-2
-    workspace 8 output DP-1
-    workspace 9 output DP-1
+    workspace 8 output DP-2
+    workspace 9 output DP-2
     workspace 10 output DP-2
 #
 # Layout stuff:

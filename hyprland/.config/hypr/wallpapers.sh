@@ -17,16 +17,16 @@ get_wallpaper() {
     active=$(hyprctl hyprpaper listactive)
     monitors_count=$(hyprctl monitors -j | jq 'length')
 
-    if [[ $(echo "$active" | wc -l) != "no wallpapers active" && $(echo "$active" | wc -l) -eq $monitors_count ]]; then
+    if [[ "$active" != "no wallpapers active" && $(echo "$active" | wc -l) -eq $monitors_count ]]; then
         # this avoids mismatch between full path because of .wallpapers is symlink of .dotfiles/.wallpapers
         existing=$(basename "$(echo "$active" | sed -n "s/^$name: \(.*\)/\1/p")")
 
         count=$(fd -e png -e jpg -e jpeg . $directory | wc -l)
 
-        if [[ $count -gt 1 ]]; then
+        if [[ $count -gt 1 && -n "$existing" ]]; then
             fd -e png -e jpg -e jpeg . $directory | grep -vF "$existing" | shuf -n1
         else
-            echo $existing
+            fd -e png -e jpg -e jpeg . $directory | shuf -n1
         fi
     else
         fd -e png -e jpg -e jpeg . $directory | shuf -n1
@@ -45,6 +45,12 @@ main() {
         fi
 
         hyprctl hyprpaper wallpaper "$name,$wallpaper"
+
+        if [[ -n "$wallpaper" ]]; then
+            hyprctl hyprpaper wallpaper "$name,$wallpaper"
+        else
+            echo "could not find wallapepr for $name"
+        fi
     done
 
     sleep "$rate$unit"
