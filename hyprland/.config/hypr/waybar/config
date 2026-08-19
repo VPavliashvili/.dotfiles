@@ -49,7 +49,7 @@
         },
         "clock": {
             "format": " {:%b/%d %R}",
-            "on-click": "~/.config/waybar/scripts/calendar.py"
+            "on-click": "~/.config/hypr/waybar/scripts/calendar.py"
         },
         "cpu": {
             "format": "{usage}% ",
@@ -61,10 +61,10 @@
             "interval": 5
         },
         "custom/disk": {
-            "exec": "~/.config/waybar/scripts/disk/disk.py",
+            "exec": "~/.config/hypr/waybar/scripts/disk/disk.py",
             "return-type": "json",
-            "on-click": "~/.config/waybar/scripts/disk/next_diskinfo.py",
-            "on-click-right": "~/.config/waybar/scripts/disk/launch_diskinfo.py",
+            "on-click": "~/.config/hypr/waybar/scripts/disk/next_diskinfo.py",
+            "on-click-right": "~/.config/hypr/waybar/scripts/disk/launch_diskinfo.py",
             "interval": 1
         },
         "backlight": {
@@ -101,12 +101,12 @@
                 "car": "",
                 "default": ["", "", ""]
             },
-            "on-click": "~/.config/waybar/scripts/audio/open_pulseaudio.py"
+            "on-click": "~/.config/hypr/waybar/scripts/audio/open_pulseaudio.py"
         },
         "custom/mic": {
-            "exec": "~/.config/waybar/scripts/audio/mic.py",
+            "exec": "~/.config/hypr/waybar/scripts/audio/mic.py",
             "return-type": "json",
-            "on-click": "~/.config/waybar/scripts/audio/change_state.py",
+            "on-click": "~/.config/hypr/waybar/scripts/audio/change_state.py",
             "interval": 1
         },
         "hyprland/submap": {
