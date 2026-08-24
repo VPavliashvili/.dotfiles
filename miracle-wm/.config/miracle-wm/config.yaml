@@ -1,0 +1,11 @@
+startup_apps:
+  - command: ~/.config/miracle-wm/scripts/startup-hook.sh
+
+action_key: meta # default btw
+
+custom_actions:
+  - command: fuzzel -b 282c34ff -t 61afefff -s 98c379ff -m c678ddff -S 000000ff -f SourceCodePro:size=12 -i Arc -w 40 -l 20
+    action: down
+    modifiers:
+    - primary
+    key: d

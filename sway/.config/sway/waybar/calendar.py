@@ -40,14 +40,14 @@ posX = x_axis - width - 90
 posY = y_axis - height - 30
 
 cmd = [
-    'pkill -f "yad --calendar --undecorated --no-buttons --width={} --height={}"'.format(
+    'pkill -f "yad --name=yad-calendar --calendar --undecorated --no-buttons --width={} --height={}"'.format(
         width, height
     )
 ]
 subprocess.getoutput(cmd)
 
 cmd = [
-    'swaymsg exec "yad --calendar --undecorated --no-buttons --width={} --height={}" && sleep 0.125 && swaymsg "[app_id="yad"] move position {} {}"'.format(
+    'swaymsg exec "yad --name=yad-calendar --calendar --undecorated --no-buttons --width={} --height={}" && sleep 0.1 && swaymsg "[app_id="yad-calendar"] move position {} {}"'.format(
         width, height, int(posX), int(posY)
     )
 ]

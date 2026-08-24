@@ -21,6 +21,7 @@ set $clipboard fuzzel -b 282c34ff -t 61afefff -s 98c379ff -m c678ddff -S 000000f
 ### execs
 exec wl-paste --type text --watch cliphist store #Stores only text data
 exec wl-paste --type image --watch cliphist store #Stores only image data
+exec wl-clip-persist --clipboard regular
 # exec swaybg -o DP-1 -i ~/Pictures/wallpapers/onedark/cyberpunk-sword.png
 # exec swaybg -o DP-2 -i ~/Pictures/wallpapers/vertical/berserk.jpg
 # exec /usr/lib/polkit-kde-authentication-agent-1
@@ -48,7 +49,9 @@ output DP-2 resolution 1920x1080 position 0,0 scale 1
 # You can get the names of your outputs by running: swaymsg -t get_outputs
 
 ### Window rules
-for_window [app_id="yad"] floating enable
+
+# this id is set from waybar related python calendar.py script
+for_window [app_id="yad-calendar"] floating enable
 
 ### Idle configuration
 #
@@ -122,7 +125,12 @@ bindsym --to-code {
     $mod+Shift+r reload
     # Exit sway (logs you out of your Wayland session)
     $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
+
+    $mod+c exec $term --app-id=calc-scratch -e nvim +startinsert
+    $mod+b exec $term --app-id=btop-scratch -e btop
 }
+    for_window [app_id="calc-scratch"] floating enable, resize set width 756px height 512px, move position center
+    for_window [app_id="btop-scratch"] floating enable, resize set width 1530px height 860px, move position center
 #
 # Moving around:
 #
@@ -183,9 +191,9 @@ bindsym --to-code {
 #
 bindsym --to-code {
     # You can "split" the current object of your focus with
-    # $mod+b or $mod+v, for horizontal and vertical splits
+    # horizontal and vertical splits
     # respectively.
-    $mod+b splith
+    $mod+Shift+b splith
     # $mod+v splitv
 
     # Switch the current container between different layout styles
