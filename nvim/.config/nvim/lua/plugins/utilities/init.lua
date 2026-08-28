@@ -4,6 +4,7 @@ local function get_lazy_specs()
     local colorizer = require("plugins.utilities.colorizer")
     local markdown_preview = require("plugins.utilities.markview_preview")
     -- local markview = require("plugins.utilities.markview")
+    local calcium = require("plugins.utilities.calcium")
 
     local plugins = {
         {
@@ -23,6 +24,7 @@ local function get_lazy_specs()
     vim.list_extend(plugins, auto_session.get_plugin_spec())
     vim.list_extend(plugins, colorizer.get_plugin_spec())
     vim.list_extend(plugins, markdown_preview.get_plugin_spec())
+    vim.list_extend(plugins, calcium.get_plugin_spec())
 
     return plugins
 end
