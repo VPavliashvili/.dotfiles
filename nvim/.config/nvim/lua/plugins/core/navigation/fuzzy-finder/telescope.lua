@@ -99,6 +99,10 @@ local function config()
             symbols = { "class", "struct", "interface", "method", "function", "module", "enum" },
         })
     end)
+
+    -- stand out current line from the live preview
+    -- color taken from onedarkpro gray
+    vim.api.nvim_set_hl(0, "TelescopePreviewLine", { bg = "#5C6370" })
 end
 
 local function get_plugin_spec()
@@ -114,7 +118,7 @@ local function get_plugin_spec()
 end
 
 -- make telescope window non transparent
-local telescope_bg = "#282C34"
+local telescope_bg = "#282C34" -- taken from onedrakpro black
 
 vim.api.nvim_create_autocmd("ColorScheme", {
     pattern = "*",

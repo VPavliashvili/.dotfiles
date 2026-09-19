@@ -82,7 +82,7 @@ local function get_plugin_setup()
                 "hrsh7th/cmp-path",
                 "ray-x/cmp-treesitter",
                 "hrsh7th/cmp-nvim-lsp",
-                -- "hrsh7th/cmp-calc",
+                "hrsh7th/cmp-calc",
                 "hrsh7th/cmp-nvim-lsp-document-symbol",
                 "hrsh7th/cmp-nvim-lsp-signature-help",
                 "saadparwaiz1/cmp_luasnip",

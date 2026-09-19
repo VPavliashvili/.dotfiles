@@ -37,7 +37,7 @@ local function config()
         "sql",
         "ssh_config",
         "json",
-        "jsonc",
+        -- "jsonc",
         "editorconfig",
         "javascript",
         "typescript",

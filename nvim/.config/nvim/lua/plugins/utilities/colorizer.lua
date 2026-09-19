@@ -14,7 +14,7 @@ end
 local function get_plugin_spec()
     return {
         {
-            "norcalli/nvim-colorizer.lua",
+            "catgoose/nvim-colorizer.lua",
             config = config,
             dependencies = {
                 "NTBBloodbath/color-converter.nvim",

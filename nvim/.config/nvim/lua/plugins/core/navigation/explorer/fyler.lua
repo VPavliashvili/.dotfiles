@@ -1,10 +1,14 @@
--- local function config()
---     vim.keymap.set("n", "<leader>ex", ":Fyler kind=float<CR>")
--- end
+local function config()
+    local fyler = require("fyler")
+
+    fyler.setup({
+        integrations = {
+            icon = "nvim_web_devicons",
+        },
+    })
+end
 
 local function get_plugin_spec()
-    -- vim.keymap.set("n", "<leader>ex", ":Fyler kind=float<CR>")
-
     return {
         {
             "A7Lavinraj/fyler.nvim",
@@ -13,7 +17,7 @@ local function get_plugin_spec()
             keys = {
                 {
                     "<Space>ex",
-                    "<CMD>Fyler kind=float<CR>",
+                    "<CMD>Fyler kind=floating<CR>",
                     desc = "Open Fyler",
                 },
             },
@@ -25,11 +29,7 @@ local function get_plugin_spec()
                 },
             },
             lazy = false,
-
-            -- pinning to this old version for now
-            -- i dont have time to fix bugs came with its rewrite
-            commit = "e87911e6c21d099225063f5aa672e00f6dbb5976",
-            pin = true,
+            config = config,
         },
     }
 end
